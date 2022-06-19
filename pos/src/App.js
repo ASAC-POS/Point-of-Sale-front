@@ -6,6 +6,8 @@ import Main from './components/main/Main';
 import Login from './components/login/Login';
 import Employees from './components/Employees/Employees';
 import Receipts from './components/Receipts/Receipts';
+import Profile from './components/profile/profile';
+
 function App() {
   return (
     <div className='app'>
@@ -24,6 +26,8 @@ function App() {
         <Route path='/signin' element={<Login />} />
         <Route path='/store/employees' element={<Employees />} />
         <Route path='/store/receipts' element={<Receipts />} />
+        <Route path='/store/id' element={<Profile />} />
+
       </Routes>
       <Footer />
     </div>
