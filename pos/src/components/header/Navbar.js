@@ -1,26 +1,20 @@
-import { Navbar, Nav, Container } from 'react-bootstrap/';
+import { ButtonGroup, Button } from 'react-bootstrap/';
 import { Link } from 'react-router-dom';
 
 function Navbars() {
   return (
     <nav className='nav-bar'>
-      <Navbar bg='light' variant='light'>
-        <Container>
-          <Nav className='me-auto'>
-            <Link to='/'>
-              <Nav.Link>Home</Nav.Link>
-            </Link>
-
-            <Link to='/'>
-              <Nav.Link>About us</Nav.Link>
-            </Link>
-
-            <Link to='/signin'>
-              <Nav.Link>Sign in</Nav.Link>
-            </Link>
-          </Nav>
-        </Container>
-      </Navbar>
+      <ButtonGroup className='nav-bar-buttons'>
+        <Button variant='outline-light'>
+          <Link to='/'>Home</Link>
+        </Button>
+        <Button variant='outline-light'>
+          <Link to='/about'>About</Link>
+        </Button>
+        <Button variant='outline-light'>
+          <Link to='/signin'>signin</Link>
+        </Button>
+      </ButtonGroup>
     </nav>
   );
 }
