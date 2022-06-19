@@ -1,7 +1,8 @@
 import { ButtonGroup, Button } from 'react-bootstrap/';
 import { Link } from 'react-router-dom';
-
-function Navbars() {
+import { connect } from 'react-redux';
+import { getProductsFromAPI } from '../../store/products.js';
+function Navbars(props) {
   return (
     <nav className='nav-bar'>
       <ButtonGroup className='nav-bar-buttons'>
@@ -18,5 +19,10 @@ function Navbars() {
     </nav>
   );
 }
+const mapStateToProps = (state) => ({
+  products: state.productss,
+});
 
-export default Navbars;
+const mapDispatchToProps = { getProductsFromAPI };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbars);

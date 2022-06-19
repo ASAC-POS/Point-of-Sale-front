@@ -4,7 +4,8 @@ import Footer from './components/footer/Footer';
 import { Routes, Route } from 'react-router-dom';
 import Main from './components/main/Main';
 import Login from './components/login/Login';
-
+import Employees from './components/Employees/Employees';
+import Receipts from './components/Receipts/Receipts';
 function App() {
   return (
     <div className='app'>
@@ -21,6 +22,8 @@ function App() {
           }
         />
         <Route path='/signin' element={<Login />} />
+        <Route path='/store/employees' element={<Employees />} />
+        <Route path='/store/receipts' element={<Receipts />} />
       </Routes>
       <Footer />
     </div>
