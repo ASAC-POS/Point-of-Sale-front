@@ -1,10 +1,10 @@
 import { createContext, useState, useEffect } from 'react';
 import cookie from 'react-cookies';
 import superagent from 'superagent';
-import jwt_decode from 'jwt-decode';
+import jwt from 'jwt-decode';
 import base64 from 'base-64';
 
-const API = 'https://debuggers-pos.herokuapp.com';
+const API = 'http://localhost:3001';
 
 export const loginContext = createContext();
 
@@ -13,9 +13,9 @@ export default function LoginProvider({ children }) {
   const [user, setUser] = useState({});
 
   const register = async (userInfo) => {
-    const response = await (
-      await superagent.post(`${API}/register`)
-    ).send(userInfo);
+    console.log('1111111111', userInfo);
+    await superagent.post(`${API}/register`).send(userInfo);
+    console.log('2222222222');
   };
 
   const signup = async (username, password, role) => {
@@ -36,7 +36,7 @@ export default function LoginProvider({ children }) {
 
   const validateMyUser = (data) => {
     if (data) {
-      const validUser = jwt_decode.decode(data.token);
+      const validUser = jwt(data.token);
       if (validUser) {
         setLoginstate(true, data);
         cookie.save('userData', data);
