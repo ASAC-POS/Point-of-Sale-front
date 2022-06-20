@@ -1,6 +1,6 @@
 import { Form, Button } from 'react-bootstrap';
-import { useState, useContext } from 'react';
-import loginContext from '../../context/context.js';
+import { useState, useContext, useEffect } from 'react';
+import { loginContext } from '../../context/context.js';
 function RegisterForm() {
   const [userInfo, setUserInfo] = useState({});
   const { register } = useContext(loginContext);
@@ -9,8 +9,13 @@ function RegisterForm() {
   }
   function handleSubmit(e) {
     e.preventDefault();
+    console.log('in submit');
     register(userInfo);
+    console.log('done registering');
   }
+  useEffect(() => {
+    console.log(userInfo);
+  }, [userInfo]);
   return (
     <div>
       <Form onSubmit={handleSubmit}>
