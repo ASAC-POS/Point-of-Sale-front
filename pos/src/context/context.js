@@ -4,7 +4,7 @@ import superagent from 'superagent';
 import jwt from 'jwt-decode';
 import base64 from 'base-64';
 
-const API = 'http://localhost:3001';
+const API = 'https://debuggers-pos.herokuapp.com';
 
 export const loginContext = createContext();
 
@@ -14,8 +14,8 @@ export default function LoginProvider({ children }) {
 
   const register = async (userInfo) => {
     console.log('1111111111', userInfo);
-    await superagent.post(`${API}/register`).send(userInfo);
-    console.log('2222222222');
+    const response = await superagent.post(`${API}/register`).send(userInfo);
+    console.log(response.body);
   };
 
   const signup = async (username, password, role) => {
@@ -31,6 +31,7 @@ export default function LoginProvider({ children }) {
         'authorization',
         `Basic ${base64.encode(`${username}:${password}`)}`
       );
+    console.log(response.body);
     validateMyUser(response.body);
   };
 
