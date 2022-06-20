@@ -3,7 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import ProductsSlice from './products';
 
 let reducers = combineReducers({
-  productss: ProductsSlice,
+  products: ProductsSlice,
 });
 
 const store = configureStore({

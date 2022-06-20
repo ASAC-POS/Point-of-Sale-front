@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import cookie from 'react-cookies';
 import superagent from 'superagent';
 const api = 'https://debuggers-pos.herokuapp.com';
 
@@ -14,7 +14,7 @@ const usersSlice = createSlice({
     },
   },
 });
-
+console.log(cookie.load('userData'));
 export default usersSlice.reducer;
 export const { getUsers } = usersSlice.actions;
 
