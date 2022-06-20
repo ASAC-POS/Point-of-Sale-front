@@ -1,17 +1,39 @@
 import { Form, Button } from 'react-bootstrap';
-
+import { useState, useContext } from 'react';
+import loginContext from '../../context/context.js';
 function RegisterForm() {
+  const [userInfo, setUserInfo] = useState({});
+  const { register } = useContext(loginContext);
+  function onChange(e) {
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    register(userInfo);
+  }
   return (
     <div>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Group className='mb-3'>
           <Form.Label>Store Name</Form.Label>
-          <Form.Control type='text' placeholder='Store Name' />
+          <Form.Control
+            type='text'
+            name='storeName'
+            onChange={onChange}
+            placeholder='Store Name'
+            required
+          />
         </Form.Group>
 
         <Form.Group className='mb-3' controlId='formBasicEmail'>
           <Form.Label>Email address</Form.Label>
-          <Form.Control type='email' placeholder='Enter email' />
+          <Form.Control
+            type='email'
+            name='email'
+            onChange={onChange}
+            placeholder='Enter email'
+            required
+          />
           <Form.Text className='text-muted'>
             We'll never share your email with anyone else.
           </Form.Text>
@@ -19,22 +41,46 @@ function RegisterForm() {
 
         <Form.Group className='mb-3'>
           <Form.Label className='mb-3'>Location</Form.Label>
-          <Form.Control type='text' placeholder='Store Location' />
+          <Form.Control
+            type='text'
+            name='location'
+            placeholder='Store Location'
+            onChange={onChange}
+            required
+          />
         </Form.Group>
 
         <Form.Group className='mb-3'>
           <Form.Label className='mb-3'>Business Type</Form.Label>
-          <Form.Control type='text' placeholder='Business Type' />
+          <Form.Control
+            type='text'
+            name='businessType'
+            placeholder='Business Type'
+            onChange={onChange}
+            required
+          />
         </Form.Group>
 
         <Form.Group className='mb-3'>
           <Form.Label className='mb-3'>Admin name</Form.Label>
-          <Form.Control type='text' placeholder='Admin name' />
+          <Form.Control
+            type='text'
+            name='username'
+            placeholder='Admin name'
+            onChange={onChange}
+            required
+          />
         </Form.Group>
 
         <Form.Group className='mb-3' controlId='formBasicPassword'>
           <Form.Label>Password</Form.Label>
-          <Form.Control type='password' placeholder='Password' />
+          <Form.Control
+            type='password'
+            name='password'
+            placeholder='Password'
+            onChange={onChange}
+            required
+          />
         </Form.Group>
         <Form.Group className='mb-3'>
           <Form.Label>Confirm Password</Form.Label>
