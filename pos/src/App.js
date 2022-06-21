@@ -8,6 +8,7 @@ import About from './components/about/About';
 import Employees from './components/Employees/Employees';
 import Receipts from './components/Receipts/Receipts';
 import Profile from './components/profile/profile';
+import Products from './components/Products/ProductManage'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path='/store/employees' element={<Employees />} />
         <Route path='/store/receipts' element={<Receipts />} />
         <Route path='/store/id' element={<Profile />} />
+        <Route path='/products' element={<Products/>}/>
 
       </Routes>
       <Footer />
