@@ -8,6 +8,7 @@ import About from './components/about/About';
 import Employees from './components/Employees/Employees';
 import Receipts from './components/Receipts/Receipts';
 import Profile from './components/profile/profile';
+import Products from './components/Products/ProductManage';
 import { useEffect, useContext, useState } from 'react';
 import { loginContext } from './context/context';
 import { connect } from 'react-redux';
@@ -23,6 +24,7 @@ function App(props) {
       setUserData(cookie.load('userData'));
     }
   }, [loggedIn, getData]);
+
   return (
     <div className='app'>
       <Header />
@@ -40,6 +42,10 @@ function App(props) {
         <Route path='/about' element={<About />} />
         <Route path='/store/employees' element={<Employees />} />
         <Route path='/store/receipts' element={<Receipts />} />
+
+        <Route path='/store/id' element={<Profile />} />
+        <Route path='/products' element={<Products />} />
+
         <Route
           path={`/${encodeURIComponent(store?.storename)}/${
             cookie.load('userData').id
