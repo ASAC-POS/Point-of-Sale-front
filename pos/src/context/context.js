@@ -6,14 +6,13 @@ import base64 from 'base-64';
 import { connect } from 'react-redux';
 import { getProductsFromAPI } from '../store/products';
 
-const API = 'https://debuggers-pos.herokuapp.com';
+const API = 'http://localhost:3002';
 
 export const loginContext = createContext();
 
 function LoginProvider(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
-  const [storID, setStorID] = useState('');
   const { getProductsFromAPI } = props;
   const register = async (userInfo) => {
     console.log('1111111111', userInfo);
@@ -36,7 +35,7 @@ function LoginProvider(props) {
       );
     console.log(response.body.user);
     console.log(response.body.storeID);
-    setStorID(response.body.storeID);
+    cookie.save('storeID', response.body.storeID);
     validateMyUser(response.body.user);
     getProductsFromAPI(response.body.user.token);
   };
