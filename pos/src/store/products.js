@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import superagent from 'superagent';
 import cookie from 'react-cookies';
-const api = 'http://localhost:3002';
+
+const api = 'http://localhost:3010';
 
 const ProductsSlice = createSlice({
   name: 'products',
