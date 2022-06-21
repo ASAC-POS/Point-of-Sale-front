@@ -13,7 +13,6 @@ export const loginContext = createContext();
 function LoginProvider(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
-  const [storID, setStorID] = useState('');
   const { getProductsFromAPI } = props;
   const register = async (userInfo) => {
     console.log('1111111111', userInfo);
@@ -36,7 +35,7 @@ function LoginProvider(props) {
       );
     console.log(response.body.user);
     console.log(response.body.storeID);
-    setStorID(response.body.storeID);
+    cookie.save('storeID', response.body.storeID);
     validateMyUser(response.body.user);
     getProductsFromAPI(response.body.user.token);
   };
