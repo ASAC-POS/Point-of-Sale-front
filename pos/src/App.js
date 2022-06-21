@@ -8,11 +8,7 @@ import About from './components/about/About';
 import Employees from './components/Employees/Employees';
 import Receipts from './components/Receipts/Receipts';
 import Profile from './components/profile/profile';
-
-import Products from './components/Products/ProductManage'
-
-function App() {
-
+import Products from './components/Products/ProductManage';
 import { useEffect, useContext, useState } from 'react';
 import { loginContext } from './context/context';
 import { connect } from 'react-redux';
@@ -48,14 +44,12 @@ function App(props) {
         <Route path='/store/receipts' element={<Receipts />} />
 
         <Route path='/store/id' element={<Profile />} />
-        <Route path='/products' element={<Products/>}/>
-
+        <Route path='/products' element={<Products />} />
 
         <Route
           path={`/${store?.storename}/${userData?.id}`}
           element={<Profile />}
         />
-
       </Routes>
       <Footer />
     </div>
