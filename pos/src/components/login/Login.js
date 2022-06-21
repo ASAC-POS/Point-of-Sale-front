@@ -2,19 +2,16 @@ import "./login.scss"
 import { Form, Button } from 'react-bootstrap';
 import { useState, useContext, useEffect } from 'react';
 import { loginContext } from '../../context/context.js';
-import { useNavigate } from 'react-router-dom';
 import { getProductsFromAPI } from '../../store/products';
 import { connect } from 'react-redux';
 
+import { useNavigate } from 'react-router-dom';
+import cookie from 'react-cookies';
 function Login(props) {
+  const { store } = props;
   const { login, loggedIn } = useContext(loginContext);
-  const { products, getProductsFromAPI } = props;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
-
   const navigate = useNavigate();
 
   const FormHeader = props => (
@@ -29,7 +26,7 @@ function Login(props) {
           e.preventDefault();
           login(username, password);
           if (loggedIn) {
-            navigate('/store/id');
+            navigate(`/${props.store.storename}/${cookie.load('userData').id}`);
           }
           // getProductsFromAPI();
         }}
@@ -65,6 +62,7 @@ function Login(props) {
 
 const mapStateToProps = (state) => ({
   products: state.products.products,
+  store: state.store.store,
 });
 
 const mapDispatchToProps = { getProductsFromAPI };
