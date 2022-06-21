@@ -6,7 +6,7 @@ import base64 from 'base-64';
 import { connect } from 'react-redux';
 import { getProductsFromAPI } from '../store/products';
 
-const API = 'http://localhost:3010';
+const API = 'https://debuggers-pos.herokuapp.com';
 
 export const loginContext = createContext();
 
