@@ -54,7 +54,7 @@ function Login(props) {
 
 const mapStateToProps = (state) => ({
   products: state.products.products,
-  store: state.store,
+  store: state.store.store,
 });
 
 const mapDispatchToProps = { getProductsFromAPI };
