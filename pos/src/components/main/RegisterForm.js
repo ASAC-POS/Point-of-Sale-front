@@ -23,7 +23,7 @@ function RegisterForm() {
           <Form.Label>Store Name</Form.Label>
           <Form.Control
             type='text'
-            name='storeName'
+            name='storename'
             onChange={onChange}
             placeholder='Store Name'
             required

@@ -14,11 +14,14 @@ const usersSlice = createSlice({
     },
   },
 });
-console.log(cookie.load('userData'));
 export default usersSlice.reducer;
 export const { getUsers } = usersSlice.actions;
 
-export const getUsersFromAPI = () => async (dispatch, state) => {
-  const response = await superagent.get(`${api}/users`);
+export const getUsersFromAPI = (token) => async (dispatch, state) => {
+  const response = await superagent
+    .get(`${api}/users`)
+    .query({ cookie: parseInt(cookie.load('storeID')) })
+    .set('Authorization', `Bearer ${token}`);
+  console.log(response.body);
   dispatch(getUsers(response.body));
 };
