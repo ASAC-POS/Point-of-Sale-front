@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import superagent from 'superagent';
 import cookie from 'react-cookies';
+
 const api = 'http://localhost:3010';
 
 const ProductsSlice = createSlice({
@@ -26,6 +27,7 @@ export const getProductsFromAPI = (token) => async (dispatch, state) => {
   try {
     const respons = await superagent
       .get(`${api}/products`)
+      .query({ cookie: cookie.load('storeID') })
       .set('Authorization', `Bearer ${token}`);
     console.log(respons.body);
     dispatch(getProducts(respons.body));
