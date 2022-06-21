@@ -1,24 +1,34 @@
 import { Form, Button } from 'react-bootstrap';
 import { useState, useContext, useEffect } from 'react';
 import { loginContext } from '../../context/context.js';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getProductsFromAPI } from '../../store/products';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 function Login(props) {
+<<<<<<< HEAD
   const { login, isLoggedIn } = useContext(loginContext);
+=======
+  const { login, loggedIn } = useContext(loginContext);
+>>>>>>> staging
   const { products, getProductsFromAPI } = props;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   useEffect(() => {
     console.log(products);
   }, [products]);
+
+  const navigate = useNavigate();
+
   return (
     <div>
       <Form
         onSubmit={(e) => {
           e.preventDefault();
           login(username, password);
+          if (loggedIn) {
+            navigate('/store/id');
+          }
           // getProductsFromAPI();
         }}
       >
