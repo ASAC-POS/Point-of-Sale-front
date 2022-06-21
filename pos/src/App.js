@@ -19,9 +19,9 @@ function App(props) {
   useEffect(() => {
     getData();
     if (loggedIn) {
+      console.log(store);
       setUserData(cookie.load('userData'));
     }
-    console.log(store);
   }, [loggedIn, getData]);
   return (
     <div className='app'>
@@ -41,7 +41,9 @@ function App(props) {
         <Route path='/store/employees' element={<Employees />} />
         <Route path='/store/receipts' element={<Receipts />} />
         <Route
-          path={`/${store?.storename}/${userData?.id}`}
+          path={`/${encodeURIComponent(store?.storename)}/${
+            cookie.load('userData').id
+          }`}
           element={<Profile />}
         />
       </Routes>
@@ -51,7 +53,7 @@ function App(props) {
 }
 const mapStateToProps = (state) => {
   return {
-    store: state.store,
+    store: state.store.store,
   };
 };
 export default connect(mapStateToProps)(App);
