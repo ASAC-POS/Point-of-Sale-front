@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import superagent from 'superagent';
+import cookie from 'react-cookies';
 const api = 'https://debuggers-pos.herokuapp.com';
 
 const storeSlice = createSlice({
@@ -18,7 +19,11 @@ export default storeSlice.reducer;
 
 export const { getStore } = storeSlice.actions;
 
-export const getStoreFromAPI = () => async (dispatch, state) => {
-  const response = await superagent.get(`${api}/storeEmps`);
+export const getStoreFromAPI = (token) => async (dispatch, state) => {
+  const response = await superagent
+    .get(`${api}/storeEmps`)
+    .query({ cookie: cookie.load('storeID') })
+    .set('Authorization', `Bearer ${token}`);
+  console.log(response.body);
   dispatch(getStore(response.body));
 };

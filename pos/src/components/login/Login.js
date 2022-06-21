@@ -4,8 +4,9 @@ import { loginContext } from '../../context/context.js';
 import { Link } from 'react-router-dom';
 import { getProductsFromAPI } from '../../store/products';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 function Login(props) {
-  const { login } = useContext(loginContext);
+  const { login, isLoggedIn } = useContext(loginContext);
   const { products, getProductsFromAPI } = props;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

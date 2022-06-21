@@ -5,15 +5,17 @@ import jwt from 'jwt-decode';
 import base64 from 'base-64';
 import { connect } from 'react-redux';
 import { getProductsFromAPI } from '../store/products';
+import { getStoreFromAPI } from '../store/stores';
+import { getReceiptsFromAPI } from '../store/receipts';
 
-const API = 'http://localhost:3002';
+const API = 'https://debuggers-pos.herokuapp.com';
 
 export const loginContext = createContext();
 
 function LoginProvider(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
-  const { getProductsFromAPI } = props;
+  const { getProductsFromAPI, getStoreFromAPI, getReceiptsFromAPI } = props;
   const register = async (userInfo) => {
     console.log('1111111111', userInfo);
     const response = await superagent.post(`${API}/register`).send(userInfo);
@@ -38,6 +40,8 @@ function LoginProvider(props) {
     cookie.save('storeID', response.body.storeID);
     validateMyUser(response.body.user);
     getProductsFromAPI(response.body.user.token);
+    getStoreFromAPI(response.body.user.token);
+    getReceiptsFromAPI(response.body.user.token);
   };
 
   const validateMyUser = (data) => {
@@ -96,5 +100,9 @@ const mapStateToProps = (state) => {
     loggedIn: state.loggedIn,
   };
 };
-const mapDispatchToProps = { getProductsFromAPI };
+const mapDispatchToProps = {
+  getProductsFromAPI,
+  getStoreFromAPI,
+  getReceiptsFromAPI,
+};
 export default connect(mapStateToProps, mapDispatchToProps)(LoginProvider);
