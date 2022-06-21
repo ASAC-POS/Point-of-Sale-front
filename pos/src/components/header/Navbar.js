@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getProductsFromAPI } from '../../store/products.js';
 function Navbars(props) {
   return (
-    <nav className='nav-bar'>
+    <nav className='nav-bar' style={{backgroundColor:'white'}}>
       <ButtonGroup className='nav-bar-buttons'>
         <Button variant='outline-light'>
           <Link to='/'>Home</Link>

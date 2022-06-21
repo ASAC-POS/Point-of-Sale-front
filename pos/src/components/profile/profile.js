@@ -1,26 +1,18 @@
-import { Form, Button } from 'react-bootstrap';
 import './profile.scss'
+
 
 function profile() {
   return (
     <>
-    <Form className='form'>
-        <Form.Group >
-          <Form.Label>Employee Name</Form.Label>
-          <Form.Control type='text' placeholder='Employee Name' />
-        </Form.Group>
-
-        <Form.Group >
-          <Form.Label>Role</Form.Label>
-          <Form.Control type='text' placeholder='Role' />
-        </Form.Group>
-        <Form.Group >
-          <Form.Label>User ID</Form.Label>
-          <Form.Control type='text' placeholder='User ID' />
-        </Form.Group>
-          <br></br>
-        <Button type='submit'> Enter </Button>
-      </Form>
+    <div id='details'>
+    <p>
+     Employee Name :
+    </p>
+    <p>
+      Store Name : 
+    </p>
+   
+    </div>
     <div className='profile'>
 <div class="card">
   <div class="card-image"></div>
