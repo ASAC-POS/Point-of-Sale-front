@@ -9,20 +9,15 @@ import Employees from './components/Employees/Employees';
 import Receipts from './components/Receipts/Receipts';
 import Profile from './components/profile/profile';
 import Products from './components/Products/ProductManage';
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useContext } from 'react';
 import { loginContext } from './context/context';
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 function App(props) {
   const { getData, loggedIn } = useContext(loginContext);
-  const [userData, setUserData] = useState({});
   const { store } = props;
   useEffect(() => {
     getData();
-    if (loggedIn) {
-      console.log(store);
-      setUserData(cookie.load('userData'));
-    }
   }, [loggedIn, getData]);
 
   return (
@@ -40,18 +35,28 @@ function App(props) {
         />
         <Route path='/signin' element={<Login />} />
         <Route path='/about' element={<About />} />
-        <Route path='/store/employees' element={<Employees />} />
-        <Route path='/store/receipts' element={<Receipts />} />
+        <Route
+          path={`/${encodeURIComponent(store?.storename)}/employees`}
+          element={<Employees />}
+        />
+        <Route
+          path={`/${encodeURIComponent(store?.storename)}/receipts`}
+          element={<Receipts />}
+        />
 
         <Route path='/store/id' element={<Profile />} />
-        <Route path='/products' element={<Products />} />
+        <Route
+          path={`/${encodeURIComponent(store?.storename)}/products`}
+          element={<Products />}
+        />
 
         <Route
           path={`/${encodeURIComponent(store?.storename)}/${
-            cookie.load('userData').id
+            cookie.load('userData')?.id
           }`}
           element={<Profile />}
         />
+        <Route path='*' element={<div>404</div>} />
       </Routes>
       <Footer />
     </div>
