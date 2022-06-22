@@ -12,10 +12,13 @@ const usersSlice = createSlice({
     getUsers: (state, action) => {
       state.users = action.payload;
     },
+    clearUsers: (state, action) => {
+      state.users = [];
+    },
   },
 });
 export default usersSlice.reducer;
-export const { getUsers } = usersSlice.actions;
+export const { getUsers, clearUsers } = usersSlice.actions;
 
 export const getUsersFromAPI = (token) => async (dispatch, state) => {
   const response = await superagent
@@ -24,4 +27,22 @@ export const getUsersFromAPI = (token) => async (dispatch, state) => {
     .set('Authorization', `Bearer ${token}`);
   console.log(response.body);
   dispatch(getUsers(response.body));
+};
+export const addUser = (user) => async (dispatch, state) => {
+  console.log('adduser');
+  try {
+    const response = await superagent
+      .post(`${api}/user`)
+      .send(user)
+      .query({ cookie: parseInt(cookie.load('storeID')) })
+      .set('Authorization', `Bearer ${cookie.load('userData')?.token}`);
+    console.log(response.body);
+    const newUsers = await superagent
+      .get(`${api}/users`)
+      .query({ cookie: parseInt(cookie.load('storeID')) })
+      .set('Authorization', `Bearer ${cookie.load('userData')?.token}`);
+    dispatch(getUsers(newUsers.body));
+  } catch (err) {
+    console.log(err);
+  }
 };

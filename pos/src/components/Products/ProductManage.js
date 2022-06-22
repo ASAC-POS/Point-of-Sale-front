@@ -6,7 +6,11 @@ import Button from 'react-bootstrap/Button';
 import ProductsForm from './ProductsForm';
 import EditProducts from './EditProducts';
 
-function Product() {
+import { deleteProduct } from '../../store/products';
+import { connect } from 'react-redux';
+import stores from '../../store/stores';
+
+function Product(props) {
   return (
     <>
       <>
@@ -31,7 +35,12 @@ function Product() {
             </Card.Body>
             <ListGroup className='list-group-flush'></ListGroup>
             <Card.Footer>
-              <Button variant='primary'>Remove</Button>
+              <Button
+                variant='primary'
+                onClick={(item) => props.deleteProduct(14)}
+              >
+                Remove
+              </Button>
               <EditProducts />
             </Card.Footer>
           </Card>
@@ -52,7 +61,12 @@ function Product() {
             </Card.Body>
             <ListGroup className='list-group-flush'></ListGroup>
             <Card.Footer>
-              <Button variant='primary'>Remove</Button>
+              <Button
+                variant='primary'
+                onClick={(item) => deleteProduct(item.id)}
+              >
+                Remove
+              </Button>
               <EditProducts />
             </Card.Footer>
           </Card>
@@ -74,7 +88,12 @@ function Product() {
             </Card.Body>
             <ListGroup className='list-group-flush'></ListGroup>
             <Card.Footer>
-              <Button variant='primary'>Remove</Button>
+              <Button
+                variant='primary'
+                onClick={(item) => deleteProduct(item.id)}
+              >
+                Remove
+              </Button>
               <EditProducts />
             </Card.Footer>
           </Card>
@@ -84,4 +103,10 @@ function Product() {
   );
 }
 
-export default Product;
+const mapStateToProps = (state) => ({
+  products: state.store.products,
+});
+
+const mapDispatchToProps = { deleteProduct };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

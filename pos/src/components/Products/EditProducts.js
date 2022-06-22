@@ -1,10 +1,29 @@
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
+import { connect } from 'react-redux';
+import { editProduct } from '../../store/products';
 
 function EmployeeForm(props) {
+  const [newItem, setNewItem] = useState({});
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const onChange = (e) => {
+    setNewItem({
+      ...newItem,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(newItem);
+    props.editProduct(newItem, 14);
+    handleClose();
+  };
+
   return (
     <div>
       <Button variant='primary' onClick={handleShow}>
@@ -15,24 +34,62 @@ function EmployeeForm(props) {
           <Modal.Title>Edit Product</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group >
+          <Form onSubmit={(e) => handleSubmit(e)}>
+            <Form.Group>
               <Form.Label>ProductName</Form.Label>
-              <Form.Control type='text' placeholder='ProductName' />
+              <Form.Control
+                type='text'
+                placeholder='ProductName'
+                name='productName'
+                onChange={onChange}
+              />
             </Form.Group>
-            <Form.Group >
+            <Form.Group>
               <Form.Label>Price</Form.Label>
-              <Form.Control type='text' placeholder='Price' />
+              <Form.Control
+                type='text'
+                placeholder='Price'
+                name='price'
+                onChange={onChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Description'
+                name='description'
+                onChange={onChange}
+              />
             </Form.Group>
             <Form.Group>
               <Form.Label>Quantity</Form.Label>
-              <Form.Control type='text' placeholder='Quantity' />
+              <Form.Control
+                type='text'
+                placeholder='Quantity'
+                name='quantity'
+                onChange={onChange}
+              />
             </Form.Group>
             <Form.Group>
               <Form.Label>minQuantity</Form.Label>
-              <Form.Control type='text' placeholder='minQuantity' />
+              <Form.Control
+                type='text'
+                placeholder='minQuantity'
+                name='minQuantity'
+                onChange={onChange}
+              />
             </Form.Group>
-            <Button variant='primary' type='submit' style={{padding: '10px'}}>
+            <Form.Group>
+              <Form.Label>Image URL</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Image URL'
+                name='imgURL'
+                onChange={onChange}
+              />
+            </Form.Group>
+            <Button variant='primary' type='submit' style={{ padding: '10px' }}>
               Edit
             </Button>
           </Form>
@@ -41,4 +98,11 @@ function EmployeeForm(props) {
     </div>
   );
 }
-export default EmployeeForm;
+
+const mapStateToProps = (state) => ({
+  products: state.store.products,
+});
+
+const mapDispatchToProps = { editProduct };
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeForm);

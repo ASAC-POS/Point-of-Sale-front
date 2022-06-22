@@ -4,13 +4,20 @@ import superagent from 'superagent';
 import jwt from 'jwt-decode';
 import base64 from 'base-64';
 import { connect } from 'react-redux';
-import { getProductsFromAPI } from '../store/products';
-import { getStoreFromAPI } from '../store/stores';
-import { getReceiptsFromAPI } from '../store/receipts';
-import { getUsersFromAPI } from '../store/users';
+
+// import { getProductsFromAPI } from '../store/products';
+// import { getStoreFromAPI } from '../store/stores';
+// import { getReceiptsFromAPI } from '../store/receipts';
+// import { getUsersFromAPI } from '../store/users';
 import { useNavigate } from 'react-router-dom';
 
+
+import { getProductsFromAPI, clearProducts } from '../store/products';
+import { getStoreFromAPI, clearStore } from '../store/stores';
+import { getReceiptsFromAPI, clearReceipts } from '../store/receipts';
+import { getUsersFromAPI, clearUsers } from '../store/users';
 const API = 'https://debuggers-pos.herokuapp.com';
+// const API = 'http://localhost:3010';
 
 export const loginContext = createContext();
 
@@ -23,6 +30,10 @@ function LoginProvider(props) {
     getStoreFromAPI,
     getReceiptsFromAPI,
     getUsersFromAPI,
+    clearUsers,
+    clearStore,
+    clearProducts,
+    clearReceipts,
   } = props;
   const register = async (userInfo) => {
     console.log('1111111111', userInfo);
@@ -92,6 +103,13 @@ function LoginProvider(props) {
   const logout = () => {
     setLoggedIn(false);
     setUser({});
+    clearData();
+  };
+  const clearData = () => {
+    clearUsers();
+    clearStore();
+    clearProducts();
+    clearReceipts();
     cookie.remove('userData');
     cookie.remove('storeID');
     navigate('/');
@@ -130,5 +148,9 @@ const mapDispatchToProps = {
   getStoreFromAPI,
   getReceiptsFromAPI,
   getUsersFromAPI,
+  clearUsers,
+  clearReceipts,
+  clearStore,
+  clearProducts,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(LoginProvider);
