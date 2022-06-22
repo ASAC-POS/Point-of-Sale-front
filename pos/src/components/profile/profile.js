@@ -1,30 +1,24 @@
-import { Form, Button } from 'react-bootstrap';
+
 import './profile.scss';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+
 function Profile(props) {
   const navigate = useNavigate();
+  console.log(props)
+  
   const { store } = props;
   return (
     <>
-      <Form className='form'>
-        <Form.Group>
-          <Form.Label>Employee Name</Form.Label>
-          <Form.Control type='text' placeholder='Employee Name' />
-        </Form.Group>
+    <div id='details'>
+      <p> StoreName : {props.store.storename}</p>
+      <p> ID : {props.store.storename}</p>
 
-        <Form.Group>
-          <Form.Label>Role</Form.Label>
-          <Form.Control type='text' placeholder='Role' />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>User ID</Form.Label>
-          <Form.Control type='text' placeholder='User ID' />
-        </Form.Group>
-        <br></br>
-        <Button type='submit'> Enter </Button>
-      </Form>
-      <div className='profile'>
+    
+   
+    </div>
+    <div className='profile'>
         <div
           class='card'
           onClick={() => {
@@ -76,8 +70,12 @@ function Profile(props) {
       </div>
     </>
   );
+
 }
 const mapStateToProps = (state) => ({
   store: state.store.store,
 });
 export default connect(mapStateToProps)(Profile);
+
+   
+     

@@ -1,8 +1,10 @@
+import "./login.scss"
 import { Form, Button } from 'react-bootstrap';
 import { useState, useContext, useEffect } from 'react';
 import { loginContext } from '../../context/context.js';
 import { getProductsFromAPI } from '../../store/products';
 import { connect } from 'react-redux';
+
 import { useNavigate } from 'react-router-dom';
 import cookie from 'react-cookies';
 function Login(props) {
@@ -12,9 +14,14 @@ function Login(props) {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  const FormHeader = props => (
+    <h2 id="headerTitle">{props.title}</h2>
+);
+
   return (
-    <div>
-      <Form
+    <div id="loginform">
+    <FormHeader title="Login" />
+      <Form 
         onSubmit={(e) => {
           e.preventDefault();
           login(username, password);
@@ -24,7 +31,7 @@ function Login(props) {
           // getProductsFromAPI();
         }}
       >
-        <Form.Group className='mb-3' controlId='formBasicEmail'>
+        <Form.Group className="row" controlId='formBasicEmail'>
           <Form.Label>Username</Form.Label>
           <Form.Control
             type='text'
@@ -35,7 +42,7 @@ function Login(props) {
           />
         </Form.Group>
 
-        <Form.Group className='mb-3' controlId='formBasicPassword'>
+        <Form.Group className="row" controlId='formBasicPassword'>
           <Form.Label>Password</Form.Label>
           <Form.Control
             type='password'
@@ -45,8 +52,9 @@ function Login(props) {
             }}
           />
         </Form.Group>
-
-        <Button type='submit'>Log in</Button>
+        <div id="button" class="row">
+        <Button  className='button'type='submit'>Log in</Button>
+        </div>
       </Form>
     </div>
   );
