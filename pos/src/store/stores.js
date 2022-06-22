@@ -10,12 +10,15 @@ const storeSlice = createSlice({
     getStore: (state, action) => {
       state.store = action.payload;
     },
+    clearStore: (state, action) => {
+      state.store = {};
+    },
   },
 });
 
 export default storeSlice.reducer;
 
-export const { getStore } = storeSlice.actions;
+export const { getStore, clearStore } = storeSlice.actions;
 
 export const getStoreFromAPI = (token) => async (dispatch, state) => {
   const storeID = cookie.load('storeID');

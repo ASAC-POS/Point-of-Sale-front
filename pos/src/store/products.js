@@ -16,11 +16,15 @@ const ProductsSlice = createSlice({
     addProducts: (state, action) => {
       state.push(action.payload);
     },
+    clearProducts: (state, action) => {
+      state.products = [];
+    },
   },
 });
 
 export default ProductsSlice.reducer;
-export const { getProducts, addProducts } = ProductsSlice.actions;
+export const { getProducts, addProducts, clearProducts } =
+  ProductsSlice.actions;
 
 export const getProductsFromAPI = (token) => async (dispatch, state) => {
   console.log(token);
