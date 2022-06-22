@@ -4,10 +4,10 @@ import superagent from 'superagent';
 import jwt from 'jwt-decode';
 import base64 from 'base-64';
 import { connect } from 'react-redux';
-import { getProductsFromAPI } from '../store/products';
-import { getStoreFromAPI } from '../store/stores';
-import { getReceiptsFromAPI } from '../store/receipts';
-import { getUsersFromAPI } from '../store/users';
+import { getProductsFromAPI, clearProducts } from '../store/products';
+import { getStoreFromAPI, clearStore } from '../store/stores';
+import { getReceiptsFromAPI, clearReceipts } from '../store/receipts';
+import { getUsersFromAPI, clearUsers } from '../store/users';
 const API = 'https://debuggers-pos.herokuapp.com';
 // const API = 'http://localhost:3010';
 
@@ -22,6 +22,10 @@ function LoginProvider(props) {
     getStoreFromAPI,
     getReceiptsFromAPI,
     getUsersFromAPI,
+    clearUsers,
+    clearStore,
+    clearProducts,
+    clearReceipts,
   } = props;
   const register = async (userInfo) => {
     console.log('1111111111', userInfo);
@@ -89,8 +93,13 @@ function LoginProvider(props) {
   const logout = () => {
     setLoggedIn(false);
     setUser({});
-    setLoginstate(false, {});
-    cookie.remove('storeID');
+    clearData();
+  };
+  const clearData = () => {
+    clearUsers();
+    clearStore();
+    clearProducts();
+    clearReceipts();
     cookie.remove('userData');
   };
 
@@ -127,5 +136,9 @@ const mapDispatchToProps = {
   getStoreFromAPI,
   getReceiptsFromAPI,
   getUsersFromAPI,
+  clearUsers,
+  clearReceipts,
+  clearStore,
+  clearProducts,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(LoginProvider);
