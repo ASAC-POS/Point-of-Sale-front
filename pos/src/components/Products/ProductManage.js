@@ -10,7 +10,7 @@ import { deleteProduct } from '../../store/products';
 import { connect } from 'react-redux';
 import stores from '../../store/stores';
 
-function Product() {
+function Product(props) {
   return (
     <>
       <>
@@ -37,7 +37,7 @@ function Product() {
             <Card.Footer>
               <Button
                 variant='primary'
-                onClick={(item) => deleteProduct(item.id)}
+                onClick={(item) => props.deleteProduct(14)}
               >
                 Remove
               </Button>

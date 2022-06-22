@@ -101,6 +101,7 @@ function LoginProvider(props) {
     clearProducts();
     clearReceipts();
     cookie.remove('userData');
+    cookie.remove('storeID');
   };
 
   const canDo = (capability) => {

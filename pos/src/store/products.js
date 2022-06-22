@@ -21,7 +21,7 @@ const ProductsSlice = createSlice({
       state.products.push(action.payload);
     },
     deleteProduct: (state, action) => {
-      state.products.push(action.payload);
+      state.products = state.products.filter((item) => item != action.payload);
     },
     clearProducts: (state, action) => {
       state.products = [];
@@ -72,9 +72,10 @@ export const editProduct = (updatedItem, itemId) => async (dispatch, state) => {
 
 // Delete a product
 export const deleteProduct = (itemId) => async (dispatch, state) => {
+  console.log(111111111111, itemId);
   await superagent
     .delete(`${api}/product/${itemId}`)
     .set('Authorization', `Bearer ${cookie.load('userData')?.token}`)
     .query({ cookie: parseInt(cookie.load('storeID')) });
-  // dispatch(deleteProduct());
+  dispatch(deleteProduct(itemId));
 };
