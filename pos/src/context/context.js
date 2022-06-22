@@ -9,6 +9,7 @@ import { getStoreFromAPI } from '../store/stores';
 import { getReceiptsFromAPI } from '../store/receipts';
 import { getUsersFromAPI } from '../store/users';
 const API = 'https://debuggers-pos.herokuapp.com';
+// const API = 'http://localhost:3010';
 
 export const loginContext = createContext();
 
@@ -88,8 +89,9 @@ function LoginProvider(props) {
   const logout = () => {
     setLoggedIn(false);
     setUser({});
-    cookie.remove('userData');
+    setLoginstate(false, {});
     cookie.remove('storeID');
+    cookie.remove('userData');
   };
 
   const canDo = (capability) => {

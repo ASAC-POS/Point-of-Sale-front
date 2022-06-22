@@ -3,6 +3,7 @@ import superagent from 'superagent';
 import cookie from 'react-cookies';
 
 const api = 'https://debuggers-pos.herokuapp.com';
+// const api = 'http://localhost:3010';
 
 const ProductsSlice = createSlice({
   name: 'products',
@@ -14,7 +15,13 @@ const ProductsSlice = createSlice({
       state.products = action.payload;
     },
     addProducts: (state, action) => {
-      state.push(action.payload);
+      state.products.push(action.payload);
+    },
+    editProduct: (state, action) => {
+      state.products.push(action.payload);
+    },
+    deleteProduct: (state, action) => {
+      state.products.push(action.payload);
     },
   },
 });
@@ -36,7 +43,34 @@ export const getProductsFromAPI = (token) => async (dispatch, state) => {
   }
 };
 
+// Add new product
 export const addNewProduct = (item) => async (dispatch, state) => {
-  await superagent.post(`${api}/products`, item);
+  console.log(item);
+  await superagent
+    .post(`${api}/product`)
+    .send(item)
+    .set('Authorization', `Bearer ${cookie.load('userData')?.token}`)
+    .query({ cookie: parseInt(cookie.load('storeID')) });
   dispatch(addProducts(item));
+};
+
+// Update product
+export const editProduct = (updatedItem, itemId) => async (dispatch, state) => {
+  console.log(updatedItem, itemId);
+
+  await superagent
+    .put(`${api}/product/${itemId}`)
+    .send(updatedItem)
+    .set('Authorization', `Bearer ${cookie.load('userData')?.token}`)
+    .query({ cookie: parseInt(cookie.load('storeID')) });
+  dispatch(editProduct(updatedItem));
+};
+
+// Delete a product
+export const deleteProduct = (itemId) => async (dispatch, state) => {
+  await superagent
+    .delete(`${api}/product/${itemId}`)
+    .set('Authorization', `Bearer ${cookie.load('userData')?.token}`)
+    .query({ cookie: parseInt(cookie.load('storeID')) });
+  // dispatch(deleteProduct());
 };
