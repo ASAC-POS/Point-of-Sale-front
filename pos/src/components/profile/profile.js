@@ -1,24 +1,21 @@
-
 import './profile.scss';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import cookie from 'react-cookies';
 
 function Profile(props) {
   const navigate = useNavigate();
-  console.log(props)
-  
+  console.log(props);
+
   const { store } = props;
   return (
     <>
-    <div id='details'>
-      <p> StoreName : {props.store.storename}</p>
-      <p> ID : {props.store.storename}</p>
-
-    
-   
-    </div>
-    <div className='profile'>
+      <div id='details'>
+        <p> StoreName : {props.store.storename}</p>
+        <p> user : {cookie.load('userData')?.username}</p>
+        <p> role: {cookie.load('userData')?.role} </p>
+      </div>
+      <div className='profile'>
         <div
           class='card'
           onClick={() => {
@@ -70,12 +67,8 @@ function Profile(props) {
       </div>
     </>
   );
-
 }
 const mapStateToProps = (state) => ({
   store: state.store.store,
 });
 export default connect(mapStateToProps)(Profile);
-
-   
-     

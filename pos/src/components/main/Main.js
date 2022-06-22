@@ -11,7 +11,7 @@ function Main(props) {
   const { store } = props;
   useEffect(() => {
     if (loggedIn) {
-      navigate(`${store?.storename}/${cookie.load('userData').id}`);
+      navigate(`${store?.storename}/${cookie.load('userData')?.id}`);
     }
   }, [loggedIn, navigate, store?.storename]);
   return (
