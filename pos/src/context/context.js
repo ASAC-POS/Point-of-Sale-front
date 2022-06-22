@@ -4,6 +4,14 @@ import superagent from 'superagent';
 import jwt from 'jwt-decode';
 import base64 from 'base-64';
 import { connect } from 'react-redux';
+
+// import { getProductsFromAPI } from '../store/products';
+// import { getStoreFromAPI } from '../store/stores';
+// import { getReceiptsFromAPI } from '../store/receipts';
+// import { getUsersFromAPI } from '../store/users';
+import { useNavigate } from 'react-router-dom';
+
+
 import { getProductsFromAPI, clearProducts } from '../store/products';
 import { getStoreFromAPI, clearStore } from '../store/stores';
 import { getReceiptsFromAPI, clearReceipts } from '../store/receipts';
@@ -32,6 +40,8 @@ function LoginProvider(props) {
     const response = await superagent.post(`${API}/register`).send(userInfo);
     console.log(response.body.user);
   };
+
+  const navigate = useNavigate();
 
   const signup = async (username, password, role) => {
     const response = await superagent
@@ -102,6 +112,7 @@ function LoginProvider(props) {
     clearReceipts();
     cookie.remove('userData');
     cookie.remove('storeID');
+    navigate('/');
   };
 
   const canDo = (capability) => {
