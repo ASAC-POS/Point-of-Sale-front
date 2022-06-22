@@ -84,6 +84,7 @@ function LoginProvider(props) {
     setLoggedIn(false);
     setUser({});
     cookie.remove('userData');
+    cookie.remove('storeID');
   };
 
   const canDo = (capability) => {
