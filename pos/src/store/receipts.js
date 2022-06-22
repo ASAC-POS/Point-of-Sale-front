@@ -13,12 +13,15 @@ const receiptsSlice = createSlice({
     getReceipts: (state, action) => {
       state.receipts = action.payload;
     },
+    clearReceipts: (state, action) => {
+      state.receipts = [];
+    },
   },
 });
 
 export default receiptsSlice.reducer;
 
-export const { getReceipts } = receiptsSlice.actions;
+export const { getReceipts, clearReceipts } = receiptsSlice.actions;
 
 export const getReceiptsFromAPI = (token) => async (dispatch, state) => {
   const response = await superagent
