@@ -1,4 +1,4 @@
-import "./login.scss"
+import './login.scss';
 import { Form, Button } from 'react-bootstrap';
 import { useState, useContext, useEffect } from 'react';
 import { loginContext } from '../../context/context.js';
@@ -14,24 +14,24 @@ function Login(props) {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const FormHeader = props => (
-    <h2 id="headerTitle">{props.title}</h2>
-);
+  const FormHeader = (props) => <h2 id='headerTitle'>{props.title}</h2>;
 
   return (
-    <div id="loginform">
-    <FormHeader title="Login" />
-      <Form 
+    <div id='loginform'>
+      <FormHeader title='Login' />
+      <Form
         onSubmit={(e) => {
           e.preventDefault();
           login(username, password);
           if (loggedIn) {
-            navigate(`/${props.store.storename}/${cookie.load('userData').id}`);
+            navigate(
+              `/${props.store.storename}/${cookie.load('userData')?.id}`
+            );
           }
           // getProductsFromAPI();
         }}
       >
-        <Form.Group className="row" controlId='formBasicEmail'>
+        <Form.Group className='row' controlId='formBasicEmail'>
           <Form.Label>Username</Form.Label>
           <Form.Control
             type='text'
@@ -42,7 +42,7 @@ function Login(props) {
           />
         </Form.Group>
 
-        <Form.Group className="row" controlId='formBasicPassword'>
+        <Form.Group className='row' controlId='formBasicPassword'>
           <Form.Label>Password</Form.Label>
           <Form.Control
             type='password'
@@ -52,8 +52,10 @@ function Login(props) {
             }}
           />
         </Form.Group>
-        <div id="button" class="row">
-        <Button  className='button'type='submit'>Log in</Button>
+        <div id='button' class='row'>
+          <Button className='button' type='submit'>
+            Log in
+          </Button>
         </div>
       </Form>
     </div>
