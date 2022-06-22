@@ -15,6 +15,7 @@ export const loginContext = createContext();
 function LoginProvider(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
+  const [error, setError] = useState('');
   const {
     getProductsFromAPI,
     getStoreFromAPI,
@@ -34,17 +35,21 @@ function LoginProvider(props) {
   };
 
   const login = async (username, password) => {
-    const response = await superagent
-      .post(`${API}/signin`)
-      .set(
-        'authorization',
-        `Basic ${base64.encode(`${username}:${password}`)}`
-      );
-    console.log(response.body.user);
-    console.log(response.body.storeID);
-    cookie.save('storeID', response.body.storeID);
-    validateMyUser(response.body.user);
-    getData();
+    try {
+      const response = await superagent
+        .post(`${API}/signin`)
+        .set(
+          'authorization',
+          `Basic ${base64.encode(`${username}:${password}`)}`
+        );
+      console.log(response.body.user);
+      console.log(response.body.storeID);
+      cookie.save('storeID', response.body.storeID);
+      validateMyUser(response.body.user);
+      getData();
+    } catch (er) {
+      setError(er);
+    }
   };
 
   const validateMyUser = (data) => {
@@ -100,6 +105,7 @@ function LoginProvider(props) {
     logout,
     canDo,
     getData,
+    error,
   };
 
   return (
