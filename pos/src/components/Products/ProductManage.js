@@ -37,7 +37,7 @@ function Product(props) {
             <Card.Footer>
               <Button
                 variant='primary'
-                onClick={(item) => props.deleteProduct(14)}
+                onClick={(item) => props.deleteProduct(19)}
               >
                 Remove
               </Button>
