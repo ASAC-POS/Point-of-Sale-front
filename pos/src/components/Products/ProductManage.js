@@ -35,10 +35,7 @@ function Product() {
             </Card.Body>
             <ListGroup className='list-group-flush'></ListGroup>
             <Card.Footer>
-              <Button
-                variant='primary'
-                onClick={(item) => deleteProduct(item.id)}
-              >
+              <Button variant='primary' onClick={(item) => deleteProduct(1)}>
                 Remove
               </Button>
               <EditProducts />

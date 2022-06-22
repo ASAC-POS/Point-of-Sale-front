@@ -76,5 +76,5 @@ export const deleteProduct = (itemId) => async (dispatch, state) => {
     .delete(`${api}/product/${itemId}`)
     .set('Authorization', `Bearer ${cookie.load('userData')?.token}`)
     .query({ cookie: parseInt(cookie.load('storeID')) });
-  // dispatch(deleteProduct());
+  dispatch(deleteProduct(itemId));
 };
