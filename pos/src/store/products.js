@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import superagent from 'superagent';
 import cookie from 'react-cookies';
 
-const api = 'http://localhost:3010';
+const api = 'https://debuggers-pos.herokuapp.com';
 
 const ProductsSlice = createSlice({
   name: 'products',
