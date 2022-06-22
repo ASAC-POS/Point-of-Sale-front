@@ -9,9 +9,10 @@ import { useNavigate } from 'react-router-dom';
 import cookie from 'react-cookies';
 function Login(props) {
   const { store } = props;
-  const { login, loggedIn } = useContext(loginContext);
+  const { login, loggedIn, error } = useContext(loginContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
   const navigate = useNavigate();
 
   const FormHeader = (props) => <h2 id='headerTitle'>{props.title}</h2>;
@@ -28,9 +29,13 @@ function Login(props) {
               `/${props.store.storename}/${cookie.load('userData')?.id}`
             );
           }
+          if (error.status === 403) {
+            setErrorMsg('invalid login');
+          }
           // getProductsFromAPI();
         }}
       >
+        <p>{errorMsg}</p>
         <Form.Group className='row' controlId='formBasicEmail'>
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -39,6 +44,7 @@ function Login(props) {
             onChange={(e) => {
               setUsername(e.target.value);
             }}
+            required
           />
         </Form.Group>
 
@@ -50,9 +56,10 @@ function Login(props) {
             onChange={(e) => {
               setPassword(e.target.value);
             }}
+            required
           />
         </Form.Group>
-        <div id='button' class='row'>
+        <div id='button' className='row'>
           <Button className='button' type='submit'>
             Log in
           </Button>
