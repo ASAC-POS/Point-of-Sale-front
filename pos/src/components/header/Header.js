@@ -1,6 +1,6 @@
 import Navbars from './Navbar';
 import './header.scss';
-import logo from '../../assets/Bayya3.png';
+import logo from '../../assets/Bayya3-removebg-preview.png';
 
 
 
