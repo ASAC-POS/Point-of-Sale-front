@@ -17,6 +17,7 @@ function ProductsForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.addNewProduct(item);
+    handleClose();
   };
 
   return (
