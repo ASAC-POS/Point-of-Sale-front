@@ -10,7 +10,7 @@ import { deleteProduct } from '../../store/products';
 import { connect } from 'react-redux';
 import stores from '../../store/stores';
 
-function Product() {
+function Product(props) {
   return (
     <>
       <>
@@ -35,7 +35,10 @@ function Product() {
             </Card.Body>
             <ListGroup className='list-group-flush'></ListGroup>
             <Card.Footer>
-              <Button variant='primary' onClick={(item) => deleteProduct(1)}>
+              <Button
+                variant='primary'
+                onClick={(item) => props.deleteProduct(14)}
+              >
                 Remove
               </Button>
               <EditProducts />

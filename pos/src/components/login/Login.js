@@ -35,7 +35,15 @@ function Login(props) {
           // getProductsFromAPI();
         }}
       >
-        <p>{errorMsg}</p>
+        <p
+          style={{
+            textAlign: 'center',
+            color: 'red',
+            fontWeight: 'bold',
+          }}
+        >
+          {errorMsg}
+        </p>
         <Form.Group className='row' controlId='formBasicEmail'>
           <Form.Label>Username</Form.Label>
           <Form.Control

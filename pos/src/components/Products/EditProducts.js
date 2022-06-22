@@ -20,7 +20,7 @@ function EmployeeForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(newItem);
-    props.editProduct(newItem, 1);
+    props.editProduct(newItem, 14);
     handleClose();
   };
 
