@@ -1,13 +1,24 @@
+
 import Card from 'react-bootstrap/Card';
-
+import React from 'react';
+import CheckoutForm from './CheckoutForm/CheckoutForm'
 import Button from 'react-bootstrap/Button';
-
-
+import { useState } from 'react';
+import Modal from 'react-modal';
 
 
 import { connect } from 'react-redux';
 
 function Pos(props) {
+  const [modalIsOpen,setModalIsOpen] = useState(false);
+
+  const setModalIsOpenToTrue =()=>{
+    setModalIsOpen(true)
+}
+
+const setModalIsOpenToFalse =()=>{
+    setModalIsOpen(false)
+}
   return (
     <>
      
@@ -52,9 +63,11 @@ function Pos(props) {
     <Button variant="primary">add</Button>
   </Card.Body>
 </Card>
-        <Button  variant='primary' style={{margin : '20px'}} >
-         CHECK OUT
-        </Button>
+<Button onClick={setModalIsOpenToTrue} size="small" color="primary">  checkout  </Button>
+   <Modal isOpen={modalIsOpen}  ariaHideApp={false} >
+  <button onClick={setModalIsOpenToFalse}> close </button>
+                <CheckoutForm/> 
+            </Modal>
 
       </>
     </>
