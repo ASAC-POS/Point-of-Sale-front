@@ -56,13 +56,12 @@ function EmployeeForm(props) {
             </Form.Group> */}
             <Form.Group controlId='formBasicPassword'>
               <Form.Label>Employee role</Form.Label>
-              <Form.Control
-                name='role'
-                onChange={handleChange}
-                type='text'
-                placeholder='role'
-                required
-              />
+              <Form.Select name = "role" aria-label="Default select example" onChange={handleChange}>
+                <option disabled selected value>select role</option>
+                <option value="cashier">cashier</option>
+                <option value="inventory">inventory</option>
+                <option value="admin">admin</option>
+              </Form.Select>
             </Form.Group>
             <Button variant='primary' type='submit'>
               Add
