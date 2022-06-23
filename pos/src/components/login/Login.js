@@ -16,7 +16,12 @@ function Login(props) {
   const navigate = useNavigate();
 
   const FormHeader = (props) => <h2 id='headerTitle'>{props.title}</h2>;
-
+  useEffect(() => {
+    if (loggedIn && store) {
+      console.log(store);
+      navigate(`/${store?.storename}/${cookie.load('userData')?.id}`);
+    }
+  }, [loggedIn, navigate, store]);
   return (
     <div id='loginform'>
       <FormHeader title='Login' />
@@ -24,11 +29,6 @@ function Login(props) {
         onSubmit={(e) => {
           e.preventDefault();
           login(username, password);
-          if (loggedIn) {
-            navigate(
-              `/${props.store.storename}/${cookie.load('userData')?.id}`
-            );
-          }
           if (error.status === 403) {
             setErrorMsg('invalid login');
           }

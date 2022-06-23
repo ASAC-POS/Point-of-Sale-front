@@ -13,6 +13,8 @@ import { useEffect, useContext } from 'react';
 import { loginContext } from './context/context';
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
+import Auth from './context/auth';
+import Pos from './components/Products/Pos';
 function App(props) {
   const { getData, loggedIn } = useContext(loginContext);
   const { store } = props;
@@ -35,21 +37,39 @@ function App(props) {
         />
         <Route path='/signin' element={<Login />} />
         <Route path='/about' element={<About />} />
+
         <Route
           path={`/${encodeURIComponent(store?.storename)}/employees`}
-          element={<Employees />}
+          element={
+            <Auth capability='delete'>
+              <Employees />
+            </Auth>
+          }
         />
         <Route
           path={`/${encodeURIComponent(store?.storename)}/receipts`}
-          element={<Receipts />}
+          element={
+            <Auth capability='delete'>
+              <Receipts />
+            </Auth>
+          }
         />
-
-        <Route path='/store/id' element={<Profile />} />
         <Route
           path={`/${encodeURIComponent(store?.storename)}/products`}
-          element={<Products />}
+          element={
+            <Auth capability='add'>
+              <Products />
+            </Auth>
+          }
         />
-
+        <Route
+          path={`/${encodeURIComponent(store?.storename)}/pos`}
+          element={
+            <Auth capability='sell'>
+              <Pos />
+            </Auth>
+          }
+        />
         <Route
           path={`/${encodeURIComponent(store?.storename)}/${
             cookie.load('userData')?.id
