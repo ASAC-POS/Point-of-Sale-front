@@ -1,14 +1,15 @@
 import Hero from './Hero';
 import Register from './Register';
 import { loginContext } from '../../context/context';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect,useState } from 'react';
 import cookie from 'react-cookies';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 function Main(props) {
   const { loggedIn } = useContext(loginContext);
   const navigate = useNavigate();
-  const { store } = props;
+ const {store} = props
   useEffect(() => {
     if (loggedIn && store) {
       console.log('iam here ');
@@ -24,6 +25,6 @@ function Main(props) {
 }
 const mapStateToProps = (state) => ({
   store: state.store.store,
-});
 
+});
 export default connect(mapStateToProps)(Main);

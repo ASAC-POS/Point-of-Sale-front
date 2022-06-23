@@ -9,22 +9,32 @@ import Employees from './components/Employees/Employees';
 import Receipts from './components/Receipts/Receipts';
 import Profile from './components/profile/profile';
 import Products from './components/Products/ProductManage';
-import { useEffect, useContext } from 'react';
-import { loginContext } from './context/context';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 import Auth from './context/auth';
 import Pos from './components/Products/Pos';
+import { clearPopUps } from './store/popups';
 function App(props) {
-  const { getData, loggedIn } = useContext(loginContext);
-  const { store } = props;
+  const { store, popup, clearPopUps } = props;
   useEffect(() => {
-    getData();
-  }, [loggedIn, getData]);
-
+    console.log(popup);
+  }, [popup]);
   return (
     <div className='app'>
       <Header />
+      {popup?.message && (
+        <div>
+          <p>{popup?.message}</p>
+          <button
+            onClick={() => {
+              clearPopUps();
+            }}
+          >
+            x
+          </button>
+        </div>
+      )}
       <Routes>
         <Route
           exact
@@ -85,6 +95,8 @@ function App(props) {
 const mapStateToProps = (state) => {
   return {
     store: state.store.store,
+    popup: state.popup,
   };
 };
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = { clearPopUps };
+export default connect(mapStateToProps, mapDispatchToProps)(App);
