@@ -54,12 +54,13 @@ function EditForm(props) {
             </Form.Group> */}
             <Form.Group controlId='formBasicRole'>
               <Form.Label>Employee role</Form.Label>
-              <Form.Control
-                onChange={handleChange}
-                name='role'
-                type='text'
-                placeholder='role'
-              />
+              <Form.Select name = "role" aria-label="Default select example" onChange={handleChange}>
+                <option>Open this select Employee role</option>
+                <option value="cashier">cashier</option>
+                <option value="inventory">inventory</option>
+                <option value="admin">admin</option>
+              </Form.Select>
+
             </Form.Group>
             <Button variant='primary' type='submit'>
               Edit
