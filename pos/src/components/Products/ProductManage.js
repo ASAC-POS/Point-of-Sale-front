@@ -9,6 +9,34 @@ import EditProducts from './EditProducts';
 import { deleteProduct } from '../../store/products';
 import { connect } from 'react-redux';
 import Auth from '../../context/auth';
+// function productE(props){
+//   return(
+//     <>
+//     <div>
+//     <>
+//         <ProductsForm />
+//       </>
+
+//       <CardGroup>
+     
+//           {props.products.maps((product) =>{
+//              <Card.Body key={product.id}>
+//             <Card.Title>{product.Title}</Card.Title>
+//             <ListGroup.Item> {product.ProductName}</ListGroup.Item>
+//               <ListGroup.Item>{product.Price}</ListGroup.Item>
+//               <ListGroup.Item>{product.Quantity}</ListGroup.Item>
+//               <ListGroup.Item>{product.minQuantity}</ListGroup.Item>
+//               <EditProducts id={product.id}/>
+//             </Card.Body>
+//           })}
+        
+//       </CardGroup>
+      
+//     </div>
+//     </>
+//   )
+// }
+
 function Product(props) {
   return (
     <>
