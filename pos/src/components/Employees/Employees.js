@@ -25,10 +25,10 @@ function Employees(props) {
                 <td>{employee.role}</td>
                 <td>{employee.sales}</td>
                 <td>
-                  <EditForm id={employee.id} />
+                  {employee.role !== 'admin' && <EditForm id={employee.id} />}
                 </td>
                 <td>
-                  <Button> remove </Button>
+                  {employee.role !== 'admin' && <Button> remove </Button>}
                 </td>
               </tr>
             ))}
