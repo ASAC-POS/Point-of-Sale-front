@@ -3,11 +3,25 @@ import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 import Auth from '../../context/auth';
+import { getPopupNotificationsFromAPI } from '../../store/popups';
+import io from 'socket.io-client';
+import {useEffect,useState} from 'react'
 function Profile(props) {
   const navigate = useNavigate();
-  console.log(props);
+  const { store,getPopupNotificationsFromAPI } = props;
+  const host = 'http://localhost:3002/';
+  const [socket, setSocket] = useState(io.connect(host));
 
-  const { store } = props;
+  useEffect(() => {
+    const newSocket = io.connect(host);
+    setSocket(newSocket);
+    return () => newSocket.close();
+  }, [setSocket]);
+  socket?.on('sending-notifications',()=>{
+    getPopupNotificationsFromAPI()
+  })
+  socket?.emit('reload-notifications')
+
   return (
     <>
       <div id='details'>
@@ -90,7 +104,12 @@ function Profile(props) {
     </>
   );
 }
+
 const mapStateToProps = (state) => ({
   store: state.store.store,
+  popup: state.popup,
+
 });
-export default connect(mapStateToProps)(Profile);
+const mapDispatchToProps={getPopupNotificationsFromAPI}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Profile);

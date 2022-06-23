@@ -15,8 +15,8 @@ import { getProductsFromAPI, clearProducts } from '../store/products';
 import { getStoreFromAPI, clearStore } from '../store/stores';
 import { getReceiptsFromAPI, clearReceipts } from '../store/receipts';
 import { getUsersFromAPI, clearUsers } from '../store/users';
-const API = 'https://debuggers-pos.herokuapp.com';
-// const API = 'http://localhost:3010';
+// const API = 'https://debuggers-pos.herokuapp.com';
+const API = 'http://localhost:3002';
 
 export const loginContext = createContext();
 

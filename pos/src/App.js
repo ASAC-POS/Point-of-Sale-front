@@ -9,19 +9,17 @@ import Employees from './components/Employees/Employees';
 import Receipts from './components/Receipts/Receipts';
 import Profile from './components/profile/profile';
 import Products from './components/Products/ProductManage';
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { loginContext } from './context/context';
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 import Auth from './context/auth';
 import Pos from './components/Products/Pos';
+
+
 function App(props) {
   const { getData, loggedIn } = useContext(loginContext);
   const { store } = props;
-  useEffect(() => {
-    getData();
-  }, [loggedIn, getData]);
-
   return (
     <div className='app'>
       <Header />
