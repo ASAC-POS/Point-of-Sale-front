@@ -2,16 +2,7 @@ import { Table, Button } from 'react-bootstrap/';
 import EmployeeForm from './EmployeeForm';
 import EditForm from './EditForm';
 import { connect } from 'react-redux';
-import { useEffect, useContext } from 'react';
-import { loginContext } from '../../context/context';
 function Employees(props) {
-  const { getData, loggedIn } = useContext(loginContext);
-  // console.log(props.employees);
-
-  // useEffect(() => {
-  //   getData();
-  //   // console.log(props.employees);
-  // }, [loggedIn, getData]);
   if (props.employees.length > 0) {
     return (
       <div>
@@ -34,7 +25,7 @@ function Employees(props) {
                 <td>{employee.role}</td>
                 <td>{employee.sales}</td>
                 <td>
-                  <EditForm />
+                  <EditForm id={employee.id} />
                 </td>
                 <td>
                   <Button> remove </Button>

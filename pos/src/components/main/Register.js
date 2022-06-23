@@ -20,7 +20,7 @@ function Register() {
           <Modal.Title>Register your store</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <RegisterForm />
+          <RegisterForm setShow={setShow} />
         </Modal.Body>
       </Modal>
     </div>
