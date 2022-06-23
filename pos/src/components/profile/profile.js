@@ -5,11 +5,11 @@ import cookie from 'react-cookies';
 import Auth from '../../context/auth';
 import { getPopupNotificationsFromAPI } from '../../store/popups';
 import io from 'socket.io-client';
-import {useEffect,useState} from 'react'
+import { useEffect, useState } from 'react';
 function Profile(props) {
   const navigate = useNavigate();
-  const { store,getPopupNotificationsFromAPI } = props;
-  const host = 'http://localhost:3002/';
+  const { store, getPopupNotificationsFromAPI } = props;
+  const host = 'https://debuggers-pos.herokuapp.com/';
   const [socket, setSocket] = useState(io.connect(host));
 
   useEffect(() => {
@@ -17,10 +17,10 @@ function Profile(props) {
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);
-  socket?.on('sending-notifications',()=>{
-    getPopupNotificationsFromAPI()
-  })
-  socket?.emit('reload-notifications')
+  socket?.on('sending-notifications', () => {
+    getPopupNotificationsFromAPI();
+  });
+  socket?.emit('reload-notifications');
 
   return (
     <>
@@ -108,8 +108,7 @@ function Profile(props) {
 const mapStateToProps = (state) => ({
   store: state.store.store,
   popup: state.popup,
-
 });
-const mapDispatchToProps={getPopupNotificationsFromAPI}
+const mapDispatchToProps = { getPopupNotificationsFromAPI };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

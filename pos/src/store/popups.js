@@ -4,7 +4,7 @@ import superagent from 'superagent';
 import cookie from 'react-cookies';
 
 // const api = 'https://debuggers-pos.herokuapp.com';
-const api = 'http://localhost:3002';
+const api = 'https://debuggers-pos.herokuapp.com';
 
 const PopupSlice = createSlice({
   name: 'popup',
@@ -15,11 +15,14 @@ const PopupSlice = createSlice({
     getNotifications: (state, action) => {
       state.message = action.payload;
     },
+    clearPopUps: (state, action) => {
+      state.message = null;
+    },
   },
 });
 
 export default PopupSlice.reducer;
-export const { getNotifications } = PopupSlice.actions;
+export const { getNotifications, clearPopUps } = PopupSlice.actions;
 
 // api
 

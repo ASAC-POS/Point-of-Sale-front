@@ -3,7 +3,7 @@ import superagent from 'superagent';
 import cookie from 'react-cookies';
 
 // const api = 'https://debuggers-pos.herokuapp.com';
-const api = 'http://localhost:3002';
+const api = 'https://debuggers-pos.herokuapp.com';
 
 const ProductsSlice = createSlice({
   name: 'products',
