@@ -1,10 +1,11 @@
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
-
+import { connect } from 'react-redux';
+import { editUser } from '../../store/users';
 function EditForm(props) {
   const [show, setShow] = useState(false);
   const [newUserData, setNewUserData] = useState({});
-  const { addUser } = props;
+  const { editUser, id } = props;
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleChange = (e) => {
@@ -12,7 +13,8 @@ function EditForm(props) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    addUser(newUserData);
+    editUser(newUserData, id);
+    setShow(false);
   };
   useEffect(() => {
     console.log(newUserData);
@@ -27,7 +29,7 @@ function EditForm(props) {
           <Modal.Title>Edit</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group controlId='formBasicEmail'>
               <Form.Label>UserName</Form.Label>
               <Form.Control
@@ -50,9 +52,14 @@ function EditForm(props) {
               <Form.Label>Confirm password</Form.Label>
               <Form.Control onChange={handleChange} type='password' placeholder='confirm password' />
             </Form.Group> */}
-            <Form.Group controlId='formBasicPassword'>
+            <Form.Group controlId='formBasicRole'>
               <Form.Label>Employee role</Form.Label>
-              <Form.Control name='role' type='text' placeholder='role' />
+              <Form.Control
+                onChange={handleChange}
+                name='role'
+                type='text'
+                placeholder='role'
+              />
             </Form.Group>
             <Button variant='primary' type='submit'>
               Edit
@@ -64,4 +71,8 @@ function EditForm(props) {
   );
 }
 
-export default EditForm;
+const mapStateToProps = (state) => ({
+  users: state.users,
+});
+const mapDispatchToProps = { editUser };
+export default connect(mapStateToProps, mapDispatchToProps)(EditForm);

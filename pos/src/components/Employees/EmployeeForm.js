@@ -14,6 +14,7 @@ function EmployeeForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     addUser(newUserData);
+    setShow(false);
   };
   useEffect(() => {
     console.log(newUserData);

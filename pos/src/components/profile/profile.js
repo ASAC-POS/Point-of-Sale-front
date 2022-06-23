@@ -18,12 +18,12 @@ function Profile(props) {
       <div className='profile'>
         <Auth capability='add'>
           <div
-            class='card'
+            className='card'
             onClick={() => {
               navigate(`/${encodeURIComponent(store?.storename)}/products`);
             }}
           >
-            <div class='card-image'></div>
+            <div className='card-image'></div>
             <div className='card-text'>
               <br></br>
               <h2>PRODUCTS</h2>
@@ -36,12 +36,12 @@ function Profile(props) {
         </Auth>
         <Auth capability='sell'>
           <div
-            class='card'
+            className='card'
             onClick={() => {
               navigate(`/${encodeURIComponent(store?.storename)}/pos`);
             }}
           >
-            <div class='card-image'></div>
+            <div className='card-image'></div>
             <div className='card-text'>
               <br></br>
               <h2>POS</h2>
@@ -54,12 +54,12 @@ function Profile(props) {
         </Auth>
         <Auth capability='delete'>
           <div
-            class='card'
+            className='card'
             onClick={() => {
               navigate(`/${encodeURIComponent(store?.storename)}/employees`);
             }}
           >
-            <div class='card-image card2'></div>
+            <div className='card-image card2'></div>
             <div className='card-text'>
               <br></br>
               <h2>EMPLOYEES</h2>
@@ -70,12 +70,12 @@ function Profile(props) {
             </div>
           </div>
           <div
-            class='card'
+            className='card'
             onClick={() => {
               navigate(`/${encodeURIComponent(store?.storename)}/receipts`);
             }}
           >
-            <div class='card-image card3'></div>
+            <div className='card-image card3'></div>
             <div className='card-text'>
               <br></br>
               <h2>RECEIPTS</h2>

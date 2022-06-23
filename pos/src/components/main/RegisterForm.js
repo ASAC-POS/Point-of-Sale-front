@@ -1,7 +1,7 @@
 import { Form, Button } from 'react-bootstrap';
 import { useState, useContext, useEffect } from 'react';
 import { loginContext } from '../../context/context.js';
-function RegisterForm() {
+function RegisterForm(props) {
   const [userInfo, setUserInfo] = useState({});
   const { register } = useContext(loginContext);
   function onChange(e) {
@@ -12,6 +12,7 @@ function RegisterForm() {
     console.log('in submit');
     register(userInfo);
     console.log('done registering');
+    props.setShow(false);
   }
   useEffect(() => {
     console.log(userInfo);
