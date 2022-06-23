@@ -1,5 +1,5 @@
 import { Modal, Button, Form } from 'react-bootstrap';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import { connect } from 'react-redux';
 import { addNewProduct } from '../../store/products';
 
@@ -20,6 +20,10 @@ function ProductsForm(props) {
     handleClose();
   };
 
+  useEffect(() => {
+    console.log(item);
+  }, [item]);
+
   return (
     <div>
       <Button variant='primary' onClick={handleShow}>
@@ -30,7 +34,7 @@ function ProductsForm(props) {
           <Modal.Title>Add Product</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={(e) => handleSubmit(e)}>
+          <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label>ProductName</Form.Label>
               <Form.Control

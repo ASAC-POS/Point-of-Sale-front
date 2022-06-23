@@ -9,33 +9,49 @@ import EditProducts from './EditProducts';
 import { deleteProduct } from '../../store/products';
 import { connect } from 'react-redux';
 import Auth from '../../context/auth';
-// function productE(props){
-//   return(
-//     <>
-//     <div>
-//     <>
-//         <ProductsForm />
-//       </>
+function productE(props){
+  return(
+    <>
+    <div>
+    <>
+        <ProductsForm />
+      </>
+      <Card.Body>
+              <Card.Title>jacket </Card.Title>
 
-//       <CardGroup>
-     
-//           {props.products.maps((product) =>{
-//              <Card.Body key={product.id}>
-//             <Card.Title>{product.Title}</Card.Title>
-//             <ListGroup.Item> {product.ProductName}</ListGroup.Item>
-//               <ListGroup.Item>{product.Price}</ListGroup.Item>
-//               <ListGroup.Item>{product.Quantity}</ListGroup.Item>
-//               <ListGroup.Item>{product.minQuantity}</ListGroup.Item>
-//               <EditProducts id={product.id}/>
-//             </Card.Body>
-//           })}
+              <ListGroup.Item> ProductName</ListGroup.Item>
+              <ListGroup.Item>Price</ListGroup.Item>
+              <ListGroup.Item>Quantity</ListGroup.Item>
+              <ListGroup.Item>minQuantity</ListGroup.Item>
+            </Card.Body>
+
+      <CardGroup>
+      <EditProducts />
+          {props.products.maps((product) =>{
+             <Card.Body key={product.id}>
+            <Card.Title>{product.Title}</Card.Title>
+            <ListGroup.Item> {product.ProductName}</ListGroup.Item>
+              <ListGroup.Item>{product.Price}</ListGroup.Item>
+              <ListGroup.Item>{product.Quantity}</ListGroup.Item>
+              <ListGroup.Item>{product.minQuantity}</ListGroup.Item>
+              <EditProducts id={product.id}/>
+              <Auth capability='delete'>
+                <Button
+                  variant='primary'
+                  onClick={(item) => props.deleteProduct(19)}
+                >
+                  Remove
+                </Button>
+              </Auth>
+            </Card.Body>
+          })}
         
-//       </CardGroup>
+      </CardGroup>
       
-//     </div>
-//     </>
-//   )
-// }
+    </div>
+    </>
+  )
+}
 
 function Product(props) {
   return (
@@ -136,6 +152,6 @@ const mapStateToProps = (state) => ({
   products: state.store.products,
 });
 
-const mapDispatchToProps = { deleteProduct };
+// const mapDispatchToProps = { deleteProduct };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+export default connect(mapStateToProps)(Product,productE);
