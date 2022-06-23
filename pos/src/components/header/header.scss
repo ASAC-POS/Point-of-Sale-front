@@ -1,0 +1,16 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
+  padding-left: 2rem;
+  padding-top: 0.7rem;
+
+  * {
+    text-decoration: none;
+  }
+  .lef-header {
+    display: flex;
+  }
+}
