@@ -10,10 +10,11 @@ function Main(props) {
   const navigate = useNavigate();
   const { store } = props;
   useEffect(() => {
-    if (loggedIn) {
+    if (loggedIn && store) {
+      console.log('iam here ');
       navigate(`${store?.storename}/${cookie.load('userData')?.id}`);
     }
-  }, [loggedIn, navigate, store?.storename]);
+  }, [loggedIn, navigate, store]);
   return (
     <div>
       <Hero />

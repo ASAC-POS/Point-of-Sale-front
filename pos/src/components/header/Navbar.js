@@ -37,7 +37,10 @@ function Navbars(props) {
           <Button
             variant='danger'
             style={{ margin: '10px' }}
-            onClick={() => logout()}
+            onClick={() => {
+              logout();
+              window.location.reload(false);
+            }}
           >
             <Link to='/signin'>sign out</Link>
           </Button>

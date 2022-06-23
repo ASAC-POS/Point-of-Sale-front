@@ -8,8 +8,7 @@ import EditProducts from './EditProducts';
 
 import { deleteProduct } from '../../store/products';
 import { connect } from 'react-redux';
-import stores from '../../store/stores';
-
+import Auth from '../../context/auth';
 function Product(props) {
   return (
     <>
@@ -35,12 +34,14 @@ function Product(props) {
             </Card.Body>
             <ListGroup className='list-group-flush'></ListGroup>
             <Card.Footer>
-              <Button
-                variant='primary'
-                onClick={(item) => props.deleteProduct(19)}
-              >
-                Remove
-              </Button>
+              <Auth capability='delete'>
+                <Button
+                  variant='primary'
+                  onClick={(item) => props.deleteProduct(19)}
+                >
+                  Remove
+                </Button>
+              </Auth>
               <EditProducts />
             </Card.Footer>
           </Card>

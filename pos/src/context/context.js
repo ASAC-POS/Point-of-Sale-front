@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 // import { getUsersFromAPI } from '../store/users';
 import { useNavigate } from 'react-router-dom';
 
-
 import { getProductsFromAPI, clearProducts } from '../store/products';
 import { getStoreFromAPI, clearStore } from '../store/stores';
 import { getReceiptsFromAPI, clearReceipts } from '../store/receipts';
@@ -93,6 +92,7 @@ function LoginProvider(props) {
   useEffect(() => {
     const myUserInfo = cookie.load('userData');
     validateMyUser(myUserInfo);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const setLoginstate = (isLogged, userData) => {

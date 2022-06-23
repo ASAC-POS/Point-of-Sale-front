@@ -2,7 +2,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { editProduct } from '../../store/products';
-
+import Auth from '../../context/auth';
 function EmployeeForm(props) {
   const [newItem, setNewItem] = useState({});
 
@@ -35,60 +35,66 @@ function EmployeeForm(props) {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={(e) => handleSubmit(e)}>
-            <Form.Group>
-              <Form.Label>ProductName</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='ProductName'
-                name='productName'
-                onChange={onChange}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Price</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Price'
-                name='price'
-                onChange={onChange}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Description'
-                name='description'
-                onChange={onChange}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Quantity</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Quantity'
-                name='quantity'
-                onChange={onChange}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>minQuantity</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='minQuantity'
-                name='minQuantity'
-                onChange={onChange}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Image URL</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Image URL'
-                name='imgURL'
-                onChange={onChange}
-              />
-            </Form.Group>
+            <Auth capability='edit'>
+              <Form.Group>
+                <Form.Label>ProductName</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='ProductName'
+                  name='productName'
+                  onChange={onChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Price</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='Price'
+                  name='price'
+                  onChange={onChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='Description'
+                  name='description'
+                  onChange={onChange}
+                />
+              </Form.Group>
+            </Auth>
+            <Auth capability='update'>
+              <Form.Group>
+                <Form.Label>Quantity</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='Quantity'
+                  name='quantity'
+                  onChange={onChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>minQuantity</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='minQuantity'
+                  name='minQuantity'
+                  onChange={onChange}
+                />
+              </Form.Group>
+            </Auth>
+            <Auth capability='edit'>
+              <Form.Group>
+                <Form.Label>Image URL</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='Image URL'
+                  name='imgURL'
+                  onChange={onChange}
+                />
+              </Form.Group>
+            </Auth>
             <Button variant='primary' type='submit' style={{ padding: '10px' }}>
               Edit
             </Button>
