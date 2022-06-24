@@ -4,11 +4,14 @@ import ProductsSlice from './products';
 import storeSlice from './stores';
 import usersSlice from './users';
 import popupSlice from './popups';
+import checkoutSlice from './checkout-reducer';
+
 let reducers = combineReducers({
   products: ProductsSlice,
   store: storeSlice,
   users: usersSlice,
   popup: popupSlice,
+  checkout: checkoutSlice,
 });
 
 const store = configureStore({
