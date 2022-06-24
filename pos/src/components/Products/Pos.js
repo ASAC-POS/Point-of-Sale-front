@@ -1,24 +1,16 @@
 import Card from "react-bootstrap/Card";
 import React from "react";
-import CheckoutForm from "./CheckoutForm/CheckoutForm";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
 import Modal from "react-modal";
 import InfoScreen from "./InfoScreen";
 
 import { connect } from "react-redux";
 import ReceiptsForm from "../Receipts/ReceiptForm";
+import { addNewReceiots } from '../../store/products';
 
 function Pos(props) {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const setModalIsOpenToTrue = () => {
-    setModalIsOpen(true);
-  };
-
-  const setModalIsOpenToFalse = () => {
-    setModalIsOpen(false);
-  };
+ 
+  
   return (
     <div
       style={{
@@ -56,14 +48,6 @@ function Pos(props) {
             <Button variant="primary">add</Button>
           </Card.Body>
         </Card>
-        <Button onClick={setModalIsOpenToTrue} size="small" color="primary">
-          {" "}
-          checkout{" "}
-        </Button>
-        <Modal isOpen={modalIsOpen} ariaHideApp={false}>
-          <button onClick={setModalIsOpenToFalse}> close </button>
-          <CheckoutForm />
-        </Modal>
       </div>
       <InfoScreen />
 
