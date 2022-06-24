@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import Modal from 'react-modal';
 import InfoScreen from './InfoScreen';
-import Row  from "react-bootstrap/Col";
+
 
 import { connect } from 'react-redux';
 
@@ -20,7 +20,7 @@ function Pos(props) {
     setModalIsOpen(false);
   };
   return (
-    <Row >
+   
     <div
       style={{
         display: 'flex',
@@ -68,7 +68,6 @@ function Pos(props) {
       </div>
       <InfoScreen />
     </div>
-    </Row >
   );
 }
 
