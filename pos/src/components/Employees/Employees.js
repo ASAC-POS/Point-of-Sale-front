@@ -3,6 +3,7 @@ import EmployeeForm from './EmployeeForm';
 import EditForm from './EditForm';
 import { connect } from 'react-redux';
 function Employees(props) {
+  const { signedInUsers } = props;
   if (props.employees.length > 0) {
     return (
       <div>
@@ -12,7 +13,7 @@ function Employees(props) {
               <th>#</th>
               <th>UserName</th>
               <th>Position</th>
-              <th>Sales</th>
+              <th>Status</th>
               <th></th>
               <th></th>
             </tr>
@@ -23,7 +24,9 @@ function Employees(props) {
                 <td>{employee.id}</td>
                 <td>{employee.username}</td>
                 <td>{employee.role}</td>
-                <td>{employee.sales}</td>
+                <td>
+                  {signedInUsers.includes(employee.username) ? 'on' : 'off'}
+                </td>
                 <td>
                   {employee.role !== 'admin' && <EditForm id={employee.id} />}
                 </td>
@@ -44,6 +47,7 @@ function Employees(props) {
 const mapStateToProps = (state) => {
   return {
     employees: state.users.users,
+    signedInUsers: state.popup.signedIn,
   };
 };
 export default connect(mapStateToProps)(Employees);

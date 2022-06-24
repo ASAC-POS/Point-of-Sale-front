@@ -27,6 +27,5 @@ export const getStoreFromAPI = (token) => async (dispatch, state) => {
     .get(`${api}/store/${storeID}`)
     .query({ cookie: parseInt(cookie.load('storeID')) })
     .set('Authorization', `Bearer ${token}`);
-  console.log(response.body);
   dispatch(getStore(response.body));
 };
