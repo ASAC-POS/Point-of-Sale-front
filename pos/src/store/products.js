@@ -21,7 +21,7 @@ const ProductsSlice = createSlice({
       state.products.push(action.payload);
     },
     deleteProduct: (state, action) => {
-      state.products = state.products.filter((item) => item != action.payload);
+      state.products = state.products.filter((item) => item !== action.payload);
     },
     clearProducts: (state, action) => {
       state.products = [];
@@ -69,5 +69,7 @@ export const deleteProduct = (itemId) => async (dispatch, state) => {
     .delete(`${api}/product/${itemId}`)
     .set('Authorization', `Bearer ${cookie.load('userData')?.token}`)
     .query({ cookie: parseInt(cookie.load('storeID')) });
+    getProductsFromAPI(cookie.load('userData')?.token)
   dispatch(deleteProduct(itemId));
+
 };
