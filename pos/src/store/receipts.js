@@ -36,7 +36,6 @@ export const getReceiptsFromAPI = (token) => async (dispatch, state) => {
     .get(`${api}/storeReceipts`)
     .query({ cookie: cookie.load('storeID') })
     .set('Authorization', `Bearer ${token}`);
-  console.log(response.body);
   dispatch(getReceipts(response.body));
 }catch (err) {
   console.log(err);

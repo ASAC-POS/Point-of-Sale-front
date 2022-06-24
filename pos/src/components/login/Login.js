@@ -18,7 +18,6 @@ function Login(props) {
   const FormHeader = (props) => <h2 id='headerTitle'>{props.title}</h2>;
   useEffect(() => {
     if (loggedIn && store) {
-      console.log(store);
       navigate(`/${store?.storename}/${cookie.load('userData')?.id}`);
     }
   }, [loggedIn, navigate, store]);
@@ -32,7 +31,6 @@ function Login(props) {
           if (error.status === 403) {
             setErrorMsg('invalid login');
           }
-          // getProductsFromAPI();git
         }}
       >
         <p

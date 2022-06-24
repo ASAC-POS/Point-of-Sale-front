@@ -39,7 +39,7 @@ function Navbars(props) {
             style={{ margin: '10px' }}
             onClick={() => {
               logout();
-              window.location.reload(false);
+              // window.location.reload(false);
             }}
           >
             <Link to='/signin'>sign out</Link>

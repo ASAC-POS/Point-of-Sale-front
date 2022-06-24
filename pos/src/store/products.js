@@ -34,22 +34,17 @@ export const { getProducts, addProducts, clearProducts } =
   ProductsSlice.actions;
 
 export const getProductsFromAPI = (token) => async (dispatch, state) => {
-  console.log(token);
   try {
     const respons = await superagent
       .get(`${api}/products`)
       .query({ cookie: parseInt(cookie.load('storeID')) })
       .set('Authorization', `Bearer ${token}`);
-    console.log(respons.body);
     dispatch(getProducts(respons.body));
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };
 
 // Add new product
 export const addNewProduct = (item) => async (dispatch, state) => {
-  console.log(item);
   await superagent
     .post(`${api}/product`)
     .send(item)
@@ -60,8 +55,6 @@ export const addNewProduct = (item) => async (dispatch, state) => {
 
 // Update product
 export const editProduct = (updatedItem, itemId) => async (dispatch, state) => {
-  console.log(updatedItem, itemId);
-
   await superagent
     .put(`${api}/product/${itemId}`)
     .send(updatedItem)
@@ -72,7 +65,6 @@ export const editProduct = (updatedItem, itemId) => async (dispatch, state) => {
 
 // Delete a product
 export const deleteProduct = (itemId) => async (dispatch, state) => {
-  console.log(111111111111, itemId);
   await superagent
     .delete(`${api}/product/${itemId}`)
     .set('Authorization', `Bearer ${cookie.load('userData')?.token}`)
