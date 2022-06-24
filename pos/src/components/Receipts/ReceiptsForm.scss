@@ -1,0 +1,25 @@
+
+.modal {
+	background-color: #9fc3c0;
+	border-radius: 3em;
+	box-shadow: 0 0 1em rgba(255, 246, 246, 0.063);
+	padding:1rem;
+	margin:1rem ;
+	height: 100%;
+	width: 35%;
+}
+.form{
+	align-items: center;
+	background-color: #fefdfe;
+	border-radius: 1em;
+	box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+	display: flex;
+	padding: 1em;
+	label {
+		align-items: center;
+		display: flex;
+		
+		flex: 1;
+		gap: 1em;
+	}
+}
