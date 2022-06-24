@@ -9,32 +9,23 @@ import Employees from './components/Employees/Employees';
 import Receipts from './components/Receipts/Receipts';
 import Profile from './components/profile/profile';
 import Products from './components/Products/ProductManage';
-import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 import Auth from './context/auth';
 import Pos from './components/Products/Pos';
-import { clearPopUps } from './store/popups';
+import { useContext, useEffect } from 'react';
+import { loginContext } from './context/context';
 function App(props) {
-  const { store, popup, clearPopUps } = props;
+  const { store } = props;
+  const { getData, loggedIn } = useContext(loginContext);
   useEffect(() => {
-    console.log(popup);
-  }, [popup]);
+    if (loggedIn) {
+      getData();
+    }
+  }, [getData, loggedIn]);
   return (
     <div className='app'>
       <Header />
-      {popup?.message && (
-        <div>
-          <p>{popup?.message}</p>
-          <button
-            onClick={() => {
-              clearPopUps();
-            }}
-          >
-            x
-          </button>
-        </div>
-      )}
       <Routes>
         <Route
           exact
@@ -56,6 +47,7 @@ function App(props) {
             </Auth>
           }
         />
+        {console.log(store)}
         <Route
           path={`/${encodeURIComponent(store?.storename)}/receipts`}
           element={
@@ -95,8 +87,6 @@ function App(props) {
 const mapStateToProps = (state) => {
   return {
     store: state.store.store,
-    popup: state.popup,
   };
 };
-const mapDispatchToProps = { clearPopUps };
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

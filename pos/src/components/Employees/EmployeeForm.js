@@ -16,9 +16,6 @@ function EmployeeForm(props) {
     addUser(newUserData);
     setShow(false);
   };
-  useEffect(() => {
-    console.log(newUserData);
-  }, [newUserData]);
   return (
     <div>
       <Button variant='primary' onClick={handleShow}>
@@ -56,11 +53,17 @@ function EmployeeForm(props) {
             </Form.Group> */}
             <Form.Group controlId='formBasicPassword'>
               <Form.Label>Employee role</Form.Label>
-              <Form.Select name = "role" aria-label="Default select example" onChange={handleChange}>
-                <option disabled selected value>select role</option>
-                <option value="cashier">cashier</option>
-                <option value="inventory">inventory</option>
-                <option value="admin">admin</option>
+              <Form.Select
+                name='role'
+                aria-label='Default select example'
+                onChange={handleChange}
+              >
+                <option disabled selected value>
+                  select role
+                </option>
+                <option value='cashier'>cashier</option>
+                <option value='inventory'>inventory</option>
+                <option value='admin'>admin</option>
               </Form.Select>
             </Form.Group>
             <Button variant='primary' type='submit'>

@@ -4,23 +4,18 @@ import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 import Auth from '../../context/auth';
 import { getPopupNotificationsFromAPI } from '../../store/popups';
-import io from 'socket.io-client';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
+import { SocketContext } from '../../context/socket';
+
 function Profile(props) {
+  const { socket } = useContext(SocketContext);
   const navigate = useNavigate();
   const { store, getPopupNotificationsFromAPI } = props;
-  const host = 'https://debuggers-pos.herokuapp.com/';
-  const [socket, setSocket] = useState(io.connect(host));
 
   useEffect(() => {
-    const newSocket = io.connect(host);
-    setSocket(newSocket);
-    return () => newSocket.close();
-  }, [setSocket]);
-  socket?.on('sending-notifications', () => {
-    getPopupNotificationsFromAPI();
-  });
-  socket?.emit('reload-notifications');
+    console.log(socket);
+    socket?.emit('reload-notifications');
+  }, [socket]);
 
   return (
     <>

@@ -10,10 +10,12 @@ const PopupSlice = createSlice({
   name: 'popup',
   initialState: {
     message: '',
+    signedIn: [],
   },
   reducers: {
     getNotifications: (state, action) => {
-      state.message = action.payload;
+      state.message = action.payload.popup;
+      state.signedIn = action.payload.signedInUsers;
     },
     clearPopUps: (state, action) => {
       state.message = null;

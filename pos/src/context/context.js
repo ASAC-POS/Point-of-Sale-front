@@ -15,6 +15,7 @@ import { getProductsFromAPI, clearProducts } from '../store/products';
 import { getStoreFromAPI, clearStore } from '../store/stores';
 import { getReceiptsFromAPI, clearReceipts } from '../store/receipts';
 import { getUsersFromAPI, clearUsers } from '../store/users';
+import { getPopupNotificationsFromAPI } from '../store/popups';
 // const API = 'https://debuggers-pos.herokuapp.com';
 const API = 'https://debuggers-pos.herokuapp.com';
 
@@ -33,6 +34,7 @@ function LoginProvider(props) {
     clearStore,
     clearProducts,
     clearReceipts,
+    getPopupNotificationsFromAPI,
   } = props;
   const register = async (userInfo) => {
     console.log('1111111111', userInfo);
@@ -152,5 +154,6 @@ const mapDispatchToProps = {
   clearReceipts,
   clearStore,
   clearProducts,
+  getPopupNotificationsFromAPI,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(LoginProvider);
