@@ -10,7 +10,7 @@ function Hero() {
         <Carousel fade interval={2000} variant='dark'>
           <Carousel.Item>
             <img
-              style={{ objectFit: 'cover', maxHeight: '650px' }}
+              style={{ objectFit: 'cover', maxHeight: '550px' }}
               className='d-block w-100'
               src={img1}
               alt='First slide'
@@ -22,7 +22,7 @@ function Hero() {
           </Carousel.Item>
           <Carousel.Item>
             <img
-              style={{ objectFit: 'cover', maxHeight: '650px' }}
+              style={{ objectFit: 'cover', maxHeight: '550px' }}
               className='d-block w-100'
               src={img3}
               alt='Second slide'
@@ -34,7 +34,7 @@ function Hero() {
           </Carousel.Item>
           <Carousel.Item>
             <img
-              style={{ objectFit: 'cover', maxHeight: '650px' }}
+              style={{ objectFit: 'cover', maxHeight: '550px' }}
               className='d-block w-100'
               src={img2}
               alt='Third slide'
