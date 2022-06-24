@@ -1,9 +1,10 @@
 import { Modal, Button, Form } from 'react-bootstrap';
+import './ReceiptsForm.scss'
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { addNewProduct } from '../../store/products';
+import { addNewReceipts } from '../../store/receipts';
 
-function ProductsForm(props) {
+function ReceiptsForm(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,28 +17,28 @@ function ProductsForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(item)
-    props.addNewProduct(item);
+    props.addNewReceipts(item);
     handleClose();
   };
 
   return (
-    <div>
-      <Button variant='primary' onClick={handleShow}>
-        Add Product
+    <div >
+    <Button variant='primary' onClick={handleShow}>
+        Add Receipt
       </Button>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} className="modal">
         <Modal.Header closeButton>
-          <Modal.Title>Add Product</Modal.Title>
+          <Modal.Title>Add Receipt</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={(e) => handleSubmit(e)}>
+        <div className="checkoutForm">
+          <Form onSubmit={(e) => handleSubmit(e)} >
             <Form.Group>
-              <Form.Label>ProductName</Form.Label>
+              <Form.Label>Product</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='ProductName'
-                name='productName'
+                placeholder='product'
+                name='product'
                 onChange={onChange}
               />
             </Form.Group>
@@ -49,47 +50,61 @@ function ProductsForm(props) {
                 name='price'
                 onChange={onChange}
               />
+              </Form.Group>
+
+              <Form.Group>
+              <Form.Label>Visa</Form.Label>
+              <Form.Check
+                type='radio'
+                placeholder='Visa'
+                name='PaymentMethod'
+                onChange={onChange}
+              />
+              </Form.Group>
+
+              <Form.Group>
+              <Form.Label>Cash</Form.Label>
+              <Form.Check
+                type='radio'
+                placeholder='Cash'
+                name='PaymentMethod'
+                onChange={onChange}
+              />
             </Form.Group>
+
             <Form.Group>
-              <Form.Label>Description</Form.Label>
+              <Form.Label>Total</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='Description'
-                name='description'
+                placeholder='Total'
+                name='total'
                 onChange={onChange}
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Quantity</Form.Label>
+              <Form.Label>Discount</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='Quantity'
-                name='quantity'
+                placeholder='Discount'
+                name='discount'
                 onChange={onChange}
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>minQuantity</Form.Label>
+              <Form.Label>Total After Discount</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='minQuantity'
-                name='minQuantity'
+                placeholder='Total After Discount'
+                name='totalAfterDiscount'
                 onChange={onChange}
               />
             </Form.Group>
-            <Form.Group>
-              <Form.Label>Image URL</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Image URL'
-                name='imgURL'
-                onChange={onChange}
-              />
-            </Form.Group>
+            
             <Button variant='primary' type='submit'>
-              Add
+              Checkout
             </Button>
           </Form>
+          </div>
         </Modal.Body>
       </Modal>
     </div>
@@ -97,9 +112,9 @@ function ProductsForm(props) {
 }
 
 const mapStateToProps = (state) => ({
-  products: state.store.products,
+    receipts: state.store.receipts,
 });
 
-const mapDispatchToProps = { addNewProduct };
+const mapDispatchToProps = { addNewReceipts };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductsForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ReceiptsForm);

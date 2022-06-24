@@ -3,10 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 import Auth from '../../context/auth';
+import { Card } from 'react-bootstrap';
 import { getPopupNotificationsFromAPI } from '../../store/popups';
 import { useContext, useEffect } from 'react';
 import { SocketContext } from '../../context/socket';
+
 import io from 'socket.io-client';
+import Popup from '../popup/Popup';
+
 function Profile(props) {
   const { socket } = useContext(SocketContext);
   const navigate = useNavigate();
@@ -18,79 +22,76 @@ function Profile(props) {
 
   return (
     <>
-      <div id='details'>
-        <p> StoreName : {props.store?.storename}</p>
-        <p> user : {cookie.load('userData')?.username}</p>
-        <p> role: {cookie.load('userData')?.role} </p>
-      </div>
+      <Card id='details'>
+        <Card.Title
+          style={{ fontWeight: 'bold', alignSelf: 'center', marginTop: '20px' }}
+        >
+          USER INFORMATION
+        </Card.Title>
+        <Card.Text style={{ marginLeft: '20px' }}>
+          Store Name: {props.store?.storename}
+        </Card.Text>
+        <Card.Text style={{ marginLeft: '20px' }}>
+          User Name: {cookie.load('userData')?.username}
+        </Card.Text>
+        <Card.Text style={{ marginLeft: '20px' }}>
+          User Role: {cookie.load('userData')?.role}
+        </Card.Text>
+      </Card>
+
       <div className='profile'>
+        <Popup />
         <Auth capability='add'>
           <div
-            className='card'
+            className='card1'
             onClick={() => {
               navigate(`/${encodeURIComponent(store?.storename)}/products`);
             }}
           >
-            <div className='card-image'></div>
-            <div className='card-text'>
+            <div className='card-image1'></div>
+            <div className='card-text1'>
               <br></br>
               <h2>PRODUCTS</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae
-                temporibus omnis illum maxime quod deserunt eligendi dolor
-              </p>
             </div>
           </div>
         </Auth>
         <Auth capability='sell'>
           <div
-            className='card'
+            className='card1'
             onClick={() => {
               navigate(`/${encodeURIComponent(store?.storename)}/pos`);
             }}
           >
-            <div className='card-image'></div>
-            <div className='card-text'>
+            <div className='card-image1'></div>
+            <div className='card-text1'>
               <br></br>
               <h2>POS</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae
-                temporibus omnis illum maxime quod deserunt eligendi dolor
-              </p>
             </div>
           </div>
         </Auth>
         <Auth capability='delete'>
           <div
-            className='card'
+            className='card1'
             onClick={() => {
               navigate(`/${encodeURIComponent(store?.storename)}/employees`);
             }}
           >
-            <div className='card-image card2'></div>
-            <div className='card-text'>
+            <div className='card-image1 card2'></div>
+            <div className='card-text1'>
               <br></br>
               <h2>EMPLOYEES</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae
-                temporibus omnis illum maxime quod deserunt eligendi dolor
-              </p>
             </div>
           </div>
           <div
-            className='card'
+            className='card1'
             onClick={() => {
               navigate(`/${encodeURIComponent(store?.storename)}/receipts`);
             }}
           >
-            <div className='card-image card3'></div>
-            <div className='card-text'>
+            <div className='card-image1 card3'></div>
+            <div className='card-text1'>
               <br></br>
               <h2>RECEIPTS</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae
-                temporibus omnis illum maxime quod deserunt eligendi dolor
-              </p>
             </div>
           </div>
         </Auth>
