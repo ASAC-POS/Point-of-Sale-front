@@ -9,14 +9,10 @@ function RegisterForm(props) {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('in submit');
     register(userInfo);
-    console.log('done registering');
     props.setShow(false);
   }
-  useEffect(() => {
-    console.log(userInfo);
-  }, [userInfo]);
+  useEffect(() => {}, [userInfo]);
   return (
     <div>
       <Form onSubmit={handleSubmit}>

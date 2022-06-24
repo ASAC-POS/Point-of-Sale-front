@@ -10,9 +10,14 @@ function Main(props) {
   const { loggedIn } = useContext(loginContext);
   const navigate = useNavigate();
   const { store } = props;
+  const { getData } = useContext(loginContext);
+  useEffect(() => {
+    if (loggedIn) {
+      getData();
+    }
+  }, [getData, loggedIn]);
   useEffect(() => {
     if (loggedIn && store) {
-      console.log('iam here ');
       navigate(`${store?.storename}/${cookie.load('userData')?.id}`);
     }
   }, [loggedIn, navigate, store]);

@@ -17,12 +17,7 @@ import { useContext, useEffect } from 'react';
 import { loginContext } from './context/context';
 function App(props) {
   const { store } = props;
-  const { getData, loggedIn } = useContext(loginContext);
-  useEffect(() => {
-    if (loggedIn) {
-      getData();
-    }
-  }, [getData, loggedIn]);
+
   return (
     <div className='app'>
       <Header />
@@ -47,7 +42,6 @@ function App(props) {
             </Auth>
           }
         />
-        {console.log(store)}
         <Route
           path={`/${encodeURIComponent(store?.storename)}/receipts`}
           element={

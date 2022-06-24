@@ -15,7 +15,7 @@ const PopupSlice = createSlice({
   reducers: {
     getNotifications: (state, action) => {
       state.message = action.payload.popup;
-      state.signedIn = action.payload.signedInUsers;
+      state.signedIn = action.payload.signinUsers;
     },
     clearPopUps: (state, action) => {
       state.message = null;
@@ -33,6 +33,5 @@ export const getPopupNotificationsFromAPI = () => async (dispatch, state) => {
     .get(`${api}/popup`)
     .set('Authorization', `Bearer ${cookie.load('userData')?.token}`)
     .query('cookie', cookie.load('storeID'));
-  console.log(response.text);
-  dispatch(getNotifications(response.text));
+  dispatch(getNotifications(response.body));
 };

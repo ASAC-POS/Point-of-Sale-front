@@ -7,6 +7,7 @@ export const SocketContext = createContext();
 
 function SocketProvider(props) {
   const host = 'https://debuggers-pos.herokuapp.com';
+  const { getPopupNotificationsFromAPI } = props;
   const [socket, setSocket] = useState(io.connect(host));
 
   useEffect(() => {
@@ -17,6 +18,7 @@ function SocketProvider(props) {
 
   socket?.on('sending-notifications', () => {
     getPopupNotificationsFromAPI();
+    // socket.off();
   });
   const state = {
     socket,

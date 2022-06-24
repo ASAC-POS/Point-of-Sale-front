@@ -1,10 +1,10 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import cookie from 'react-cookies';
 import superagent from 'superagent';
 import jwt from 'jwt-decode';
 import base64 from 'base-64';
 import { connect } from 'react-redux';
-
+import { SocketContext } from './socket.js';
 // import { getProductsFromAPI } from '../store/products';
 // import { getStoreFromAPI } from '../store/stores';
 // import { getReceiptsFromAPI } from '../store/receipts';
@@ -22,6 +22,7 @@ const API = 'https://debuggers-pos.herokuapp.com';
 export const loginContext = createContext();
 
 function LoginProvider(props) {
+  const { socket } = useContext(SocketContext);
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
   const [error, setError] = useState('');
@@ -34,12 +35,9 @@ function LoginProvider(props) {
     clearStore,
     clearProducts,
     clearReceipts,
-    getPopupNotificationsFromAPI,
   } = props;
   const register = async (userInfo) => {
-    console.log('1111111111', userInfo);
     const response = await superagent.post(`${API}/register`).send(userInfo);
-    console.log(response.body.user);
   };
 
   const navigate = useNavigate();
@@ -58,8 +56,6 @@ function LoginProvider(props) {
           'authorization',
           `Basic ${base64.encode(`${username}:${password}`)}`
         );
-      console.log(response.body.user);
-      console.log(response.body.storeID);
       cookie.save('storeID', response.body.storeID);
       validateMyUser(response.body.user);
       getData();
@@ -105,6 +101,7 @@ function LoginProvider(props) {
   const logout = () => {
     setLoggedIn(false);
     setUser({});
+    socket.emit('sign-out', cookie.load('userData'));
     clearData();
   };
   const clearData = () => {

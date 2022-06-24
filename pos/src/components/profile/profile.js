@@ -6,16 +6,15 @@ import Auth from '../../context/auth';
 import { getPopupNotificationsFromAPI } from '../../store/popups';
 import { useContext, useEffect } from 'react';
 import { SocketContext } from '../../context/socket';
-
+import io from 'socket.io-client';
 function Profile(props) {
   const { socket } = useContext(SocketContext);
   const navigate = useNavigate();
-  const { store, getPopupNotificationsFromAPI } = props;
+  const { store } = props;
 
   useEffect(() => {
-    console.log(socket);
-    socket?.emit('reload-notifications');
-  }, [socket]);
+    socket.emit('reload-notifications');
+  }, []);
 
   return (
     <>
