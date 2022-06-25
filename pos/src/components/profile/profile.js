@@ -7,6 +7,8 @@ import { getPopupNotificationsFromAPI } from '../../store/popups';
 import { useContext, useEffect } from 'react';
 import { SocketContext } from '../../context/socket';
 import io from 'socket.io-client';
+import Popup from '../popup/Popup';
+
 function Profile(props) {
   const { socket } = useContext(SocketContext);
   const navigate = useNavigate();
@@ -24,6 +26,7 @@ function Profile(props) {
         <p> role: {cookie.load('userData')?.role} </p>
       </div>
       <div className='profile'>
+        <Popup />
         <Auth capability='add'>
           <div
             className='card'
