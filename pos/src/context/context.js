@@ -69,7 +69,7 @@ function LoginProvider(props) {
       const validUser = jwt(data.token);
       if (validUser) {
         setLoginstate(true, data);
-        cookie.save('userData', data);
+        if (!cookie.load('userData')) cookie.save('userData', data);
       } else {
         setLoginstate(false, {});
       }
