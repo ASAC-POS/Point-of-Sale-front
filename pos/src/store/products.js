@@ -55,6 +55,7 @@ export const addNewProduct = (item) => async (dispatch, state) => {
 
 // Update product
 export const editProduct = (updatedItem, itemId) => async (dispatch, state) => {
+  console.log(updatedItem);
   await superagent
     .put(`${api}/product/${itemId}`)
     .send(updatedItem)
@@ -69,7 +70,6 @@ export const deleteProduct = (itemId) => async (dispatch, state) => {
     .delete(`${api}/product/${itemId}`)
     .set('Authorization', `Bearer ${cookie.load('userData')?.token}`)
     .query({ cookie: parseInt(cookie.load('storeID')) });
-    getProductsFromAPI(cookie.load('userData')?.token)
+  getProductsFromAPI(cookie.load('userData')?.token);
   dispatch(deleteProduct(itemId));
-
 };
