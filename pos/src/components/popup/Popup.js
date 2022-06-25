@@ -13,8 +13,7 @@ function Popup(props) {
         style={{
           position: 'absolute',
           right: '30',
-          top: '12rem',
-          zIndex: '10',
+          top: '20rem',
         }}
         size={35}
         onClick={() => setShowNotifications(!showNotifications)}
