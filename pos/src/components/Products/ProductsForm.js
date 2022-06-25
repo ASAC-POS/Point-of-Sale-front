@@ -16,7 +16,7 @@ function ProductsForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(item)
+    console.log(item);
     props.addNewProduct(item);
     handleClose();
   };
@@ -31,7 +31,7 @@ function ProductsForm(props) {
           <Modal.Title>Add Product</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={(e) => handleSubmit(e)}>
+          <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label>ProductName</Form.Label>
               <Form.Control
