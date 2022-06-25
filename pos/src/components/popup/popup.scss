@@ -14,8 +14,43 @@
   border-right: none;
   border-right-width: 0;
   border-top-right-radius: 0;
+  position: relative;
+  visibility: hidden;
+}
+
+.close-notification-box {
+  color: red;
+  position: absolute;
+  top: 5px;
+  left: 7px;
+  cursor: pointer;
+}
+
+@keyframes slide-box {
+  0% {
+    transform: translateX(20rem);
+  }
+  25% {
+    transform: translateX(15rem);
+  }
+  50% {
+    transform: translateX(10rem);
+  }
+  75% {
+    transform: translateX(5rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .hidden {
   display: none;
+}
+
+.slide {
+  visibility: visible;
+  animation-name: slide-box;
+  animation-duration: 500ms;
+  animation-timing-function: linear;
 }
