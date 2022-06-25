@@ -3,12 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 import Auth from '../../context/auth';
-import { Card } from "react-bootstrap";
+import { Card } from 'react-bootstrap';
 import { getPopupNotificationsFromAPI } from '../../store/popups';
 import { useContext, useEffect } from 'react';
 import { SocketContext } from '../../context/socket';
 
 import io from 'socket.io-client';
+import Popup from '../popup/Popup';
+
 function Profile(props) {
   const { socket } = useContext(SocketContext);
   const navigate = useNavigate();
@@ -20,17 +22,25 @@ function Profile(props) {
 
   return (
     <>
-   
-    <Card id="details">
-       <Card.Title style={{fontWeight:"bold", alignSelf:"center" ,marginTop:"20px"}}>USER INFORMATION</Card.Title>
-    <Card.Text style={{marginLeft:"20px"}}>Store Name:  {props.store?.storename}</Card.Text>
-    <Card.Text style={{marginLeft:"20px"}}>User Name: {cookie.load('userData')?.username}</Card.Text>
-    <Card.Text style={{marginLeft:"20px"}}>User Role:  {cookie.load('userData')?.role}</Card.Text>
-      
-    </Card>
-
+      <Card id='details'>
+        <Card.Title
+          style={{ fontWeight: 'bold', alignSelf: 'center', marginTop: '20px' }}
+        >
+          USER INFORMATION
+        </Card.Title>
+        <Card.Text style={{ marginLeft: '20px' }}>
+          Store Name: {props.store?.storename}
+        </Card.Text>
+        <Card.Text style={{ marginLeft: '20px' }}>
+          User Name: {cookie.load('userData')?.username}
+        </Card.Text>
+        <Card.Text style={{ marginLeft: '20px' }}>
+          User Role: {cookie.load('userData')?.role}
+        </Card.Text>
+      </Card>
 
       <div className='profile'>
+        <Popup />
         <Auth capability='add'>
           <div
             className='card1'
@@ -42,7 +52,6 @@ function Profile(props) {
             <div className='card-text1'>
               <br></br>
               <h2>PRODUCTS</h2>
-              
             </div>
           </div>
         </Auth>
@@ -71,7 +80,6 @@ function Profile(props) {
             <div className='card-text1'>
               <br></br>
               <h2>EMPLOYEES</h2>
-             
             </div>
           </div>
           <div

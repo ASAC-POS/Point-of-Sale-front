@@ -10,14 +10,18 @@ body {
 #details {
   font-size: larger;
   width: 500px;
-  margin-top: 20px ;
-  margin-left: 20px ;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .profile {
   width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 0.25fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   height: 50vh;
-  display: flex;
+  // display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -35,6 +39,8 @@ body {
 
   transition: 0.5s ease;
   cursor: pointer;
+  margin: 30px;
+  justify-content: center;
   margin: 20px;
 }
 .card1-image.card2 {
