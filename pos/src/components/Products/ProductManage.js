@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import CardGroup from 'react-bootstrap/CardGroup';
+import { CardGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
 import ProductsForm from './ProductsForm';
@@ -9,123 +9,57 @@ import EditProducts from './EditProducts';
 import { deleteProduct } from '../../store/products';
 import { connect } from 'react-redux';
 import Auth from '../../context/auth';
-// function productE(props){
-//   return(
-//     <>
-//     <div>
-//     <>
-//         <ProductsForm />
-//       </>
-
-//       <CardGroup>
-     
-//           {props.products.maps((product) =>{
-//              <Card.Body key={product.id}>
-//             <Card.Title>{product.Title}</Card.Title>
-//             <ListGroup.Item> {product.ProductName}</ListGroup.Item>
-//               <ListGroup.Item>{product.Price}</ListGroup.Item>
-//               <ListGroup.Item>{product.Quantity}</ListGroup.Item>
-//               <ListGroup.Item>{product.minQuantity}</ListGroup.Item>
-//               <EditProducts id={product.id}/>
-//             </Card.Body>
-//           })}
-        
-//       </CardGroup>
-      
-//     </div>
-//     </>
-//   )
-// }
 
 function Product(props) {
+  console.log('hiiiiii', props.products);
+  const { products } = props;
+
   return (
     <>
       <>
         <ProductsForm />
       </>
       <>
-        <CardGroup style={{ width: '65rem', height: '40rem' }}>
-          <Card>
-            <Card.Img
-              variant='top'
-              style={{ height: '220px' }}
-              src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaFPTO7FxJ64kt3kDzkK2MSZKHEBR0n_dQiA&usqp=CAU'
-            />
+        <CardGroup>
+          {products.map((product) => {
+            return (
+              <Card>
+                {/* <Card.Img
+                variant='top'
+                style={{ height: '220px' }}
+                src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaFPTO7FxJ64kt3kDzkK2MSZKHEBR0n_dQiA&usqp=CAU' /> */}
 
-            <Card.Body>
-              <Card.Title>jacket </Card.Title>
+                <Card.Body>
+                  <Card.Title>{product.productName}</Card.Title>
 
-              <ListGroup.Item> Product Name: jacket </ListGroup.Item>
-              <ListGroup.Item>Price : 100$</ListGroup.Item>
-              <ListGroup.Item>Quantity : 20</ListGroup.Item>
-              <ListGroup.Item>minQuantity : 40</ListGroup.Item>
-            </Card.Body>
-            <ListGroup className='list-group-flush'></ListGroup>
-            <Card.Footer>
-              <Auth capability='delete'>
-                <Button
-                  variant='primary'
-                  onClick={(item) => props.deleteProduct(19)}
-                >
-                  Remove
-                </Button>
-              </Auth>
-              <EditProducts />
-            </Card.Footer>
-          </Card>
-          <Card>
-            <Card.Img
-              variant='top'
-              style={{ height: '220px' }}
-              src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJlEAPhN6C94gkUOUbKhMuuQeWRoYwWp9k0g&usqp=CAU'
-            />
-
-            <Card.Body>
-              <Card.Title>T-shirt</Card.Title>
-
-              <ListGroup.Item> Product Name: T-shirt </ListGroup.Item>
-              <ListGroup.Item>Price : 50$</ListGroup.Item>
-              <ListGroup.Item>Quantity : 10</ListGroup.Item>
-              <ListGroup.Item>minQuantity : 35</ListGroup.Item>
-            </Card.Body>
-            <ListGroup className='list-group-flush'></ListGroup>
-            <Card.Footer>
-              <Button
-                variant='primary'
-                onClick={(item) => deleteProduct(item.id)}
-              >
-                Remove
-              </Button>
-              <EditProducts />
-            </Card.Footer>
-          </Card>
-
-          <Card>
-            <Card.Img
-              variant='top'
-              style={{ height: '220px' }}
-              src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS67jLCNl53c7trrWIPocGTsYMUxR6GrgeAwA&usqp=CAU'
-            />
-
-            <Card.Body>
-              <Card.Title>Zara jeans</Card.Title>
-
-              <ListGroup.Item> Product Name: jeans </ListGroup.Item>
-              <ListGroup.Item>Price : 10$</ListGroup.Item>
-              <ListGroup.Item>Quantity : 20</ListGroup.Item>
-              <ListGroup.Item>minQuantity : 30</ListGroup.Item>
-            </Card.Body>
-            <ListGroup className='list-group-flush'></ListGroup>
-            <Card.Footer>
-              <Button
-                variant='primary'
-                onClick={(item) => deleteProduct(item.id)}
-              >
-                Remove
-              </Button>
-              <EditProducts />
-            </Card.Footer>
-          </Card>
+                  <ListGroup.Item>
+                    {' '}
+                    Product Name: {product.productName}{' '}
+                  </ListGroup.Item>
+                  <ListGroup.Item>Price: {product.price}</ListGroup.Item>
+                  <ListGroup.Item>
+                    Description: {product.description}
+                  </ListGroup.Item>
+                  <ListGroup.Item>Quantity: {product.quantity}</ListGroup.Item>
+                  <ListGroup.Item>
+                    minQuantity: {product.minQuantity}
+                  </ListGroup.Item>
+                </Card.Body>
+                <ListGroup className='list-group-flush'></ListGroup>
+                <Card.Footer>
+                  <Auth capability='delete'>
+                    <Button
+                      variant='primary'
+                      onClick={(item) => props.deleteProduct(product.id)}
+                    >
+                      Remove
+                    </Button>
+                  </Auth>
+                  <EditProducts id={product.id} />
+                </Card.Footer>
+              </Card>
+            );
+          })}
         </CardGroup>
       </>
     </>
@@ -133,7 +67,7 @@ function Product(props) {
 }
 
 const mapStateToProps = (state) => ({
-  products: state.store.products,
+  products: state.products.products,
 });
 
 const mapDispatchToProps = { deleteProduct };

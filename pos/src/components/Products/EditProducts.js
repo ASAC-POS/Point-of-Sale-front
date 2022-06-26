@@ -19,7 +19,8 @@ function EmployeeForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.editProduct(newItem, 12);
+    console.log(props.id);
+    props.editProduct(newItem, props.id);
     handleClose();
   };
 
@@ -47,7 +48,7 @@ function EmployeeForm(props) {
               <Form.Group>
                 <Form.Label>Price</Form.Label>
                 <Form.Control
-                  type='text'
+                  type='number'
                   placeholder='Price'
                   name='price'
                   onChange={onChange}
@@ -67,7 +68,7 @@ function EmployeeForm(props) {
               <Form.Group>
                 <Form.Label>Quantity</Form.Label>
                 <Form.Control
-                  type='text'
+                  type='number'
                   placeholder='Quantity'
                   name='quantity'
                   onChange={onChange}
@@ -76,7 +77,7 @@ function EmployeeForm(props) {
               <Form.Group>
                 <Form.Label>minQuantity</Form.Label>
                 <Form.Control
-                  type='text'
+                  type='number'
                   placeholder='minQuantity'
                   name='minQuantity'
                   onChange={onChange}
