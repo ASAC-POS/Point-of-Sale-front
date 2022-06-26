@@ -111,9 +111,9 @@ function Product(props) {
               <Card.Title>Zara jeans</Card.Title>
 
               <ListGroup.Item> Product Name: jeans </ListGroup.Item>
-              <ListGroup.Item>Price : 10$</ListGroup.Item>
-              <ListGroup.Item>Quantity : 20</ListGroup.Item>
-              <ListGroup.Item>minQuantity : 30</ListGroup.Item>
+              <ListGroup.Item>Price :10$</ListGroup.Item>
+              <ListGroup.Item>Quantity :20</ListGroup.Item>
+              <ListGroup.Item>minQuantity :30</ListGroup.Item>
             </Card.Body>
             <ListGroup className='list-group-flush'></ListGroup>
             <Card.Footer>

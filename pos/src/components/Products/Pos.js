@@ -6,11 +6,11 @@ import InfoScreen from "./InfoScreen";
 
 import { connect } from "react-redux";
 import ReceiptsForm from "../Receipts/ReceiptForm";
-import { addNewReceiots } from '../../store/products';
+import { addNewReceipts } from '../../store/products';
 
 function Pos(props) {
  
-  
+
   return (
     <div
       style={{

@@ -45,7 +45,7 @@ function ReceiptsForm(props) {
             <Form.Group>
               <Form.Label>Price</Form.Label>
               <Form.Control
-                type='text'
+                type='number'
                 placeholder='Price'
                 name='price'
                 onChange={onChange}
@@ -75,16 +75,16 @@ function ReceiptsForm(props) {
             <Form.Group>
               <Form.Label>Total</Form.Label>
               <Form.Control
-                type='text'
+                type='number'
                 placeholder='Total'
                 name='total'
                 onChange={onChange}
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Discount</Form.Label>
+              <Form.Label>Discount %</Form.Label>
               <Form.Control
-                type='text'
+                type='number'
                 placeholder='Discount'
                 name='discount'
                 onChange={onChange}
@@ -93,7 +93,7 @@ function ReceiptsForm(props) {
             <Form.Group>
               <Form.Label>Total After Discount</Form.Label>
               <Form.Control
-                type='text'
+                type='number'
                 placeholder='Total After Discount'
                 name='totalAfterDiscount'
                 onChange={onChange}
