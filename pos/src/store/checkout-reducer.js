@@ -8,7 +8,13 @@ const checkoutSlice = createSlice({
     items: [],
     total: 0,
   },
-  reducers: {},
+  reducers: {
+    addItemToCheckout: (state, action) => {
+      state.items.push(action.payload);
+      state.total =
+        state.total + action.payload.price * action.payload.quantity;
+    },
+  },
 });
-
 export default checkoutSlice.reducer;
+export const { addItemToCheckout } = checkoutSlice.actions;

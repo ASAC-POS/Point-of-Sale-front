@@ -18,11 +18,11 @@ function InfoScreen(props) {
         </thead>
         <tbody>
           {items.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.employeeName}</td>
-              <td>{item.total}</td>
-              <td>{item.method}</td>
+            <tr key={item.productID}>
+              <td>{item.productID}</td>
+              <td>{item.name}</td>
+              <td>{item.quantity}</td>
+              <td>{item.price}$</td>
               <td>
                 <Button>-</Button>
               </td>
