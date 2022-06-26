@@ -17,11 +17,10 @@ const ProductsSlice = createSlice({
     addProducts: (state, action) => {
       state.products.push(action.payload);
     },
-    editProduct: (state, action) => {
-      state.products.push(action.payload);
-    },
-    deleteProduct: (state, action) => {
-      state.products = state.products.filter((item) => item !== action.payload);
+    deleteProducts: (state, action) => {
+      state.products = state.products.filter(
+        (item) => item.id !== action.payload
+      );
     },
     clearProducts: (state, action) => {
       state.products = [];
@@ -30,8 +29,13 @@ const ProductsSlice = createSlice({
 });
 
 export default ProductsSlice.reducer;
-export const { getProducts, addProducts, clearProducts } =
-  ProductsSlice.actions;
+export const {
+  getProducts,
+  addProducts,
+  clearProducts,
+  editProducts,
+  deleteProducts,
+} = ProductsSlice.actions;
 
 export const getProductsFromAPI = (token) => async (dispatch, state) => {
   try {
@@ -45,23 +49,29 @@ export const getProductsFromAPI = (token) => async (dispatch, state) => {
 
 // Add new product
 export const addNewProduct = (item) => async (dispatch, state) => {
-  await superagent
+  const response = await superagent
     .post(`${api}/product`)
     .send(item)
     .set('Authorization', `Bearer ${cookie.load('userData')?.token}`)
     .query({ cookie: parseInt(cookie.load('storeID')) });
-  dispatch(addProducts(item));
+  dispatch(addProducts(response.body));
 };
 
 // Update product
 export const editProduct = (updatedItem, itemId) => async (dispatch, state) => {
   console.log(updatedItem);
+  console.log(itemId);
   await superagent
     .put(`${api}/product/${itemId}`)
     .send(updatedItem)
     .set('Authorization', `Bearer ${cookie.load('userData')?.token}`)
     .query({ cookie: parseInt(cookie.load('storeID')) });
-  dispatch(editProduct(updatedItem));
+
+  const respons = await superagent
+    .get(`${api}/products`)
+    .query({ cookie: parseInt(cookie.load('storeID')) })
+    .set('Authorization', `Bearer ${cookie.load('userData')?.token}`);
+  dispatch(getProducts(respons.body));
 };
 
 // Delete a product
@@ -71,5 +81,5 @@ export const deleteProduct = (itemId) => async (dispatch, state) => {
     .set('Authorization', `Bearer ${cookie.load('userData')?.token}`)
     .query({ cookie: parseInt(cookie.load('storeID')) });
   getProductsFromAPI(cookie.load('userData')?.token);
-  dispatch(deleteProduct(itemId));
+  dispatch(deleteProducts(itemId));
 };

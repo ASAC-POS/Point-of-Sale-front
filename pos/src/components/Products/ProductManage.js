@@ -17,7 +17,9 @@ function Product(props) {
   return (
     <>
       <>
-        <ProductsForm />
+        <Auth capability='edit'>
+          <ProductsForm />
+        </Auth>
       </>
       <>
         <CardGroup>
@@ -50,7 +52,7 @@ function Product(props) {
                   <Auth capability='delete'>
                     <Button
                       variant='primary'
-                      onClick={(item) => props.deleteProduct(product.id)}
+                      onClick={() => props.deleteProduct(product.id)}
                     >
                       Remove
                     </Button>
