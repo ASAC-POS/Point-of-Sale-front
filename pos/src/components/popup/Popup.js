@@ -31,8 +31,6 @@ function Popup(props) {
   );
 }
 
-// {`popup-box ${!showNotifications ? 'hidden' : ''}`}
-
 const mapStateToProps = (state) => ({
   message: state.popup.message,
 });
