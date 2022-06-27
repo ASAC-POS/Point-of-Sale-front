@@ -57,3 +57,17 @@ export const editUser = (newUser, id) => async (dispatch, state) => {
     dispatch(getUsers(newUsers.body));
   } catch (err) {}
 };
+
+export const removeUser = (id) => async (dispatch, state) => {
+  try {
+    const response = await superagent
+      .delete(`${api}/user/${id}`)
+      .query({ cookie: parseInt(cookie.load('storeID')) })
+      .set('Authorization', `Bearer ${cookie.load('userData')?.token}`);
+    const newUsers = await superagent
+      .get(`${api}/users`)
+      .query({ cookie: parseInt(cookie.load('storeID')) })
+      .set('Authorization', `Bearer ${cookie.load('userData')?.token}`);
+    dispatch(getUsers(newUsers.body));
+  } catch (err) {}
+};

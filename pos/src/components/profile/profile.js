@@ -14,7 +14,7 @@ import Popup from '../popup/Popup';
 function Profile(props) {
   const { socket } = useContext(SocketContext);
   const navigate = useNavigate();
-  const { store } = props;
+  const { store, getPopupNotificationsFromAPI } = props;
 
   useEffect(() => {
     socket.emit('reload-notifications');

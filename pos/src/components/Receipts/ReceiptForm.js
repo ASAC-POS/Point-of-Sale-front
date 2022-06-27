@@ -1,13 +1,28 @@
 import { Modal, Button, Form } from 'react-bootstrap';
 import './ReceiptsForm.scss'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { addNewReceipts } from '../../store/receipts';
+import { addItemToCheckout } from '../../store/checkout-reducer';
 
 function ReceiptsForm(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const { products, addItemToCheckout, checkout } = props;
+  const [discount, setDiscount] = useState(0);
+
+  const totalAfterDiscount=()=>{
+   let result = props.checkout.total*(1-(discount/100))
+   console.log(result)
+   return result
+  }
+
+  useEffect(() => {
+    console.log(products);
+    console.log(checkout);
+  }, [products, checkout]);
 
   const [item, setItem] = useState({});
 
@@ -28,93 +43,83 @@ function ReceiptsForm(props) {
       </Button>
       <Modal show={show} onHide={handleClose} className="modal">
         <Modal.Header closeButton>
-          <Modal.Title>Add Receipt</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <div className="checkoutForm">
           <Form onSubmit={(e) => handleSubmit(e)} >
-            <Form.Group>
-              <Form.Label>Product</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='product'
-                name='product'
+          <strong> PAYMENT METHOD</strong>
+          <br></br>
+          <Form.Group style={{display:'flex', marginLeft: '5px'}}> 
+            
+              <Form.Check style={{ marginLeft: '20px'}}
+                type='radio'
+                placeholder='Price'
+                name='price'
                 onChange={onChange}
               />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Price</Form.Label>
-              <Form.Control
+              <Form.Label style={{ marginLeft: '10px'}} >CASH</Form.Label>
+              <Form.Check style={{ marginLeft: '20px'}}
+                type='radio'
+                placeholder='Price'
+                name='price'
+                onChange={onChange}/>
+              <Form.Label style={{ marginLeft: '10px'}} >VISA</Form.Label>
+              </Form.Group>
+              <br></br>
+            <Form.Group style={{display:'flex', marginLeft: '2px'}}>
+              <Form.Label >Price:</Form.Label>
+              <Form.Control style={{ marginLeft: '10px'}}
                 type='number'
                 placeholder='Price'
                 name='price'
                 onChange={onChange}
               />
               </Form.Group>
-
-              <Form.Group>
-              <Form.Label>Visa</Form.Label>
-              <Form.Check
-                type='radio'
-                placeholder='Visa'
-                name='PaymentMethod'
-                onChange={onChange}
-              />
-              </Form.Group>
-
-              <Form.Group>
-              <Form.Label>Cash</Form.Label>
-              <Form.Check
-                type='radio'
-                placeholder='Cash'
-                name='PaymentMethod'
-                onChange={onChange}
-              />
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Total</Form.Label>
-              <Form.Control
-                type='number'
-                placeholder='Total'
-                name='total'
-                onChange={onChange}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Discount %</Form.Label>
-              <Form.Control
+              <br></br>
+              <Form.Group style={{display:'flex', marginLeft: '2px'}}>
+              <Form.Label>Discount </Form.Label>
+              <Form.Control  style={{ marginLeft: '10px'}}
                 type='number'
                 placeholder='Discount'
                 name='discount'
-                onChange={onChange}
+                onChange={(e) => {
+                  setDiscount(e.target.value);
+                }}
               />
-            </Form.Group>
+                </Form.Group>
+               <br></br>
             <Form.Group>
-              <Form.Label>Total After Discount</Form.Label>
-              <Form.Control
-                type='number'
-                placeholder='Total After Discount'
-                name='totalAfterDiscount'
-                onChange={onChange}
-              />
+              <strong > Total : {props.checkout.total} </strong>
             </Form.Group>
-            
+            <br></br>
+           
+          
+            <Form.Group>
+              <strong>Total After Discount : {totalAfterDiscount()}</strong>
+            </Form.Group>
+            <br></br>
             <Button variant='primary' type='submit'>
               Checkout
             </Button>
+            
           </Form>
           </div>
         </Modal.Body>
       </Modal>
+     
+       
+       
     </div>
   );
 }
 
+
 const mapStateToProps = (state) => ({
-    receipts: state.store.receipts,
+  receipts: state.store.receipts,
+  products: state.products.products,
+  checkout: state.checkout,
 });
 
-const mapDispatchToProps = { addNewReceipts };
+const mapDispatchToProps = { addNewReceipts,addItemToCheckout };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReceiptsForm);
