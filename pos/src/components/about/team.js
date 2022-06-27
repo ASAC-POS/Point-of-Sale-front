@@ -5,6 +5,10 @@ import leen from '../../assets/img/leen.jpg';
 import manal from '../../assets/img/manal.jpg';
 import mohammad from '../../assets/img/mohammad.jpg';
 import neeven from '../../assets/img/neeven.jpg';
+import { BsGithub } from "react-icons/bs";
+import { BsLinkedin } from "react-icons/bs";
+import { BsFacebook } from "react-icons/bs";
+
 import './team.scss'
 
 
@@ -19,6 +23,11 @@ export default function index() {
           <div className="card-body">
             <h5 className="card-title">Jalal Hasan</h5>
             <p className="card-text">Software Developer</p>
+            <div className="card-social-icon d-flex gap-3 justify-content-center">
+              <a href=""><i className="fa-brands fa-facebook-f"><BsFacebook /></i></a>
+              <a href="https://github.com/JalalHasan-22"><i className="fa-brands fa-github"><BsGithub /></i></a>
+              <a href=""><i className="fa-brands fa-linkedin-in"><BsLinkedin /></i></a>
+            </div>
           </div>
         </Col>
 
@@ -27,6 +36,11 @@ export default function index() {
           <div className="card-body">
             <h5 className="card-title">Leen Ahmad</h5>
             <p className="card-text">Software Developer</p>
+            <div className="card-social-icon d-flex gap-3 justify-content-center">
+              <a href=""><i className="fa-brands fa-facebook-f"><BsFacebook /></i></a>
+              <a href="https://github.com/leenahmad"><i className="fa-brands fa-github"><BsGithub /></i></a>
+              <a href=""><i className="fa-brands fa-linkedin-in"><BsLinkedin /></i></a>
+            </div>
           </div>
         </Col>
 
@@ -35,6 +49,11 @@ export default function index() {
           <div className="card-body">
             <h5 className="card-title">Manal Al-bahar</h5>
             <p className="card-text">Software Developer</p>
+            <div className="card-social-icon d-flex gap-3 justify-content-center">
+              <a href="https://www.facebook.com/manalalbahar91"><i className="fa-brands fa-facebook-f"><BsFacebook /></i></a>
+              <a href="https://github.com/ManalKhAlbahar"><i className="fa-brands fa-github"><BsGithub /></i></a>
+              <a href=""><i className="fa-brands fa-linkedin-in"><BsLinkedin /></i></a>
+            </div>
           </div>
         </Col>
 
@@ -43,6 +62,11 @@ export default function index() {
           <div className="card-body">
             <h5 className="card-title">Mohammad Salameh</h5>
             <p className="card-text">Software Developer</p>
+            <div className="card-social-icon d-flex gap-3 justify-content-center">
+              <a href="https://web.facebook.com/mhsalameh1?_rdc=1&_rdr"><i className="fa-brands fa-facebook-f"><BsFacebook /></i></a>
+              <a href="https://github.com/Mhsalameh"><i className="fa-brands fa-github"><BsGithub /></i></a>
+              <a href="https://www.linkedin.com/in/mhsalameh"><i className="fa-brands fa-linkedin-in"><BsLinkedin /></i></a>
+            </div>
           </div>
         </Col>
 
@@ -51,6 +75,11 @@ export default function index() {
           <div className="card-body">
             <h3 className="card-title">Neveen Aburomman</h3>
             <p className="card-text">Software Developer</p>
+            <div className="card-social-icon d-flex gap-3 justify-content-center">
+              <a href="https://www.facebook.com/profile.php?id=100010016567120 "><i className="fa-brands fa-facebook-f"><BsFacebook /></i></a>
+              <a href="https://github.com/neveenaburomman"><i className="fa-brands fa-github"><BsGithub /></i></a>
+              <a href="www.linkedin.com/in/neveenaburomman-9a23851aa"><i className="fa-brands fa-linkedin-in"><BsLinkedin /></i></a>
+            </div>
           </div>
         </Col>
       </Row>
