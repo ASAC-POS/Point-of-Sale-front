@@ -9,19 +9,41 @@ body {
 
 #details {
   font-size: larger;
-  width: 500px;
+  width: 350px;
   margin-top: 20px;
   margin-left: 20px;
+  // border: 1px solid #000;
+  text-align: left;
+  background: #17d7a0;
+  background: repeating-radial-gradient(
+    ellipse farthest-corner at bottom right,
+    #17d7a0 0%,
+    #cdf0ea 50%
+  );
+  background: -webkit-repeating-radial-gradient(
+    ellipse farthest-corner at bottom right,
+    #17d7a0 0%,
+    #cdf0ea 50%
+  );
+  background: -moz-repeating-radial-gradient(
+    ellipse farthest-corner at bottom right,
+    #17d7a0 0%,
+    #cdf0ea 50%
+  );
+
+  box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.75);
 }
 
 .profile {
   width: 100vw;
   height: 100vh;
-  display: grid;
-  grid-template-rows: 0.25fr 1fr;
-  grid-template-columns: repeat(4, 1fr);
+  // display: grid;
+  // grid-template-rows: 0.25fr 1fr;
+  // grid-template-columns: repeat(4, 1fr);
   height: 50vh;
-  // display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -32,7 +54,7 @@ body {
   grid-template-areas: 'image' 'text';
 
   border-radius: 18px;
-  background: rgb(169, 203, 157);
+  background: #14c38e;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
   font-family: 'Fascinate', cursive;
   text-align: center;
