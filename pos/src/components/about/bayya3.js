@@ -1,15 +1,21 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap';
+import recImg from '../../assets/receipts.jpg'
 import './bayya3.scss'
+
 
 
 export default function index() {
   return (
     <Container className='holder'>
-      <h2>WHO WE ARE</h2>
-      <Row  md={4} className="align-items-start gap-5 flex-row">
-        <Col className='col-md-auto'>
-          <p>
+    <h2>WHO WE ARE</h2>
+      <Row  xs={1} md={6} className="align-items-start gap-5 flex-row" >
+
+        <Col md={6} className="about-image flex-row" >
+            <Image src={recImg} alt="" />
+             </Col> 
+             <Col md={6} className="about flex-row"  xs lg="5">
+                 <p>
             Bayya3 is a point of sale, cloud-based solution, created to
             handle all of the store's financial operations and inventory
             tracking in an easy and intuitive way.
@@ -20,7 +26,7 @@ export default function index() {
             from any device. built with security in mind, which makes bayya3
             the optimal safe solution for running a business.
           </p>
-        </Col>
+          </Col> 
       </Row>
     </Container>
   )
