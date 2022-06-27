@@ -13,37 +13,37 @@ function Navbars(props) {
 
   return (
     <nav className='nav-bar'>
-      <ButtonGroup style={{ display: 'flex', alignItems: 'center' }}>
-        <Link className='nav-bar-button' to='/'>
-          Home
-        </Link>
+      {/* <ButtonGroup style={{ display: 'flex', alignItems: 'center' }}> */}
+      <Link className='nav-bar-button' to='/'>
+        Home
+      </Link>
 
-        <Link className='nav-bar-button' to='/about'>
-          About
-        </Link>
+      <Link className='nav-bar-button' to='/about'>
+        About
+      </Link>
 
-        <When condition={!loggedIn}>
+      <When condition={!loggedIn}>
+        <Link className='nav-bar-button' to='/signin'>
+          signin
+        </Link>
+      </When>
+      <When condition={loggedIn}>
+        <Popup />
+        <Button
+          className='nav-bar-button logout-btn'
+          variant='danger'
+          style={{ margin: '10px' }}
+          onClick={() => {
+            logout();
+            // window.location.reload(false);
+          }}
+        >
           <Link className='nav-bar-button' to='/signin'>
-            signin
+            sign out
           </Link>
-        </When>
-        <When condition={loggedIn}>
-          <Popup />
-          <Button
-            className='nav-bar-button logout-btn'
-            variant='danger'
-            style={{ margin: '10px' }}
-            onClick={() => {
-              logout();
-              // window.location.reload(false);
-            }}
-          >
-            <Link className='nav-bar-button' to='/signin'>
-              sign out
-            </Link>
-          </Button>
-        </When>
-      </ButtonGroup>
+        </Button>
+      </When>
+      {/* </ButtonGroup> */}
     </nav>
   );
 }

@@ -2,15 +2,19 @@
   display: block;
   margin: auto;
   padding: 1.2rem 1.8rem;
-  background-color: #17d7a0;
+  background-color: #47b5ff;
   border: none;
   cursor: pointer;
   font-weight: 600;
+  position: absolute;
+  top: 70%;
+  left: 44%;
+  z-index: 100;
 
   &:hover {
     padding: 1.4rem 2rem;
     transition-delay: 100ms;
-    background-color: #17d7a0;
+    background-color: #47b5ff;
     color: #000;
     font-weight: 600;
   }

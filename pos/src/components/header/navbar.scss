@@ -1,5 +1,6 @@
 .nav-bar {
-  width: 25rem;
+  //   width: 25rem;
+  padding: 10px;
 }
 
 .nav-bar-button {
@@ -9,10 +10,9 @@
   color: white;
   font-size: 1.2rem;
   font-weight: 500;
-}
-
-.nav-bar-button:hover {
-  color: #000;
+  &:hover {
+    color: #06283d;
+  }
 }
 
 .logout-btn {
