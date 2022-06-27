@@ -5,8 +5,10 @@ import cookie from 'react-cookies';
 const checkoutSlice = createSlice({
   name: 'checkout',
   initialState: {
-    items: JSON.parse(localStorage.getItem('checkout'))?.items || [],
-    total: JSON.parse(localStorage.getItem('checkout'))?.total || 0,
+    // items: JSON.parse(localStorage.getItem('checkout'))?.items || [],
+    // total: JSON.parse(localStorage.getItem('checkout'))?.total || 0,
+    items: [],
+    total: 0,
   },
   reducers: {
     addItemToCheckout: (state, action) => {
@@ -22,7 +24,7 @@ const checkoutSlice = createSlice({
       }
       state.total =
         state.total + action.payload.price * action.payload.quantity;
-      localStorage.setItem('checkout', JSON.stringify(state));
+      // localStorage.setItem('checkout', JSON.stringify(state));
     },
     removeFromCheckOut: (state, action) => {
       let newItem = state.items.find(
@@ -32,24 +34,23 @@ const checkoutSlice = createSlice({
         (item) => item.productID !== action.payload
       );
       state.total -= newItem.price * newItem.quantity;
-      localStorage.setItem('checkout', JSON.stringify(state));
+      // localStorage.setItem('checkout', JSON.stringify(state));
     },
     detuctQuantity: (state, action) => {
       let newItem = state.items.find(
         (item) => item.productID === action.payload
       );
       newItem.quantity--;
-      state.total -= newItem.price * newItem.quantity;
+      state.total -= newItem.price;
       if (newItem.quantity === 0) {
         state.items = state.items.filter((item) => item !== newItem);
-        state.total -= newItem.price;
       }
-      localStorage.setItem('checkout', JSON.stringify(state));
+      // localStorage.setItem('checkout', JSON.stringify(state));
     },
     clearCheckOut: (state, action) => {
       state.items = [];
       state.total = 0;
-      localStorage.clear('checkout');
+      // localStorage.clear('checkout');
     },
   },
 });

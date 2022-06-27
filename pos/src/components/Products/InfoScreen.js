@@ -5,8 +5,15 @@ import {
   detuctQuantity,
   removeFromCheckOut,
 } from '../../store/checkout-reducer';
+import { incrementProduct, returnAll } from '../../store/products';
 function InfoScreen(props) {
-  const { items, detuctQuantity, removeFromCheckOut } = props;
+  const {
+    items,
+    detuctQuantity,
+    removeFromCheckOut,
+    incrementProduct,
+    returnAll,
+  } = props;
   return (
     <div className='info-screen'>
       <Table striped bordered hover>
@@ -31,6 +38,7 @@ function InfoScreen(props) {
                 <Button
                   onClick={() => {
                     detuctQuantity(item.productID);
+                    incrementProduct(item);
                   }}
                 >
                   -
@@ -40,6 +48,7 @@ function InfoScreen(props) {
                 <Button
                   onClick={() => {
                     removeFromCheckOut(item.productID);
+                    returnAll(item);
                   }}
                 >
                   remove
@@ -55,5 +64,10 @@ function InfoScreen(props) {
 const mapStateToProps = (state) => ({
   items: state.checkout.items,
 });
-const mapDispatchToProps = { detuctQuantity, removeFromCheckOut };
+const mapDispatchToProps = {
+  detuctQuantity,
+  removeFromCheckOut,
+  incrementProduct,
+  returnAll,
+};
 export default connect(mapStateToProps, mapDispatchToProps)(InfoScreen);
