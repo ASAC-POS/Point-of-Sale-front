@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addNewProduct } from '../../store/products';
 
 function ProductsForm(props) {
+  console.log(props)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
