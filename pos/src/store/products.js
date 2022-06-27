@@ -25,6 +25,18 @@ const ProductsSlice = createSlice({
     clearProducts: (state, action) => {
       state.products = [];
     },
+    deductProduct: (state, action) => {
+      let curProduct = state.products.find(
+        (product) => product.id === action.payload.id
+      );
+      curProduct.quantity -= action.payload.quantity;
+    },
+    incrementProduct: (state, action) => {
+      let curProduct = state.products.find(
+        (product) => product.id === action.payload.id
+      );
+      curProduct.quantity += action.payload.quantity;
+    },
   },
 });
 
@@ -35,6 +47,8 @@ export const {
   clearProducts,
   editProducts,
   deleteProducts,
+  deductProduct,
+  incrementProduct,
 } = ProductsSlice.actions;
 
 export const getProductsFromAPI = (token) => async (dispatch, state) => {

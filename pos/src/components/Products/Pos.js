@@ -1,17 +1,17 @@
 import Card from 'react-bootstrap/Card';
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-modal';
 import InfoScreen from './InfoScreen';
 
 import { connect } from 'react-redux';
 import ReceiptsForm from '../Receipts/ReceiptForm';
-import { addNewReceiots } from '../../store/products';
 import { useEffect, useState } from 'react';
 import { addItemToCheckout } from '../../store/checkout-reducer';
+import { incrementProduct, deductProduct } from '../../store/products';
 function Pos(props) {
-  const { products, addItemToCheckout, checkout } = props;
-  const [quantity, setQuantity] = useState(0);
+  const { products, addItemToCheckout, checkout, deductProduct } = props;
+  const [quantity, setQuantity] = useState(1);
+  const [er, setEr] = useState(null);
   useEffect(() => {
     console.log(products);
     console.log(checkout);
@@ -35,18 +35,28 @@ function Pos(props) {
                 <Card.Text>{product.price}$</Card.Text>
                 <input
                   type='number'
+                  min={1}
+                  // value={1}
                   onChange={(e) => {
-                    setQuantity(e.target.value);
+                    setQuantity(parseInt(e.target.value));
                   }}
                 />
+                {er && product.quantity < quantity && <p>{er}</p>}
                 <Button
                   onClick={() => {
-                    addItemToCheckout({
-                      name: product.productName,
-                      quantity: quantity,
-                      productID: product.id,
-                      price: product.price,
-                    });
+                    if (quantity > product.quantity) {
+                      // setEr(
+                      //   'not enough items in stock, please change quantity'
+                      // );
+                    } else {
+                      // setEr(null);
+                      addItemToCheckout({
+                        name: product.productName,
+                        quantity: quantity,
+                        productID: product.id,
+                        price: product.price,
+                      });
+                    }
                   }}
                   variant='primary'
                 >
@@ -68,5 +78,5 @@ const mapStateToProps = (state) => ({
   products: state.products.products,
   checkout: state.checkout,
 });
-const mapDispatchToProps = { addItemToCheckout };
+const mapDispatchToProps = { addItemToCheckout, deductProduct };
 export default connect(mapStateToProps, mapDispatchToProps)(Pos);
