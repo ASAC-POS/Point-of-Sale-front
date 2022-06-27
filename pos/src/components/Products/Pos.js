@@ -36,18 +36,16 @@ function Pos(props) {
                 <input
                   type='number'
                   min={1}
-                  // value={1}
+                  placeholder='quantity'
                   onChange={(e) => {
                     setQuantity(parseInt(e.target.value));
                   }}
                 />
-                {er && product.quantity < quantity && <p>{er}</p>}
+                {er && product.quantity === 0 && <p>{er}</p>}
                 <Button
                   onClick={() => {
                     if (quantity > product.quantity) {
-                      // setEr(
-                      //   'not enough items in stock, please change quantity'
-                      // );
+                      setEr('out of stock');
                     } else {
                       // setEr(null);
                       addItemToCheckout({
@@ -56,6 +54,7 @@ function Pos(props) {
                         productID: product.id,
                         price: product.price,
                       });
+                      deductProduct({ id: product.id, quantity: quantity });
                     }
                   }}
                   variant='primary'
