@@ -1,10 +1,10 @@
 import { Modal, Button, Form } from 'react-bootstrap';
-import './ReceiptsForm.scss';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { addNewReceipts } from '../../store/receipts';
 import { clearCheckOut } from '../../store/checkout-reducer';
 import cookie from 'react-cookies';
+import './receiptForm.css'
 
 function ReceiptsForm(props) {
   const [show, setShow] = useState(false);
@@ -33,35 +33,37 @@ function ReceiptsForm(props) {
   };
 
   return (
-    <div>
+    <div >
       <Button variant='primary' onClick={handleShow}>
         checkout
       </Button>
-      <Modal show={show} onHide={handleClose} className='modal'>
+      <Modal show={show} onHide={handleClose} className='page' >
         <Modal.Header closeButton>
-          <Modal.Title>checkout</Modal.Title>
+          <Modal.Title>Checkout</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className='checkoutForm'>
             <Form onSubmit={(e) => handleSubmit(e)}>
-              <Form.Group>
-                <Form.Label>Visa</Form.Label>
-                <Form.Check
+              <Form.Group style={{display:"flex"}}>
+
+                <Form.Check 
                   type='radio'
                   placeholder='Visa'
                   name='PaymentMethod'
                   onChange={onChange}
                 />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Cash</Form.Label>
-                <Form.Check
+               <Form.Label >Visa</Form.Label>
+
+                <Form.Check style={{marginLeft:"80PX"}}
                   type='radio'
                   placeholder='Cash'
                   name='PaymentMethod'
                   onChange={onChange}
                 />
+                <Form.Label>Cash</Form.Label>
+
               </Form.Group>
+             
 
               <p>Total: {checkout.total}$</p>
               <Form.Group>
@@ -88,9 +90,13 @@ function ReceiptsForm(props) {
           </div>
         </Modal.Body>
       </Modal>
+     
+       
+       
     </div>
   );
 }
+
 
 const mapStateToProps = (state) => ({
   checkout: state.checkout,

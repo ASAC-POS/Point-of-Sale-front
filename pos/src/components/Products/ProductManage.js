@@ -11,9 +11,10 @@ import { connect } from 'react-redux';
 import Auth from '../../context/auth';
 
 function Product(props) {
-  console.log('hiiiiii', props.products);
+  console.log('hiiiiii', props);
   const { products } = props;
 
+  
   return (
     <>
       <>
