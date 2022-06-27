@@ -2,16 +2,16 @@ import { Carousel } from 'react-bootstrap';
 import img1 from '../../assets/slider-images/slider1.jpg';
 import img2 from '../../assets/slider-images/slider2.jpg';
 import img3 from '../../assets/slider-images/slider3.jpg';
+import './hero.scss';
 
 function Hero() {
   return (
     <div className='hero' style={{ marginBottom: '1rem' }}>
       <div className='slider'>
-        <Carousel fade interval={2000} variant='dark'>
+        <Carousel fade interval={2000}>
           <Carousel.Item>
             <img
-              style={{ objectFit: 'cover', maxHeight: '550px' }}
-              className='d-block w-100'
+              className='d-block w-100 slider-img'
               src={img1}
               alt='First slide'
             />
@@ -22,8 +22,7 @@ function Hero() {
           </Carousel.Item>
           <Carousel.Item>
             <img
-              style={{ objectFit: 'cover', maxHeight: '550px' }}
-              className='d-block w-100'
+              className='d-block w-100 slider-img'
               src={img3}
               alt='Second slide'
             />
@@ -34,8 +33,7 @@ function Hero() {
           </Carousel.Item>
           <Carousel.Item>
             <img
-              style={{ objectFit: 'cover', maxHeight: '550px' }}
-              className='d-block w-100'
+              className='d-block w-100 slider-img'
               src={img2}
               alt='Third slide'
             />

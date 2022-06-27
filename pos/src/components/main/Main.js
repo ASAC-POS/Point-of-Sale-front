@@ -5,6 +5,7 @@ import { useContext, useEffect } from 'react';
 import cookie from 'react-cookies';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Section from './Section';
 
 function Main(props) {
   const { loggedIn } = useContext(loginContext);
@@ -25,6 +26,7 @@ function Main(props) {
     <div>
       <Hero />
       <Register />
+      <Section />
     </div>
   );
 }

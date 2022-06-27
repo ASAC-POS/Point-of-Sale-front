@@ -5,36 +5,30 @@ import { getProductsFromAPI } from '../../store/products.js';
 import { When } from 'react-if';
 import { loginContext } from '../../context/context';
 import { useContext } from 'react';
+import './navbar.scss';
 
 function Navbars(props) {
   const { loggedIn, logout } = useContext(loginContext);
 
   return (
     <nav className='nav-bar'>
-      <ButtonGroup className='nav-bar-buttons'>
-        <Button
-          variant='outline-light'
-          style={{ backgroundColor: 'white', margin: '10px' }}
-        >
-          <Link to='/'>Home</Link>
-        </Button>
-        <Button
-          variant='outline-light'
-          style={{ backgroundColor: 'white', margin: '10px' }}
-        >
-          <Link to='/about'>About</Link>
-        </Button>
+      <ButtonGroup style={{ display: 'flex', alignItems: 'center' }}>
+        <Link className='nav-bar-button' to='/'>
+          Home
+        </Link>
+
+        <Link className='nav-bar-button' to='/about'>
+          About
+        </Link>
 
         <When condition={!loggedIn}>
-          <Button
-            variant='outline-light'
-            style={{ backgroundColor: 'white', margin: '10px' }}
-          >
-            <Link to='/signin'>signin</Link>
-          </Button>
+          <Link className='nav-bar-button' to='/signin'>
+            signin
+          </Link>
         </When>
         <When condition={loggedIn}>
           <Button
+            className='nav-bar-button logout-btn'
             variant='danger'
             style={{ margin: '10px' }}
             onClick={() => {
@@ -42,7 +36,9 @@ function Navbars(props) {
               // window.location.reload(false);
             }}
           >
-            <Link to='/signin'>sign out</Link>
+            <Link className='nav-bar-button' to='/signin'>
+              sign out
+            </Link>
           </Button>
         </When>
       </ButtonGroup>

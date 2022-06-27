@@ -1,0 +1,17 @@
+.register-btn {
+  display: block;
+  margin: auto;
+  padding: 1.2rem 1.8rem;
+  background-color: #17d7a0;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+
+  &:hover {
+    padding: 1.4rem 2rem;
+    transition-delay: 100ms;
+    background-color: #17d7a0;
+    color: #000;
+    font-weight: 600;
+  }
+}

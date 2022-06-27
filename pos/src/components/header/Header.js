@@ -17,7 +17,7 @@ function Header() {
             fontWeight: 'bold',
             fontSize: '70px',
             alignItems: 'flex-start',
-            fontFamily:"Lobster",
+            fontFamily: 'Lobster',
           }}
         >
           Bayya3

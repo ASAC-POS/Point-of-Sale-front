@@ -43,20 +43,19 @@ function Login(props) {
           {errorMsg}
         </p>
         <Form.Group className='row' controlId='formBasicEmail'>
-          <Form.Label>Username</Form.Label>
+          {/* <Form.Label>Username</Form.Label> */}
           <Form.Control
             type='text'
-            placeholder='Enter username'
+            placeholder='username'
             onChange={(e) => {
               setUsername(e.target.value);
             }}
             required
           />
-           
         </Form.Group>
 
         <Form.Group className='row' controlId='formBasicPassword'>
-          <Form.Label>Password</Form.Label>
+          {/* <Form.Label>Password</Form.Label> */}
           <Form.Control
             type='password'
             placeholder='Password'
