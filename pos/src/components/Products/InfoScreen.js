@@ -1,8 +1,12 @@
 import { connect } from 'react-redux';
 import { Button, Table } from 'react-bootstrap/';
 import './InfoScreen.scss';
+import {
+  detuctQuantity,
+  removeFromCheckOut,
+} from '../../store/checkout-reducer';
 function InfoScreen(props) {
-  const { items } = props;
+  const { items, detuctQuantity, removeFromCheckOut } = props;
   return (
     <div className='info-screen'>
       <Table striped bordered hover>
@@ -24,10 +28,22 @@ function InfoScreen(props) {
               <td>{item.quantity}</td>
               <td>{item.price}$</td>
               <td>
-                <Button>-</Button>
+                <Button
+                  onClick={() => {
+                    detuctQuantity(item.productID);
+                  }}
+                >
+                  -
+                </Button>
               </td>
               <td>
-                <Button>remove all</Button>
+                <Button
+                  onClick={() => {
+                    removeFromCheckOut(item.productID);
+                  }}
+                >
+                  remove
+                </Button>
               </td>
             </tr>
           ))}
@@ -39,4 +55,5 @@ function InfoScreen(props) {
 const mapStateToProps = (state) => ({
   items: state.checkout.items,
 });
-export default connect(mapStateToProps)(InfoScreen);
+const mapDispatchToProps = { detuctQuantity, removeFromCheckOut };
+export default connect(mapStateToProps, mapDispatchToProps)(InfoScreen);

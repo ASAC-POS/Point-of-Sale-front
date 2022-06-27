@@ -16,8 +16,11 @@ import Pos from './components/Products/Pos';
 import { useContext, useEffect } from 'react';
 import { loginContext } from './context/context';
 function App(props) {
+  const { getData } = useContext(loginContext);
   const { store } = props;
-
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div className='app'>
       <Header />

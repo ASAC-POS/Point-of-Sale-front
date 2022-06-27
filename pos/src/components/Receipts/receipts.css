@@ -6,9 +6,7 @@
   gap: 100px;
   position: relative;
   width: 2759px;
-  height: 2553px;
   border-color: white;
-
   border-radius: 50px;
 }
 .sTable{
@@ -19,7 +17,6 @@
   padding: 0px;
   position: absolute;
   width: 1006px;
-  height: 400px;
   left: 250px;
   top: 100px;
   background-color: #47B5FF;
