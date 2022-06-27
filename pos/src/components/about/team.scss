@@ -20,7 +20,7 @@ h1 {
 
   text-align: center;
   border-radius: 25px;
-  border: 1px solid rgba(0,0,0,0.04);
+  border: 2px solid rgba(0,0,0,0.04);
   padding: 0 0 10px;
 .card-text{
   font-size: 17px;
@@ -31,6 +31,10 @@ h1 {
   font-size: 17px;
   font-style: italic;
   font-weight: bold;
+}
+i {
+  margin-right:1.5px;
+  
 }
 
 }
