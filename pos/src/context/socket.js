@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from 'react';
 import { getPopupNotificationsFromAPI } from '../store/popups';
 import io from 'socket.io-client';
 import { connect } from 'react-redux';
-
+import cookie from 'react-cookies';
 export const SocketContext = createContext();
 
 function SocketProvider(props) {
@@ -11,14 +11,14 @@ function SocketProvider(props) {
   const [socket, setSocket] = useState(io.connect(host));
 
   useEffect(() => {
-    const newSocket = io.connect(host);
-    setSocket(newSocket);
-    return () => newSocket.close();
+    if (cookie.load('userData')) {
+      const newSocket = io.connect(host);
+      setSocket(newSocket);
+      return () => newSocket.close();
+    }
   }, [setSocket]);
-
   socket?.on('sending-notifications', () => {
     getPopupNotificationsFromAPI();
-    // socket.off();
   });
   const state = {
     socket,

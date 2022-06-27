@@ -34,7 +34,7 @@ function EmployeeForm(props) {
           <Modal.Title>Edit Product</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={(e) => handleSubmit(e)}>
+          <Form onSubmit={handleSubmit}>
             <Auth capability='edit'>
               <Form.Group>
                 <Form.Label>ProductName</Form.Label>

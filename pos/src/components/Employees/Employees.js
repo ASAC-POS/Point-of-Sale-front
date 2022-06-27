@@ -2,8 +2,9 @@ import { Table, Button } from 'react-bootstrap/';
 import EmployeeForm from './EmployeeForm';
 import EditForm from './EditForm';
 import { connect } from 'react-redux';
+import { removeUser } from '../../store/users';
 function Employees(props) {
-  const { signedInUsers } = props;
+  const { signedInUsers, removeUser } = props;
   if (props.employees.length > 0) {
     return (
       <div>
@@ -31,7 +32,16 @@ function Employees(props) {
                   {employee.role !== 'admin' && <EditForm id={employee.id} />}
                 </td>
                 <td>
-                  {employee.role !== 'admin' && <Button> remove </Button>}
+                  {employee.role !== 'admin' && (
+                    <Button
+                      onClick={() => {
+                        removeUser(employee.id);
+                      }}
+                    >
+                      {' '}
+                      remove{' '}
+                    </Button>
+                  )}
                 </td>
               </tr>
             ))}
@@ -50,4 +60,5 @@ const mapStateToProps = (state) => {
     signedInUsers: state.popup.signedIn,
   };
 };
-export default connect(mapStateToProps)(Employees);
+const mapDispatchToProps = { removeUser };
+export default connect(mapStateToProps, mapDispatchToProps)(Employees);

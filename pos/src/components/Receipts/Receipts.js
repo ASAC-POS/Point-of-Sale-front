@@ -1,76 +1,10 @@
 import { Table } from 'react-bootstrap/';
 import './receipts.scss';
-const receipts = [
-  {
-    id: 1,
-    employeeName: 'John Doe',
-    total: '$0.00',
-    method: 'cash',
-  },
-  {
-    id: 2,
-    employeeName: 'Jane Doe',
-    total: '$0.00',
-    method: 'cash',
-  },
-  {
-    id: 3,
-    employeeName: 'Jack Doe',
-    total: '$0.00',
-    method: 'cash',
-  },
-  {
-    id: 4,
-    employeeName: 'John Doe',
-    total: '$0.00',
-    method: 'cash',
-  },
-  {
-    id: 5,
-    employeeName: 'Jane Doe',
-    total: '$0.00',
-    method: 'cash',
-  },
-  {
-    id: 6,
-    employeeName: 'Jack Doe',
-    total: '$0.00',
-    method: 'cash',
-  },
-  {
-    id: 7,
-    employeeName: 'John Doe',
-    total: '$0.00',
-    method: 'cash',
-  },
-  {
-    id: 8,
-    employeeName: 'Jane Doe',
-    total: '$0.00',
-    method: 'cash',
-  },
-  {
-    id: 9,
-    employeeName: 'Jack Doe',
-    total: '$0.00',
-    method: 'cash',
-  },
-  {
-    id: 10,
-    employeeName: 'John Doe',
-    total: '$0.00',
-    method: 'cash',
-  },
-  {
-    id: 11,
-    employeeName: 'Jane Doe',
-    total: '$0.00',
-    method: 'cash',
-  },
-];
-
+import { connect } from 'react-redux';
 //table of receipts
 function Receipts(props) {
+  const { receipts, employees } = props;
+  console.log(employees);
   return (
     <div className='receipts-table'>
       <Table striped bordered hover>
@@ -86,9 +20,11 @@ function Receipts(props) {
           {receipts.map((receipt) => (
             <tr key={receipt.id}>
               <td>{receipt.id}</td>
-              <td>{receipt.employeeName}</td>
+              <td>
+                {employees.find((user) => user.id === receipt.userID)?.username}
+              </td>
               <td>{receipt.total}</td>
-              <td>{receipt.method}</td>
+              <td>{receipt.PaymentMethod}</td>
             </tr>
           ))}
         </tbody>
@@ -96,4 +32,8 @@ function Receipts(props) {
     </div>
   );
 }
-export default Receipts;
+const mapStateToProps = (state) => ({
+  receipts: state.receipts.receipts,
+  employees: state.users.users,
+});
+export default connect(mapStateToProps)(Receipts);
