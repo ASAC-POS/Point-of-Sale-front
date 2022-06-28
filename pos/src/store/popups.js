@@ -14,8 +14,8 @@ const PopupSlice = createSlice({
   },
   reducers: {
     getNotifications: (state, action) => {
-      state.message = action.payload.popup;
-      state.signedIn = action.payload.signinUsers;
+      state.message = action.payload?.popup;
+      state.signedIn = action.payload?.signinUsers;
     },
     clearPopUps: (state, action) => {
       state.message = null;
