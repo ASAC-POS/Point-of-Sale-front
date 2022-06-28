@@ -8,9 +8,11 @@ import { SocketContext } from '../../context/socket';
 import WhiteLogo from '../../assets/Bayya3-removebg-preview.png';
 import { FcNext } from 'react-icons/fc';
 import { BiExit } from 'react-icons/bi';
+import { loginContext } from '../../context/context';
 
 function Profile(props) {
   const { socket } = useContext(SocketContext);
+  const { logout } = useContext(loginContext);
   const navigate = useNavigate();
   const { store } = props;
 
@@ -20,26 +22,12 @@ function Profile(props) {
 
   return (
     <>
-      {/*
-      <Card id='details'>
-        {/* <Card.Title
-          style={{ fontWeight: 'bold', alignSelf: 'center', marginTop: '20px' }}
-        >
-          USER INFORMATION
-        </Card.Title> 
-        <Card.Text>Store Name: {props.store?.storename}</Card.Text>
-        <Card.Text>User Name: {cookie.load('userData')?.username}</Card.Text>
-        <Card.Text>User Role: {cookie.load('userData')?.role}</Card.Text>
-      </Card>
-  */}
       <div className='sidebar'>
         <div className='logo'>
           <img id='logo-img' src={WhiteLogo} alt='logo'></img>
           <h4 id='h44'> Bayya3</h4>
         </div>
         <div className='services'>
-          {/* this for products*/}
-
           <Auth capability='add'>
             <div
               id='box1'
@@ -89,8 +77,16 @@ function Profile(props) {
         </div>
         <div id='signout'>
           <div id='box6'>
-            <BiExit id='icon' />
-            <div id='textt'> Logout</div>
+            <div
+              id='textt'
+              onClick={() => {
+                logout();
+                // window.location.reload(false);
+              }}
+            >
+              <BiExit id='icon' />
+              Logout
+            </div>
           </div>
         </div>
       </div>
