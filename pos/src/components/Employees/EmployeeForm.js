@@ -19,9 +19,9 @@ function EmployeeForm(props) {
   };
   return (
     <div>
-      <Button variant='primary' onClick={handleShow}>
+      <span style={{ cursor: 'pointer' }} onClick={handleShow}>
         Add Employee
-      </Button>
+      </span>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Employee</Modal.Title>
