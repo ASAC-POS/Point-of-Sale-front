@@ -22,7 +22,13 @@ function Main(props) {
   }, [getData, loggedIn]);
   useEffect(() => {
     if (loggedIn && store?.storename) {
-      navigate(`${store?.storename}/${cookie.load('userData')?.id}`);
+      if (cookie.load('userData')?.role === 'admin') {
+        navigate(`${store?.storename}/products`);
+      } else if (cookie.load('userData')?.role === 'cashier') {
+        navigate(`${store?.storename}/pos`);
+      } else if (cookie.load('userData')?.role === 'inventory') {
+        navigate(`${store?.storename}/products`);
+      }
     }
   }, [loggedIn, navigate, store]);
   return (

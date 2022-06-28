@@ -9,7 +9,7 @@ import WhiteLogo from '../../assets/Bayya3-removebg-preview.png';
 import { FcNext } from 'react-icons/fc';
 import { BiExit } from 'react-icons/bi';
 import { loginContext } from '../../context/context';
-
+import cookie from 'react-cookies';
 function Profile(props) {
   const { socket } = useContext(SocketContext);
   const { logout } = useContext(loginContext);
@@ -22,7 +22,16 @@ function Profile(props) {
 
   return (
     <div className='sidebar'>
-      <div className='logo'>
+      <div
+        onClick={() => {
+          navigate(
+            `/${encodeURIComponent(store?.storename)}/${
+              cookie.load('userData')?.id
+            }`
+          );
+        }}
+        className='logo'
+      >
         <img id='logo-img' src={WhiteLogo} alt='logo'></img>
         <h4 id='h44'> Bayya3</h4>
       </div>
