@@ -1,21 +1,21 @@
 .nav-bar {
   //   width: 25rem;
   padding: 10px;
+  z-index: 100;
 }
 
 .nav-bar-button {
+  margin-right: 2rem;
   outline: none;
   background: none !important;
-  margin: 10px;
-  color: white;
+  color: #06283d;
   font-size: 1.2rem;
   font-weight: 500;
-  &:hover {
-    color: #06283d;
-  }
+  z-index: 100;
 }
 
 .logout-btn {
   background-color: red !important;
   border-radius: 7px !important;
+  z-index: 100;
 }

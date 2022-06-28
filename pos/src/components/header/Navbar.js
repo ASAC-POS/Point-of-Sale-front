@@ -18,9 +18,9 @@ function Navbars(props) {
         Home
       </Link>
 
-      <Link className='nav-bar-button' to='/about'>
+      {/* <Link className='nav-bar-button' to='/about'>
         About
-      </Link>
+      </Link> */}
 
       <When condition={!loggedIn}>
         <Link className='nav-bar-button' to='/signin'>

@@ -77,7 +77,7 @@ function ReceiptsForm(props) {
                       }
                       onChange={onChange}
                     />
-                  </Form.Group>
+                  </Form.Group> 
                 )}
               </Form.Group>
 

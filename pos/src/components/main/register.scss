@@ -1,3 +1,7 @@
+.register-modal {
+  display: flex;
+  justify-content: center;
+}
 .register-btn {
   display: block;
   margin: auto;
@@ -8,7 +12,7 @@
   font-weight: 600;
   position: absolute;
   top: 70%;
-  left: 44%;
+  // left: 44%;
   z-index: 100;
 
   &:hover {

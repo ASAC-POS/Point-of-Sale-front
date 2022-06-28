@@ -4,6 +4,7 @@ import { useState, useContext, useEffect } from 'react';
 import { loginContext } from '../../context/context.js';
 import { getProductsFromAPI } from '../../store/products';
 import { connect } from 'react-redux';
+import Header from '../header/Header';
 
 import { useNavigate } from 'react-router-dom';
 import cookie from 'react-cookies';
@@ -107,6 +108,7 @@ function Login(props) {
       </div>
       <div className='right-section'></div>
       <img src={illustration} alt='image' className='illustration' />
+      <Header />
     </div>
   );
 }
