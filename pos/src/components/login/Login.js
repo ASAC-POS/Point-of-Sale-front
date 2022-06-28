@@ -28,7 +28,7 @@ function Login(props) {
   const FormHeader = (props) => <h2 id='headerTitle'>{props.title}</h2>;
   useEffect(() => {
     if (loggedIn && store?.storename) {
-      navigate(`/${store?.storename}/${cookie.load('userData')?.id}`);
+      navigate(`/`);
     }
   }, [loggedIn, navigate, store]);
   return (

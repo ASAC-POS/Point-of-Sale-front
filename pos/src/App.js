@@ -71,12 +71,12 @@ function App(props) {
             </Auth>
           }
         />
-        <Route
+        {/* <Route
           path={`/${encodeURIComponent(store?.storename)}/${
             cookie.load('userData')?.id
           }`}
           element={<Profile />}
-        />
+        /> */}
         <Route path='*' element={<div>404</div>} />
       </Routes>
     </div>
