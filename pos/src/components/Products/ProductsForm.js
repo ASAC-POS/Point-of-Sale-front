@@ -2,9 +2,10 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { addNewProduct } from '../../store/products';
+import Card from 'react-bootstrap/Card';
 
 function ProductsForm(props) {
-  console.log(props)
+  console.log(props);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -24,9 +25,7 @@ function ProductsForm(props) {
 
   return (
     <div>
-      <Button variant='primary' onClick={handleShow}>
-        Add Product
-      </Button>
+      <Card onClick={handleShow}>Add Product</Card>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Product</Modal.Title>

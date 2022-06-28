@@ -21,76 +21,74 @@ function Profile(props) {
   }, [socket]);
 
   return (
-    <>
-      <div className='sidebar'>
-        <div className='logo'>
-          <img id='logo-img' src={WhiteLogo} alt='logo'></img>
-          <h4 id='h44'> Bayya3</h4>
-        </div>
-        <div className='services'>
-          <Auth capability='add'>
-            <div
-              id='box1'
-              onClick={() => {
-                navigate(`/${encodeURIComponent(store?.storename)}/products`);
-              }}
-            >
-              <FcNext id='icon' />
-              <div id='p1'> Products</div>
-            </div>
-          </Auth>
-          {/* this for Employees*/}
-          <Auth capability='delete'>
-            <div
-              id='box2'
-              onClick={() => {
-                navigate(`/${encodeURIComponent(store?.storename)}/employees`);
-              }}
-            >
-              <FcNext id='icon' />
-              <div id='p2'> Employees</div>
-            </div>
-            {/* this for Receipts*/}
+    <div className='sidebar'>
+      <div className='logo'>
+        <img id='logo-img' src={WhiteLogo} alt='logo'></img>
+        <h4 id='h44'> Bayya3</h4>
+      </div>
+      <div className='services'>
+        <Auth capability='add'>
+          <div
+            id='box1'
+            onClick={() => {
+              navigate(`/${encodeURIComponent(store?.storename)}/products`);
+            }}
+          >
+            <FcNext id='icon' />
+            <div id='p1'> Products</div>
+          </div>
+        </Auth>
+        {/* this for Employees*/}
+        <Auth capability='delete'>
+          <div
+            id='box2'
+            onClick={() => {
+              navigate(`/${encodeURIComponent(store?.storename)}/employees`);
+            }}
+          >
+            <FcNext id='icon' />
+            <div id='p2'> Employees</div>
+          </div>
+          {/* this for Receipts*/}
 
-            <div
-              id='box3'
-              onClick={() => {
-                navigate(`/${encodeURIComponent(store?.storename)}/receipts`);
-              }}
-            >
-              <FcNext id='icon' />
-              <div id='p3'> Receipts</div>
-            </div>
-          </Auth>
-          {/* this for POS*/}
-          <Auth capability='sell'>
-            <div
-              id='box4'
-              onClick={() => {
-                navigate(`/${encodeURIComponent(store?.storename)}/pos`);
-              }}
-            >
-              <FcNext id='icon' />
-              <div id='p4'> POS</div>
-            </div>
-          </Auth>
-        </div>
-        <div id='signout'>
-          <div id='box6'>
-            <div
-              id='textt'
-              onClick={() => {
-                logout();
-                // window.location.reload(false);
-              }}
-            >
-              <BiExit id='icon' />
-              Logout
-            </div>
+          <div
+            id='box3'
+            onClick={() => {
+              navigate(`/${encodeURIComponent(store?.storename)}/receipts`);
+            }}
+          >
+            <FcNext id='icon' />
+            <div id='p3'> Receipts</div>
+          </div>
+        </Auth>
+        {/* this for POS*/}
+        <Auth capability='sell'>
+          <div
+            id='box4'
+            onClick={() => {
+              navigate(`/${encodeURIComponent(store?.storename)}/pos`);
+            }}
+          >
+            <FcNext id='icon' />
+            <div id='p4'> POS</div>
+          </div>
+        </Auth>
+      </div>
+      <div id='signout'>
+        <div id='box6'>
+          <div
+            id='textt'
+            onClick={() => {
+              logout();
+              // window.location.reload(false);
+            }}
+          >
+            <BiExit id='icon' />
+            Logout
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

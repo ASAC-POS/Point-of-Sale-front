@@ -1,11 +1,8 @@
 
 .sidebar{
-position: absolute;
 width: 240px;
-height: 100%;
-left: 0px;
-top: 0px;  
-background:#06283D;
+height: 100vh;
+background:#06283D !important;
 }
 .logo{
 display: flex;

@@ -27,9 +27,8 @@ function Main(props) {
   }, [loggedIn, navigate, store]);
   return (
     <div className='main'>
-      <Header />
-
       <div className='main-hero'>
+        <Header />
         <Hero />
         <Register />
       </div>

@@ -1,0 +1,84 @@
+// Vars
+$bg-image: '../../assets/banner-shopping.png';
+$bg-color: #3cadce;
+$alt-color: #255571;
+
+$fonts: 'Helvetica Neue', Helvetica, sans-serif;
+$font-color: white;
+
+@mixin hpd-basic {
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-position: right;
+  position: relative;
+  right: 0;
+}
+
+@mixin hpd-basic-big {
+  text-align: left;
+  padding-right: 150px;
+}
+
+.hpd {
+  display: block;
+  padding: 14px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  background: $bg-color;
+  // background-image: url($bg-image);
+  // background-size: 40% auto;
+  font-family: $fonts;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+}
+
+.hpd .hpd-title {
+  margin: 0;
+  font-size: 21px;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.hpd .hpd-desc {
+  margin: 10px 0;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.45;
+}
+
+.hpd-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 2px;
+  background: $alt-color;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $font-color;
+
+  transition: background 0.5s ease;
+
+  .hpd:hover & {
+    background: #2bde73; // Kickstarter green
+  }
+}
+
+/*
+ * Basic Ad
+ */
+
+.hpd-basic {
+  @include hpd-basic;
+}
+
+@media (min-width: 600px) {
+  .hpd-basic {
+    @include hpd-basic-big;
+  }
+
+  .hpd-basic hpd-btn {
+    background: transparent;
+  }
+}
