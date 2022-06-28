@@ -24,9 +24,9 @@ export default function index() {
             <h5 className="card-title">Jalal Hasan</h5>
             <p className="card-text">Software Developer</p>
             <div className="card-social-icon d-flex gap-3 justify-content-center">
-              <a href=""><i className="fa-brands fa-facebook-f"><BsFacebook /></i></a>
+              <a href="https://www.facebook.com/jalal.sahoory"><i className="fa-brands fa-facebook-f"><BsFacebook /></i></a>
               <a href="https://github.com/JalalHasan-22"><i className="fa-brands fa-github"><BsGithub /></i></a>
-              <a href=""><i className="fa-brands fa-linkedin-in"><BsLinkedin /></i></a>
+              <a href="https://www.linkedin.com/in/jalal-hasan-160bba211"><i className="fa-brands fa-linkedin-in"><BsLinkedin /></i></a>
             </div>
           </div>
         </Col>
@@ -37,9 +37,9 @@ export default function index() {
             <h5 className="card-title">Leen Ahmad</h5>
             <p className="card-text">Software Developer</p>
             <div className="card-social-icon d-flex gap-3 justify-content-center">
-              <a href=""><i className="fa-brands fa-facebook-f"><BsFacebook /></i></a>
+              <a href="https://www.facebook.com/leen.karaja.3"><i className="fa-brands fa-facebook-f"><BsFacebook /></i></a>
               <a href="https://github.com/leenahmad"><i className="fa-brands fa-github"><BsGithub /></i></a>
-              <a href=""><i className="fa-brands fa-linkedin-in"><BsLinkedin /></i></a>
+              <a href="https://www.linkedin.com/in/leen-karaja"><i className="fa-brands fa-linkedin-in"><BsLinkedin /></i></a>
             </div>
           </div>
         </Col>
@@ -78,7 +78,7 @@ export default function index() {
             <div className="card-social-icon d-flex gap-3 justify-content-center">
               <a href="https://www.facebook.com/profile.php?id=100010016567120 "><i className="fa-brands fa-facebook-f"><BsFacebook /></i></a>
               <a href="https://github.com/neveenaburomman"><i className="fa-brands fa-github"><BsGithub /></i></a>
-              <a href="www.linkedin.com/in/neveenaburomman-9a23851aa"><i className="fa-brands fa-linkedin-in"><BsLinkedin /></i></a>
+              <a href="http://www.linkedin.com/in/neveenaburomman-9a23851aa"><i className="fa-brands fa-linkedin-in"><BsLinkedin /></i></a>
             </div>
           </div>
         </Col>
