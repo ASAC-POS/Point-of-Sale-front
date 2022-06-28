@@ -1,54 +1,60 @@
-import { Table, Button } from 'react-bootstrap/';
+import { Table } from 'react-bootstrap/';
 import EmployeeForm from './EmployeeForm';
 import EditForm from './EditForm';
 import { connect } from 'react-redux';
 import { removeUser } from '../../store/users';
+import { BsFillPersonXFill } from "react-icons/bs";
+import './Employee.css'
+
 function Employees(props) {
   const { signedInUsers, removeUser } = props;
   if (props.employees.length > 0) {
     return (
-      <div>
-        <Table striped bordered hover>
-          <thead>
+      <>
+      <div> <EmployeeForm /></div>
+      <div className='employee-table'>
+       
+        <Table striped bordered hover className="empTable">
+          <thead classsName="empHeader">
             <tr>
-              <th>#</th>
-              <th>UserName</th>
-              <th>Position</th>
-              <th>Status</th>
-              <th></th>
-              <th></th>
+              <th id="emphd1">#</th>
+              <th id="emphd2">UserName</th>
+              <th id="emphd3">Position</th>
+              <th id="emphd4">Status</th>
+              <th id="emphd4"></th>
             </tr>
           </thead>
           <tbody>
             {props.employees.map((employee) => (
-              <tr key={employee.id}>
-                <td>{employee.id}</td>
-                <td>{employee.username}</td>
-                <td>{employee.role}</td>
-                <td>
+              <tr key={employee.id} className="empRow">
+                <td id="empRow1">{employee.id}</td>
+                <td id="empRow2">{employee.username}</td>
+                <td id="empRow3">{employee.role}</td>
+                <td id="empRow4">
                   {signedInUsers.includes(employee.username) ? 'on' : 'off'}
                 </td>
-                <td>
-                  {employee.role !== 'admin' && <EditForm id={employee.id} />}
-                </td>
-                <td>
-                  {employee.role !== 'admin' && (
-                    <Button
-                      onClick={() => {
-                        removeUser(employee.id);
-                      }}
-                    >
-                      {' '}
-                      remove{' '}
-                    </Button>
-                  )}
+                <td id="empRow5">
+                  <div className='icon-div'>
+                    {employee.role !== 'admin' && <EditForm id={employee.id} />}
+
+                    {employee.role !== 'admin' && (
+                      <i
+                        onClick={() => {
+                          removeUser(employee.id);
+                        }}
+                      >
+                        <BsFillPersonXFill />
+                      </i>
+                    )}
+                    </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </Table>
-        <EmployeeForm />
+
       </div>
+      </>
     );
   } else {
     return <div>Loading...</div>;
