@@ -1,22 +1,22 @@
 .popup-box {
-  width: 20rem;
+  width: 25rem;
   height: 5rem;
   background: #fff;
   font-size: 1.2rem;
   font-weight: bold;
   border: 2px solid #d3d3d3;
   border-radius: 20px;
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  grid-column-start: 4;
   justify-self: right;
-  border-right: none;
-  border-right-width: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  position: relative;
-  visibility: hidden;
+  position: absolute;
+  top: 78px;
+  right: -25rem;
+  box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.75);
 }
 
 .close-notification-box {
@@ -27,31 +27,58 @@
   cursor: pointer;
 }
 
-@keyframes slide-box {
+@keyframes slide-box-close {
   0% {
-    transform: translateX(20rem);
+    transform: translateX(-25rem);
   }
   25% {
-    transform: translateX(15rem);
+    transform: translateX(-20rem);
   }
   50% {
-    transform: translateX(10rem);
+    transform: translateX(-15rem);
   }
   75% {
-    transform: translateX(5rem);
+    transform: translateX(-10rem);
   }
   100% {
     transform: translateX(0);
   }
 }
 
-.hidden {
-  display: none;
+@keyframes slide-box-open {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10rem);
+  }
+  50% {
+    transform: translateX(-15rem);
+  }
+  75% {
+    transform: translateX(-20rem);
+  }
+  100% {
+    transform: translateX(-25rem);
+  }
 }
 
-.slide {
-  visibility: visible;
-  animation-name: slide-box;
+.hidden {
+  display: none;
+  // transform: translateX(20rem);
+  fill: #fff;
+}
+
+.slide-open {
+  animation-name: slide-box-open;
   animation-duration: 500ms;
   animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.slide-close {
+  animation-name: slide-box-close;
+  animation-duration: 500ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }

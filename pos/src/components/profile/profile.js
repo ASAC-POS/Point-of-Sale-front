@@ -23,24 +23,19 @@ function Profile(props) {
   return (
     <>
       <Card id='details'>
-        <Card.Title
+        {/* <Card.Title
           style={{ fontWeight: 'bold', alignSelf: 'center', marginTop: '20px' }}
         >
           USER INFORMATION
-        </Card.Title>
-        <Card.Text style={{ marginLeft: '20px' }}>
-          Store Name: {props.store?.storename}
-        </Card.Text>
-        <Card.Text style={{ marginLeft: '20px' }}>
-          User Name: {cookie.load('userData')?.username}
-        </Card.Text>
-        <Card.Text style={{ marginLeft: '20px' }}>
-          User Role: {cookie.load('userData')?.role}
-        </Card.Text>
+        </Card.Title> */}
+        <Card.Text>Store Name: {props.store?.storename}</Card.Text>
+        <Card.Text>User Name: {cookie.load('userData')?.username}</Card.Text>
+        <Card.Text>User Role: {cookie.load('userData')?.role}</Card.Text>
       </Card>
 
       <div className='profile'>
-        <Popup />
+        {/* <Popup /> */}
+
         <Auth capability='add'>
           <div
             className='card1'
