@@ -1,0 +1,33 @@
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+
+  .pos-card {
+    width: 100%;
+    background: #dff6ff;
+    color: #000;
+    text-align: center;
+    margin-bottom: 10px;
+    align-self: baseline;
+
+    .card-body p {
+      padding: 0;
+    }
+
+    .card-body input {
+      margin-bottom: 10px;
+      max-width: 100%;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      margin: auto;
+    }
+  }
+}
