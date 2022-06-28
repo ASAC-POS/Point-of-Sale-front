@@ -27,7 +27,7 @@ function Login(props) {
 
   const FormHeader = (props) => <h2 id='headerTitle'>{props.title}</h2>;
   useEffect(() => {
-    if (loggedIn && store) {
+    if (loggedIn && store?.storename) {
       navigate(`/${store?.storename}/${cookie.load('userData')?.id}`);
     }
   }, [loggedIn, navigate, store]);
@@ -37,6 +37,7 @@ function Login(props) {
         <div className='wrapper'>
           <FormHeader title='Sign in' />
           <Form
+            className='sign-in-form'
             onSubmit={(e) => {
               e.preventDefault();
               console.log('clicked');
@@ -56,7 +57,7 @@ function Login(props) {
               {errorMsg}
             </p>
             <Form.Group className='row' controlId='formBasicEmail'>
-              <Form.Label>Username</Form.Label>
+              {/* <Form.Label>Username</Form.Label> */}
               <Form.Control
                 type='text'
                 placeholder='username'
@@ -68,19 +69,20 @@ function Login(props) {
             </Form.Group>
 
             <Form.Group className='row' controlId='formBasicPassword'>
-              <Form.Label>Password</Form.Label>
+              {/* <Form.Label>Password</Form.Label> */}
               <Form.Control
                 type='password'
                 placeholder='Password'
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
+                className='input'
                 required
               />
             </Form.Group>
             <div className='row'>
-              <a className='password-link' href='#'>
-                Forgot your password?
+              <a className='new-account-link' href='/'>
+                create a new account
               </a>
             </div>
             <div id='button' className='row'>

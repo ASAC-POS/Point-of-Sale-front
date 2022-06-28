@@ -69,6 +69,7 @@ flex-grow: 0;
     order: 0;
     flex-grow: 0;
     color:#DFF6FF;
+    cursor:pointer;
 
 
 
@@ -87,6 +88,8 @@ flex-grow: 0;
     align-self: stretch;
     flex-grow: 0;
     color:#DFF6FF;
+    cursor:pointer;
+
 }
 #box3{
 display: flex;
@@ -102,6 +105,8 @@ order: 1;
 align-self: stretch;
 flex-grow: 0;
 color:#DFF6FF;
+cursor:pointer;
+
 
 }
 #box4{
@@ -117,6 +122,8 @@ color:#DFF6FF;
     order: 3;
     align-self: stretch;
     flex-grow: 0;
+    cursor:pointer;
+
    
 
 }
@@ -209,6 +216,7 @@ color:#DFF6FF;
     flex: none;
     order: 1;
     flex-grow: 0;
+    cursor:pointer;
 }
 #box6{
     display: flex;

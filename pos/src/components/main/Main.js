@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import About from '../about/About';
 import Header from '../header/Header';
+import Footer from '../footer/Footer';
 import './main.scss';
 function Main(props) {
   const { loggedIn } = useContext(loginContext);
@@ -20,7 +21,7 @@ function Main(props) {
     }
   }, [getData, loggedIn]);
   useEffect(() => {
-    if (loggedIn && store) {
+    if (loggedIn && store?.storename) {
       navigate(`${store?.storename}/${cookie.load('userData')?.id}`);
     }
   }, [loggedIn, navigate, store]);
@@ -33,6 +34,7 @@ function Main(props) {
         <Register />
       </div>
       <About />
+      <Footer />
     </div>
   );
 }
