@@ -14,7 +14,7 @@ function RegisterForm(props) {
   }
   useEffect(() => {}, [userInfo]);
   return (
-    <div>
+    <div className='register-form'>
       <Form onSubmit={handleSubmit}>
         <Form.Group className='mb-3'>
           <Form.Label>Store Name</Form.Label>

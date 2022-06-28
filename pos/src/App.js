@@ -23,7 +23,7 @@ function App(props) {
   }, []);
   return (
     <div className='app'>
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route
           exact
