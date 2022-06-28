@@ -33,7 +33,13 @@ const ProductsSlice = createSlice({
     },
     incrementProduct: (state, action) => {
       let curProduct = state.products.find(
-        (product) => product.id === action.payload.id
+        (product) => product.id === action.payload.productID
+      );
+      curProduct.quantity++;
+    },
+    returnAll: (state, action) => {
+      let curProduct = state.products.find(
+        (product) => product.id === action.payload.productID
       );
       curProduct.quantity += action.payload.quantity;
     },
@@ -49,6 +55,7 @@ export const {
   deleteProducts,
   deductProduct,
   incrementProduct,
+  returnAll,
 } = ProductsSlice.actions;
 
 export const getProductsFromAPI = (token) => async (dispatch, state) => {

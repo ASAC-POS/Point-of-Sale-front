@@ -18,7 +18,7 @@ function Header() {
         <h1
           style={{
             fontWeight: 'bold',
-            fontSize: '70px',
+            fontSize: '90px',
             alignItems: 'flex-start',
             fontFamily: 'Lobster',
           }}
