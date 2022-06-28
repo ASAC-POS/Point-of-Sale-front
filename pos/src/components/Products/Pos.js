@@ -26,6 +26,7 @@ function Pos(props) {
         justifyContent: 'space-evenly',
         width: '100vw',
         height: '100%',
+        paddingTop: '2rem',
       }}
     >
       <div className='cards-container' style={{ width: '50%' }}>
