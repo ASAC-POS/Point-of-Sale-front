@@ -6,6 +6,8 @@ import {
   removeFromCheckOut,
 } from '../../store/checkout-reducer';
 import { incrementProduct, returnAll } from '../../store/products';
+import { BsTrash } from 'react-icons/bs';
+
 function InfoScreen(props) {
   const {
     items,
@@ -46,12 +48,13 @@ function InfoScreen(props) {
               </td>
               <td>
                 <Button
+                  variant='danger'
                   onClick={() => {
                     removeFromCheckOut(item.productID);
                     returnAll(item);
                   }}
                 >
-                  remove
+                  <BsTrash />
                 </Button>
               </td>
             </tr>

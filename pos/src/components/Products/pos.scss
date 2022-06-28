@@ -1,0 +1,28 @@
+.cards-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .pos-card {
+    width: 33%;
+    background: #47b5ff;
+    color: #000;
+    text-align: center;
+    margin-bottom: 10px;
+
+    .card-body p {
+      padding: 0;
+    }
+
+    .card-body input {
+      margin-bottom: 10px;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      margin: auto;
+    }
+  }
+}

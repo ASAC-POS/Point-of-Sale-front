@@ -8,6 +8,9 @@ import ReceiptsForm from '../Receipts/ReceiptForm';
 import { useEffect, useState } from 'react';
 import { addItemToCheckout } from '../../store/checkout-reducer';
 import { incrementProduct, deductProduct } from '../../store/products';
+import { AiOutlinePlus } from 'react-icons/ai';
+import './pos.scss';
+
 function Pos(props) {
   const { products, addItemToCheckout, checkout, deductProduct } = props;
   const [quantity, setQuantity] = useState(1);
@@ -25,13 +28,13 @@ function Pos(props) {
         height: '100%',
       }}
     >
-      <div style={{ width: '50%' }}>
+      <div className='cards-container' style={{ width: '50%' }}>
         {products.map((product) => {
           return (
-            <Card key={product.id} style={{ width: '18rem', height: '250px' }}>
+            <Card key={product.id} className='pos-card'>
               <Card.Body>
                 <Card.Title>{product.productName}</Card.Title>
-                <Card.Text>{product.description}</Card.Text>
+                {/* <Card.Text>{product.description}</Card.Text> */}
                 <Card.Text>{product.price}$</Card.Text>
                 <input
                   type='number'
@@ -59,7 +62,8 @@ function Pos(props) {
                   }}
                   variant='primary'
                 >
-                  Add{' '}
+                  {/* Add{' '} */}
+                  <AiOutlinePlus />
                 </Button>
               </Card.Body>
             </Card>
