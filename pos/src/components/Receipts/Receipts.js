@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap/';
 import './receipts.css';
 import { AiOutlineUser } from 'react-icons/ai';
+import UserInfo from '../profile/UserInfo/userInfo'
 
 function Receipts(props) {
   const { receipts, employees } = props;
@@ -11,6 +12,8 @@ function Receipts(props) {
       <div class='hpd hpd-basic'>
         <h4 class='hpd-title'>Receipts</h4>
         <p class='hpd-desc'>keep track on your sales</p>
+        <UserInfo/>
+
       </div>
       <div className='receipts-table'>
         <Table striped bordered hover className='sTable'>

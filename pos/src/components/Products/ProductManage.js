@@ -9,17 +9,21 @@ import './ProductManage.scss';
 import { deleteProduct } from '../../store/products';
 import { connect } from 'react-redux';
 import Auth from '../../context/auth';
+import UserInfo from '../profile/UserInfo/userInfo';
 
 function Product(props) {
   const { products } = props;
 
   return (
+    
     <div className='product-manage'>
       <div class='hpd hpd-basic'>
         <h4 class='hpd-title'>Products Management</h4>
         <p class='hpd-desc'>
           freely add, edit, or remove a product as you see fit
         </p>
+        <UserInfo/>
+
       </div>
       <CardGroup className='products-card'>
         {products.map((product) => {
