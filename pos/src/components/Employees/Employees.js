@@ -4,6 +4,8 @@ import EditForm from './EditForm';
 import { connect } from 'react-redux';
 import { removeUser } from '../../store/users';
 import { BsFillPersonXFill } from 'react-icons/bs';
+import UserInfo from '../profile/UserInfo/userInfo';
+
 import './Employee.css';
 import '../Products/banner.scss';
 function Employees(props) {
@@ -16,7 +18,7 @@ function Employees(props) {
           <p class='hpd-desc'>
             freely add, edit, or remove an employees
           </p>
-
+          <UserInfo/>
           <span class='hpd-btn'>
             <EmployeeForm />
           </span>

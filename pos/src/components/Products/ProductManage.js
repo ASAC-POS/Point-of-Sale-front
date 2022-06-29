@@ -10,7 +10,7 @@ import { deleteProduct } from '../../store/products';
 import { connect } from 'react-redux';
 import Auth from '../../context/auth';
 import UserInfo from '../profile/UserInfo/userInfo';
-
+import {BsFillArchiveFill} from 'react-icons/bs'
 function Product(props) {
   const { products } = props;
 
