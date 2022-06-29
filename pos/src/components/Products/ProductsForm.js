@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import { addNewProduct } from '../../store/products';
 import './addForm.scss';
+import { BsFillPlusSquareFill } from "react-icons/bs";
 
 function ProductsForm(props) {
   console.log(props);
@@ -25,9 +26,9 @@ function ProductsForm(props) {
 
   return (
     <div>
-      <span onClick={handleShow} style={{ cursor: 'pointer' }}>
-        Add Product
-      </span>
+      <i onClick={handleShow} style={{ cursor: 'pointer' }}>
+    <BsFillPlusSquareFill size='25px' color='#5AA469'/>
+      </i>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Product</Modal.Title>

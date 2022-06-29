@@ -12,6 +12,14 @@ import { loginContext } from '../../context/context';
 import cookie from 'react-cookies';
 import Popup from '../popup/Popup';
 import { When } from 'react-if';
+import {FaCashRegister} from 'react-icons/fa';
+import {IoReceiptOutline} from 'react-icons/io5';
+
+import {MdOutlineProductionQuantityLimits} from 'react-icons/md';
+
+import {IoPeople} from 'react-icons/io5';
+
+
 function Profile(props) {
   const { socket } = useContext(SocketContext);
   const { logout, loggedIn } = useContext(loginContext);
@@ -45,7 +53,7 @@ function Profile(props) {
               navigate(`/${encodeURIComponent(store?.storename)}/products`);
             }}
           >
-            <FcNext id='icon' />
+            <MdOutlineProductionQuantityLimits id='icon' color='#FAC213'/>
             <div id='p1'> Products</div>
           </div>
         </Auth>
@@ -57,7 +65,7 @@ function Profile(props) {
               navigate(`/${encodeURIComponent(store?.storename)}/employees`);
             }}
           >
-            <FcNext id='icon' />
+            <IoPeople id='icon' color='#FAC213'/>
             <div id='p2'> Employees</div>
           </div>
           {/* this for Receipts*/}
@@ -68,7 +76,7 @@ function Profile(props) {
               navigate(`/${encodeURIComponent(store?.storename)}/receipts`);
             }}
           >
-            <FcNext id='icon' />
+            <IoReceiptOutline id='icon' color='#FAC213' />
             <div id='p3'> Receipts</div>
           </div>
         </Auth>
@@ -80,7 +88,7 @@ function Profile(props) {
               navigate(`/${encodeURIComponent(store?.storename)}/pos`);
             }}
           >
-            <FcNext id='icon' />
+            <FaCashRegister id='icon' color='#FAC213' />
             <div id='p4'> POS</div>
           </div>
         </Auth>
@@ -97,8 +105,7 @@ function Profile(props) {
               // window.location.reload(false);
             }}
           >
-            <BiExit id='icon' />
-            Logout
+            <BiExit id='icon'  style={{color:'red', position:'absolute', right:'1rem',bottom:'2rem' }}/>
           </div>
         </div>
       </div>

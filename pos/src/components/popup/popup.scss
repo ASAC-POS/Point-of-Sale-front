@@ -1,21 +1,21 @@
 .popup-box {
-  width: 25rem;
-  height: 5rem;
-  background: rgb(168, 176, 248);
+  width: 25%;
+  height: auto;
+  background: rgb(225, 221, 221);
+  color: black;
   font-size: 1.2rem;
   font-weight: bold;
-  border: 2px solid #d3d3d3;
-  border-radius: 20px;
-  border-right: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+font-size: 1rem;
+  
+  border-radius: 0 0 7px 7px;
   display: flex;
   align-items: center;
   justify-content: center;
   justify-self: right;
   position: absolute;
-  top: 78px;
-  right: -25rem;
+  top: -25rem;
+  // left: 50%;
+  right: 35%;
   box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.75);
 
 }
@@ -30,37 +30,37 @@
 
 @keyframes slide-box-close {
   0% {
-    transform: translateX(-25rem);
+    transform: translateY(-25rem);
   }
   25% {
-    transform: translateX(-20rem);
+    transform: translateY(-20rem);
   }
   50% {
-    transform: translateX(-15rem);
+    transform: translateY(-15rem);
   }
   75% {
-    transform: translateX(-10rem);
+    transform: translateY(-10rem);
   }
   100% {
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
 @keyframes slide-box-open {
   0% {
-    transform: translateX(0);
+    transform: translateY(0);
   }
   25% {
-    transform: translateX(-10rem);
+    transform: translateY(10rem);
   }
   50% {
-    transform: translateX(-15rem);
+    transform: translateY(15rem);
   }
   75% {
-    transform: translateX(-20rem);
+    transform: translateY(20rem);
   }
   100% {
-    transform: translateX(-25rem);
+    transform: translateY(25rem);
   }
 }
 

@@ -9,26 +9,25 @@ import { deleteProduct } from '../../store/products';
 import { connect } from 'react-redux';
 import Auth from '../../context/auth';
 import UserInfo from '../profile/UserInfo/userInfo';
+import { FcPlus } from "react-icons/fc";
 function Product(props) {
   const { products } = props;
 
   return (
     <div className='product-manage'>
-      <div class='hpd hpd-basic'>
-        <h4 class='hpd-title'>Products Management</h4>
-        <p class='hpd-desc'>
-          freely add, edit, or remove a product as you see fit
-        </p>
-        <span class='hpd-btn'>
+      <UserInfo />
+      <div class='hpd hpd-basic' style={{ paddingLeft: "30px" }}>
+        <div id="headingbar">
+        </div>
+          <h4 class='hpd-title' >Products Management <div class='hpd-btn'>
           <Auth capability='edit'>
             <ProductsForm />
           </Auth>
-        </span>
-        <UserInfo />
+        </div></h4>
+        <p class='hpd-desc'>
+          freely add, edit, or remove a product as you see fit
+        </p>
       </div>
-      <div className='add-product'></div>
-      <div className='add-product'></div>
-      <></>
       <div className='products-card'>
         {console.log(products)}
         {products.map((product) => {

@@ -2,6 +2,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { addUser } from '../../store/users';
 import { connect } from 'react-redux';
+import { BsFillPersonPlusFill } from 'react-icons/bs';
 import './addForm.scss';
 function EmployeeForm(props) {
   const [show, setShow] = useState(false);
@@ -19,9 +20,9 @@ function EmployeeForm(props) {
   };
   return (
     <div>
-      <span style={{ cursor: 'pointer' }} onClick={handleShow}>
-        Add Employee
-      </span>
+      <i style={{ cursor: 'pointer' }} onClick={handleShow}>
+       <BsFillPersonPlusFill size='2rem' color='#D61C4E'/>
+      </i>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Employee</Modal.Title>

@@ -13,11 +13,10 @@ function UserInfo(props) {
             <div id='theName'> {cookie.load('userData')?.username} </div>
             <div id='theRole'> {cookie.load('userData')?.role}</div>
           </div>
-        </div>
+        </div> 
+          <Popup />     
       </div>
-      <div id='bell'>
-        <Popup />
-      </div>
+
     </>
   );
 }

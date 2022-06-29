@@ -7,6 +7,8 @@ import {
 } from '../../store/checkout-reducer';
 import { incrementProduct, returnAll } from '../../store/products';
 import { BsTrash } from 'react-icons/bs';
+import ReceiptsForm from '../Receipts/ReceiptForm';
+
 
 function InfoScreen(props) {
   const {
@@ -15,6 +17,7 @@ function InfoScreen(props) {
     removeFromCheckOut,
     incrementProduct,
     returnAll,
+    checkout
   } = props;
   return (
     <div className='info-screen'>
@@ -25,19 +28,20 @@ function InfoScreen(props) {
             <th>product name</th>
             <th>quantity</th>
             <th>price</th>
-            <th></th>
-            <th></th>
+            
+            <th>Controls</th>
           </tr>
         </thead>
         <tbody>
-          {items.map((item) => (
-            <tr key={item.productID}>
-              <td>{item.productID}</td>
+          {items.map((item, i) => (
+            <tr key={i}>
+              <td>{i + 1}</td>
               <td>{item.name}</td>
               <td>{item.quantity}</td>
               <td>{item.price}$</td>
-              <td>
+              <td className='controls'> 
                 <Button
+                  style={{backgroundColor: '#F77E21'}}
                   onClick={() => {
                     detuctQuantity(item.productID);
                     incrementProduct(item);
@@ -45,8 +49,7 @@ function InfoScreen(props) {
                 >
                   -
                 </Button>
-              </td>
-              <td>
+             
                 <Button
                   variant='danger'
                   onClick={() => {
@@ -61,11 +64,17 @@ function InfoScreen(props) {
           ))}
         </tbody>
       </Table>
+      {checkout.total > 0 && (
+            <span class='hpd-btn pos'>
+              <ReceiptsForm />
+            </span>
+          )}
     </div>
   );
 }
 const mapStateToProps = (state) => ({
   items: state.checkout.items,
+  checkout: state.checkout,
 });
 const mapDispatchToProps = {
   detuctQuantity,

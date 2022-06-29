@@ -13,7 +13,7 @@
     padding-left: 20px;
   }
   h1{
-    font-family: "Havana Sunset", cursive;
+    font-family: 'Rubik', sans-serif;
     font-size: 55px;
   }
 
@@ -29,4 +29,11 @@
       font-weight: bold;
     font-size: 25px;
     }
+  }
+
+  .vision-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
   }

@@ -13,6 +13,8 @@
   z-index: -1;
 }
 
+
+
 .slider {
   color: #fff;
   .slider-img {
@@ -28,4 +30,12 @@
   color: #fff;
   position: absolute;
   top: 40%;
+
+  h5 {
+
+    font-size: 2rem !important;
+  }
+  p {
+    font-size: 1.2rem;
+  }
 }

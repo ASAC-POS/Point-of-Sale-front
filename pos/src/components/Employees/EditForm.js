@@ -21,7 +21,7 @@ function EditForm(props) {
   return (
     <div>
       <i variant='primary' onClick={handleShow}>
-        <BsFillPersonLinesFill />
+        <BsFillPersonLinesFill  color='#F77E21'/>
       </i>
       <Modal show={show} onHide={handleClose} keyboard={true}>
         <Modal.Header closeButton>

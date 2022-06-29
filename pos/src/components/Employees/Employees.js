@@ -6,42 +6,41 @@ import { removeUser } from '../../store/users';
 import { BsFillPersonXFill } from 'react-icons/bs';
 import UserInfo from '../profile/UserInfo/userInfo';
 
-import './Employee.css';
 import '../Products/banner.scss';
 function Employees(props) {
   const { signedInUsers, removeUser } = props;
   if (props.employees.length > 0) {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+      <div className='reciepts-manage'> 
         <UserInfo />
         <div class='hpd hpd-basic'>
-          <h4 class='hpd-title'>Employees Table</h4>
-          <p class='hpd-desc'>freely add, edit, or remove an employees</p>
-          <span class='hpd-btn'>
+          <h4 class='hpd-title'>Employees Table <span class='hpd-btn'>
             <EmployeeForm />
-          </span>
+          </span></h4>
+          <p class='hpd-desc'>freely add, edit, or remove an employees</p>
+         
         </div>
-        <div className='employee-table'>
-          <Table striped bordered hover className='empTable'>
-            <thead classsName='empHeader'>
+        <div className='receipts-table'>
+          <Table striped bordered hover >
+            <thead classsName='sTable'>
               <tr>
                 <th id='emphd1'>#</th>
                 <th id='emphd2'>UserName</th>
-                <th id='emphd3'>Position</th>
-                <th id='emphd4'>Status</th>
-                <th id='emphd4'></th>
+                <th id='emphd3' className='center'>Position</th>
+                <th id='emphd4'  className='center'>Status</th>
+                <th id='emphd4' className='center'>Control</th>
               </tr>
             </thead>
             <tbody>
-              {props.employees.map((employee) => (
-                <tr key={employee.id} className='empRow'>
-                  <td id='empRow1'>{employee.id}</td>
+              {props.employees.map((employee,i) => (
+                <tr key={employee.id} className='sRow'>
+                  <td id='empRow1'>{i+1}</td>
                   <td id='empRow2'>{employee.username}</td>
-                  <td id='empRow3'>{employee.role}</td>
-                  <td id='empRow4'>
-                    {signedInUsers.includes(employee.username) ? 'on' : 'off'}
+                  <td id='empRow3'  className='center'>{employee.role}</td>
+                  <td id='empRow4'  className='center'>
+                    {signedInUsers.includes(employee.username) ? 'online' : 'offline'}
                   </td>
-                  <td id='empRow5'>
+                  <td id='empRow5'  className='center'>
                     <div className='icon-div'>
                       {employee.role !== 'admin' && (
                         <EditForm id={employee.id} employee={employee} />
@@ -53,7 +52,7 @@ function Employees(props) {
                             removeUser(employee.id);
                           }}
                         >
-                          <BsFillPersonXFill />
+                          <BsFillPersonXFill color='#D61C4E' />
                         </i>
                       )}
                     </div>
