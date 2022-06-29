@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { addNewReceipts } from '../../store/receipts';
 import { clearCheckOut } from '../../store/checkout-reducer';
 import cookie from 'react-cookies';
-import './receiptForm.css';
+import './receiptForm.scss';
 
 function ReceiptsForm(props) {
   const [show, setShow] = useState(false);
@@ -45,7 +45,7 @@ function ReceiptsForm(props) {
         </Modal.Header>
         <Modal.Body>
           <div className='checkoutForm'>
-            <Form onSubmit={(e) => handleSubmit(e)}>
+            <Form className='checkout-form' onSubmit={(e) => handleSubmit(e)}>
               <Form.Group style={{ display: 'flex' }}>
                 <Form.Check
                   type='radio'

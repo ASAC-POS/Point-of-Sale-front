@@ -2,17 +2,12 @@
 
 .Info{
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 40px;
-
-    position: absolute;
-    left: 1200px;
-    top: 30px;
-    
-
+    width:90%;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
 }
+
+
 #leftside{
     display: flex;
     flex-direction: row;
@@ -33,18 +28,9 @@ flex: none;
 order: 0;
 flex-grow: 0;
 }
-.usernamee{
-width: 102px;
-height: 36px;
-flex: none;
-order: 1;
-flex-grow: 0;
-}
+
 #theName{
-position: absolute;
 width: 102px;
-height: 16px;
-left: 48px;
 top: 2px;
 font-family: 'Manrope';
 font-style: normal;
@@ -54,20 +40,12 @@ line-height: 16px;
 color: #4C4C4C;
 }
 #theRole{
-    position: absolute;
     width: 42px;
     height: 16px;
-    left: 48px;
-    top: 22px;
     font-family: 'Manrope';
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
-    color: white;
-}
-#bell{   
-    position: fixed;
-    left: 1480px;
-    top: 30px;
+    color: black;
 }

@@ -1,12 +1,12 @@
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import {BsPencil} from "react-icons/bs"
+import { BsPencil } from 'react-icons/bs';
 import { editProduct } from '../../store/products';
 import Auth from '../../context/auth';
 function EmployeeForm(props) {
   const [newItem, setNewItem] = useState({});
-
+  const { product } = props;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -27,16 +27,15 @@ function EmployeeForm(props) {
 
   return (
     <div>
-      
       <Button variant='primary' onClick={handleShow}>
-        <BsPencil/>
+        <BsPencil />
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Product</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit}>
+          <Form className='edit-form' onSubmit={handleSubmit}>
             <Auth capability='edit'>
               <Form.Group>
                 <Form.Label>ProductName</Form.Label>
@@ -45,6 +44,7 @@ function EmployeeForm(props) {
                   placeholder='ProductName'
                   name='productName'
                   onChange={onChange}
+                  defaultValue={product.productName}
                 />
               </Form.Group>
               <Form.Group>
@@ -54,6 +54,7 @@ function EmployeeForm(props) {
                   placeholder='Price'
                   name='price'
                   onChange={onChange}
+                  defaultValue={product.price}
                 />
               </Form.Group>
               <Form.Group>
@@ -63,6 +64,7 @@ function EmployeeForm(props) {
                   placeholder='Description'
                   name='description'
                   onChange={onChange}
+                  defaultValue={product.description}
                 />
               </Form.Group>
             </Auth>
@@ -74,6 +76,7 @@ function EmployeeForm(props) {
                   placeholder='Quantity'
                   name='quantity'
                   onChange={onChange}
+                  defaultValue={product.quantity}
                 />
               </Form.Group>
               <Form.Group>
@@ -83,6 +86,7 @@ function EmployeeForm(props) {
                   placeholder='minQuantity'
                   name='minQuantity'
                   onChange={onChange}
+                  defaultValue={product.minQuantity}
                 />
               </Form.Group>
             </Auth>
@@ -94,6 +98,7 @@ function EmployeeForm(props) {
                   placeholder='Image URL'
                   name='imgURL'
                   onChange={onChange}
+                  defaultValue={product.imgURL}
                 />
               </Form.Group>
             </Auth>
