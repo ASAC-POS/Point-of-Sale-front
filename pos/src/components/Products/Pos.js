@@ -10,6 +10,7 @@ import { addItemToCheckout } from '../../store/checkout-reducer';
 import { incrementProduct, deductProduct } from '../../store/products';
 import { AiOutlinePlus } from 'react-icons/ai';
 import './pos.scss';
+import UserInfo from '../profile/UserInfo/userInfo';
 
 function Pos(props) {
   const { products, addItemToCheckout, checkout, deductProduct } = props;
@@ -24,6 +25,8 @@ function Pos(props) {
       <div class='hpd hpd-basic'>
         <h4 class='hpd-title'>Point Of Sale</h4>
         <p class='hpd-desc'>Don't forget to smile 😁</p>
+        <UserInfo/>
+
         <span class='hpd-btn'>
           <ReceiptsForm />
         </span>

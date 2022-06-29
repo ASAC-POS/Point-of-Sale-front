@@ -1,30 +1,29 @@
-import Card from "react-bootstrap/Card";
-import {BsFillArchiveFill } from "react-icons/bs"
-import Button from "react-bootstrap/Button";
-import "./banner.scss";
-import ProductsForm from "./ProductsForm";
-import EditProducts from "./EditProducts";
-import "./ProductManage.scss";
-import { deleteProduct } from "../../store/products";
-import { connect } from "react-redux";
-import Auth from "../../context/auth";
-
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+import { CardGroup } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import './banner.scss';
+import ProductsForm from './ProductsForm';
+import EditProducts from './EditProducts';
+import './ProductManage.scss';
+import { deleteProduct } from '../../store/products';
+import { connect } from 'react-redux';
+import Auth from '../../context/auth';
+import UserInfo from '../profile/UserInfo/userInfo';
+import {BsFillArchiveFill} from 'react-icons/bs'
 function Product(props) {
   const { products } = props;
 
   return (
-    <div className="product-manage">
-      <div class="hpd hpd-basic">
-        <h4 class="hpd-title">Products Management</h4>
-        <p class="hpd-desc">
+    
+    <div className='product-manage'>
+      <div class='hpd hpd-basic'>
+        <h4 class='hpd-title'>Products Management</h4>
+        <p class='hpd-desc'>
           freely add, edit, or remove a product as you see fit
         </p>
-        <span class='hpd-btn'>
-        <Auth capability="edit">
-            <ProductsForm />
-          </Auth>
-          </span>
-        
+        <UserInfo/>
+
       </div>
       <div className="add-product">
        

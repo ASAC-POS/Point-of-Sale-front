@@ -217,9 +217,6 @@ top: 60px; */
   height: 40px;
 
   border-radius: 4px;
-
-  /* Inside auto layout */
-
   flex: none;
   order: 1;
   align-self: stretch;
