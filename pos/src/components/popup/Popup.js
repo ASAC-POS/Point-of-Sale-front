@@ -11,8 +11,8 @@ function Popup(props) {
     <>
       <BsFillBellFill
         // className={`${showNotifications ? 'hidden' : ''}`}
-        style={{ fill: '#fff' }}
-        size={35}
+        style={{ fill: '#fff',paddingTop:"7px" }}
+        size={29}
         onClick={() => setShowNotifications(!showNotifications)}
       />
       {/*  */}

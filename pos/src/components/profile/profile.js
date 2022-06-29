@@ -86,7 +86,7 @@ function Profile(props) {
         </Auth>
       </div>
       <When condition={loggedIn}>
-        <Popup />
+      
       </When>
       <div id='signout'>
         <div id='box6'>

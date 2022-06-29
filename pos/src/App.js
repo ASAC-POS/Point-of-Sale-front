@@ -15,6 +15,7 @@ import { When } from 'react-if';
 import Pos from './components/Products/Pos';
 import { useContext, useEffect } from 'react';
 import { loginContext } from './context/context';
+import UserInfo from './components/profile/UserInfo/userInfo'
 function App(props) {
   const { getData, loggedIn } = useContext(loginContext);
   const { store } = props;
@@ -25,6 +26,7 @@ function App(props) {
     <div className='app'>
       <When condition={loggedIn}>
         <Profile />
+        <UserInfo/>
       </When>
       <Routes>
         <Route

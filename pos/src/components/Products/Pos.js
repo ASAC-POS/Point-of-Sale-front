@@ -10,6 +10,7 @@ import { addItemToCheckout } from '../../store/checkout-reducer';
 import { incrementProduct, deductProduct } from '../../store/products';
 import { AiOutlinePlus } from 'react-icons/ai';
 import './pos.scss';
+import UserInfo from '../profile/UserInfo/userInfo';
 
 function Pos(props) {
   const { products, addItemToCheckout, checkout, deductProduct } = props;
@@ -36,52 +37,13 @@ function Pos(props) {
       >
         <div className='cards-container' style={{ width: '65%' }}>
           {products.map((product) => {
-            // return (
-            //   <Card key={product.id} className='pos-card'>
-            //     <Card.Body>
-            //       <Card.Title>{product.productName}</Card.Title>
-            //       {/* <Card.Text>{product.description}</Card.Text> */}
-            //       <Card.Text>{product.price}$</Card.Text>
-            //       <input
-            //         type='number'
-            //         min={1}
-            //         placeholder='quantity'
-            //         onChange={(e) => {
-            //           setQuantity(parseInt(e.target.value));
-            //         }}
-            //       />
-            //       {er && product.quantity === 0 && <p>{er}</p>}
-            //       <Button
-            //         onClick={() => {
-            //           if (quantity > product.quantity) {
-            //             setEr('out of stock');
-            //           } else {
-            //             // setEr(null);
-            //             addItemToCheckout({
-            //               name: product.productName,
-            //               quantity: quantity,
-            //               productID: product.id,
-            //               price: product.price,
-            //             });
-            //             deductProduct({ id: product.id, quantity: quantity });
-            //           }
-            //         }}
-            //         variant='primary'
-            //       >
-            //         {/* Add{' '} */}
-            //         <AiOutlinePlus />
-            //       </Button>
-            //     </Card.Body>
-            //   </Card>
-            // );
             return (
               <Card
-                className='product'
+                className='product pos-product'
                 onClick={() => {
                   if (quantity > product.quantity) {
                     setEr('out of stock');
                   } else {
-                    // setEr(null);
                     addItemToCheckout({
                       name: product.productName,
                       quantity: quantity,
@@ -106,21 +68,6 @@ function Pos(props) {
                     <Card.Text>{product.description}</Card.Text>
                     <Card.Text>Quantity: {product.quantity}</Card.Text>
                   </div>
-                  {/* <Card.Footer className='product-button'>
-                    <Auth capability='delete'>
-                      <Button
-                        variant='danger'
-                        style={{ margin: '5%' }}
-                        onClick={() => props.deleteProduct(product.id)}
-                      >
-                        <div className='remove'>
-                          <BsFillArchiveFill />
-                        </div>
-                      </Button>
-                    </Auth>
-
-                    <EditProducts id={product.id} />
-                  </Card.Footer> */}
                 </Card.Body>
               </Card>
             );
@@ -132,60 +79,12 @@ function Pos(props) {
             height: '100%',
           }}
         >
-          {/* <div style={{ width: '50%' }}>
-            {products.map((product) => {
-              return (
-                <Card
-                  key={product.id}
-                  style={{ width: '18rem', height: '250px' }}
-                >
-                  <Card.Body>
-                    <Card.Title>{product.productName}</Card.Title>
-                    <Card.Text>{product.description}</Card.Text>
-                    <Card.Text>{product.price}$</Card.Text>
-                    <input
-                      type='number'
-                      min={1}
-                      placeholder='quantity'
-                      onChange={(e) => {
-                        setQuantity(parseInt(e.target.value));
-                      }}
-                    />
-                    {er && product.quantity === 0 && <p>{er}</p>}
-                    <Button
-                      onClick={() => {
-                        if (quantity > product.quantity) {
-                          setEr('out of stock');
-                        } else {
-                          // setEr(null);
-                          addItemToCheckout({
-                            name: product.productName,
-                            quantity: quantity,
-                            productID: product.id,
-                            price: product.price,
-                          });
-                          deductProduct({
-                            id: product.id,
-                            quantity: quantity,
-                          });
-                        }
-                      }}
-                      variant='primary'
-                    >
-                      Add{' '}
-                    </Button>
-                  </Card.Body>
-                </Card>
-              );
-            })}
-          </div> */}
           <InfoScreen />
           {checkout.total > 0 && (
-            <span class='hpd-btn'>
+            <span class='hpd-btn pos'>
               <ReceiptsForm />
             </span>
           )}
-          {/* <ReceiptsForm style={{ marginBottom: '10px' }} /> */}
         </div>
       </div>
     </div>
