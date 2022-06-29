@@ -1,51 +1,29 @@
-import { ButtonGroup, Button } from 'react-bootstrap/';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getProductsFromAPI } from '../../store/products.js';
 import { When } from 'react-if';
 import { loginContext } from '../../context/context';
 import { useContext } from 'react';
+import Popup from '../popup/Popup';
+import './navbar.scss';
 
 function Navbars(props) {
-  const { loggedIn, logout } = useContext(loginContext);
+  const { loggedIn } = useContext(loginContext);
 
   return (
     <nav className='nav-bar'>
-      <ButtonGroup className='nav-bar-buttons'>
-        <Button
-          variant='outline-light'
-          style={{ backgroundColor: 'white', margin: '10px' }}
-        >
-          <Link to='/'>Home</Link>
-        </Button>
-        <Button
-          variant='outline-light'
-          style={{ backgroundColor: 'white', margin: '10px' }}
-        >
-          <Link to='/about'>About</Link>
-        </Button>
+      <Link className='nav-bar-button' to='/'>
+        Home
+      </Link>
 
-        <When condition={!loggedIn}>
-          <Button
-            variant='outline-light'
-            style={{ backgroundColor: 'white', margin: '10px' }}
-          >
-            <Link to='/signin'>signin</Link>
-          </Button>
-        </When>
-        <When condition={loggedIn}>
-          <Button
-            variant='danger'
-            style={{ margin: '10px' }}
-            onClick={() => {
-              logout();
-              // window.location.reload(false);
-            }}
-          >
-            <Link to='/signin'>sign out</Link>
-          </Button>
-        </When>
-      </ButtonGroup>
+      <When condition={!loggedIn}>
+        <Link className='nav-bar-button signin-nav' to='/signin'>
+          signin
+        </Link>
+      </When>
+      <When condition={loggedIn}>
+        <Popup />
+      </When>
     </nav>
   );
 }

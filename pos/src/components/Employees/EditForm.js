@@ -2,6 +2,8 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { editUser } from '../../store/users';
+import {BsFillPersonLinesFill} from "react-icons/bs";
+
 function EditForm(props) {
   const [show, setShow] = useState(false);
   const [newUserData, setNewUserData] = useState({});
@@ -18,9 +20,9 @@ function EditForm(props) {
   };
   return (
     <div>
-      <Button variant='primary' onClick={handleShow}>
-        Edit
-      </Button>
+      <i variant='primary' onClick={handleShow}>
+        <BsFillPersonLinesFill/>
+      </i>
       <Modal show={show} onHide={handleClose} keyboard={true}>
         <Modal.Header closeButton>
           <Modal.Title>Edit</Modal.Title>

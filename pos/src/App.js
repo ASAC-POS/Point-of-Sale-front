@@ -1,5 +1,4 @@
 import './App.scss';
-import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import { Routes, Route } from 'react-router-dom';
 import Main from './components/main/Main';
@@ -12,18 +11,21 @@ import Products from './components/Products/ProductManage';
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 import Auth from './context/auth';
+import { When } from 'react-if';
 import Pos from './components/Products/Pos';
 import { useContext, useEffect } from 'react';
 import { loginContext } from './context/context';
 function App(props) {
-  const { getData } = useContext(loginContext);
+  const { getData, loggedIn } = useContext(loginContext);
   const { store } = props;
   useEffect(() => {
     getData();
   }, []);
   return (
     <div className='app'>
-      <Header />
+      <When condition={loggedIn}>
+        <Profile />
+      </When>
       <Routes>
         <Route
           exact
@@ -77,7 +79,6 @@ function App(props) {
         />
         <Route path='*' element={<div>404</div>} />
       </Routes>
-      <Footer />
     </div>
   );
 }

@@ -1,102 +1,94 @@
-import './profile.scss';
+import './SideBar/sidebar.css';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import cookie from 'react-cookies';
 import Auth from '../../context/auth';
-import { Card } from 'react-bootstrap';
 import { getPopupNotificationsFromAPI } from '../../store/popups';
 import { useContext, useEffect } from 'react';
 import { SocketContext } from '../../context/socket';
-
-import io from 'socket.io-client';
-import Popup from '../popup/Popup';
+import WhiteLogo from '../../assets/Bayya3-removebg-preview.png';
+import { FcNext } from 'react-icons/fc';
+import { BiExit } from 'react-icons/bi';
+import { loginContext } from '../../context/context';
 
 function Profile(props) {
   const { socket } = useContext(SocketContext);
+  const { logout } = useContext(loginContext);
   const navigate = useNavigate();
-  const { store, getPopupNotificationsFromAPI } = props;
+  const { store } = props;
 
   useEffect(() => {
     socket.emit('reload-notifications');
-  }, []);
+  }, [socket]);
 
   return (
-    <>
-      <Card id='details'>
-        <Card.Title
-          style={{ fontWeight: 'bold', alignSelf: 'center', marginTop: '20px' }}
-        >
-          USER INFORMATION
-        </Card.Title>
-        <Card.Text style={{ marginLeft: '20px' }}>
-          Store Name: {props.store?.storename}
-        </Card.Text>
-        <Card.Text style={{ marginLeft: '20px' }}>
-          User Name: {cookie.load('userData')?.username}
-        </Card.Text>
-        <Card.Text style={{ marginLeft: '20px' }}>
-          User Role: {cookie.load('userData')?.role}
-        </Card.Text>
-      </Card>
-
-      <div className='profile'>
-        <Popup />
+    <div className='sidebar'>
+      <div className='logo'>
+        <img id='logo-img' src={WhiteLogo} alt='logo'></img>
+        <h4 id='h44'> Bayya3</h4>
+      </div>
+      <div className='services'>
         <Auth capability='add'>
           <div
-            className='card1'
+            id='box1'
             onClick={() => {
               navigate(`/${encodeURIComponent(store?.storename)}/products`);
             }}
           >
-            <div className='card-image1'></div>
-            <div className='card-text1'>
-              <br></br>
-              <h2>PRODUCTS</h2>
-            </div>
+            <FcNext id='icon' />
+            <div id='p1'> Products</div>
           </div>
         </Auth>
-        <Auth capability='sell'>
-          <div
-            className='card1'
-            onClick={() => {
-              navigate(`/${encodeURIComponent(store?.storename)}/pos`);
-            }}
-          >
-            <div className='card-image1'></div>
-            <div className='card-text1'>
-              <br></br>
-              <h2>POS</h2>
-            </div>
-          </div>
-        </Auth>
+        {/* this for Employees*/}
         <Auth capability='delete'>
           <div
-            className='card1'
+            id='box2'
             onClick={() => {
               navigate(`/${encodeURIComponent(store?.storename)}/employees`);
             }}
           >
-            <div className='card-image1 card2'></div>
-            <div className='card-text1'>
-              <br></br>
-              <h2>EMPLOYEES</h2>
-            </div>
+            <FcNext id='icon' />
+            <div id='p2'> Employees</div>
           </div>
+          {/* this for Receipts*/}
+
           <div
-            className='card1'
+            id='box3'
             onClick={() => {
               navigate(`/${encodeURIComponent(store?.storename)}/receipts`);
             }}
           >
-            <div className='card-image1 card3'></div>
-            <div className='card-text1'>
-              <br></br>
-              <h2>RECEIPTS</h2>
-            </div>
+            <FcNext id='icon' />
+            <div id='p3'> Receipts</div>
+          </div>
+        </Auth>
+        {/* this for POS*/}
+        <Auth capability='sell'>
+          <div
+            id='box4'
+            onClick={() => {
+              navigate(`/${encodeURIComponent(store?.storename)}/pos`);
+            }}
+          >
+            <FcNext id='icon' />
+            <div id='p4'> POS</div>
           </div>
         </Auth>
       </div>
-    </>
+      <div id='signout'>
+        <div id='box6'>
+          <div
+            id='textt'
+            onClick={() => {
+              logout();
+              // window.location.reload(false);
+            }}
+          >
+            <BiExit id='icon' />
+            Logout
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

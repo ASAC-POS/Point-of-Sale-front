@@ -2,6 +2,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { addUser } from '../../store/users';
 import { connect } from 'react-redux';
+
 function EmployeeForm(props) {
   const [show, setShow] = useState(false);
   const [newUserData, setNewUserData] = useState({});

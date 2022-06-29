@@ -1,4 +1,4 @@
-.receipts-table{
+.employee-table {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -9,7 +9,16 @@
   border-color: white;
   border-radius: 50px;
 }
-.sTable{
+
+.icon-div{
+  display: flex;
+}
+
+i{
+  margin-right:15px;
+}
+
+.empTable {
   display: flex;
   font-weight: bold;
   flex-direction: column;
@@ -19,13 +28,14 @@
   width: 1006px;
   left: 250px;
   top: 100px;
-  background-color: #2371e4;
+  background-color: #47B5FF;
   border-color: white;
 
 
 
 }
-.sRow{
+
+.empRow {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -41,12 +51,13 @@
 
 
 }
-.sHeader{
+
+.empHeader {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 0px;
-  width: 1006px;
+  width: 1110px;
   height: 50px;
   background-color: #526acb;
   flex: none;
@@ -55,60 +66,74 @@
   flex-grow: 0;
   font-size: larger;
 }
-#Row1{
-  width: 70px;
+
+#empRow1 {
+  width: 51px;
   height: 40px;
   flex: none;
   order: 0;
   flex-grow: 0;
-}
-#Row2{ 
-width: 400px;
-height: 40px;
-flex: none;
-order: 1;
-flex-grow: 0;
-}
-#Row3{
-width: 157px;
-height: 40px;
-flex: none;
-order: 2;
-flex-grow: 1;
-}
-#Row4{
-width: 157px;
-height: 40px;
-flex: none;
-order: 3;
-flex-grow: 1;
 }
 
-#hd1{
-  width: 70px;
+#empRow2 {
+  width: 306px;
+  height: 40px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+#empRow3 {
+  width: 167px;
+  height: 40px;
+  flex: none;
+  order: 2;
+  flex-grow: 1;
+}
+
+#empRow4 {
+  width: 174px;
+  height: 40px;
+  flex: none;
+  order: 3;
+  flex-grow: 1;
+}
+#empRow5 {
+  width: 135px;
+  height: 40px;
+
+  order: 3;
+  flex-grow: 1.658;
+}
+
+#emphd1 {
+  width: 55px;
   height: 40px;
   flex: none;
   order: 0;
   flex-grow: 0;
 }
-#hd2{ 
-width: 400px;
-height: 40px;
-flex: none;
-order: 1;
-flex-grow: 0;
+
+#emphd2 {
+  width: 350px;
+  height: 40px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
-#hd3{
-width: 269px;
-height: 50px;
-flex: none;
-order: 2;
-flex-grow: 1;
+
+#emphd3 {
+  width: 245px;
+  height: 50px;
+  flex: none;
+  order: 2;
+  flex-grow: 1;
 }
-#hd4{
-width: 269px;
-height: 40px;
-flex: none;
-order: 3;
-flex-grow: 1;
+
+#emphd4 {
+  width: 254px;
+  height: 40px;
+  flex: none;
+  order: 3;
+  flex-grow: 1;
 }

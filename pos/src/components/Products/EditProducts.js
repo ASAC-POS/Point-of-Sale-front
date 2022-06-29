@@ -1,6 +1,7 @@
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import {BsPencil} from "react-icons/bs"
 import { editProduct } from '../../store/products';
 import Auth from '../../context/auth';
 function EmployeeForm(props) {
@@ -26,8 +27,9 @@ function EmployeeForm(props) {
 
   return (
     <div>
+      
       <Button variant='primary' onClick={handleShow}>
-        Edit Product
+        <BsPencil/>
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
