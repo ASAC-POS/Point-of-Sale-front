@@ -1,6 +1,7 @@
 import { Form, Button } from 'react-bootstrap';
 import { useState, useContext, useEffect } from 'react';
 import { loginContext } from '../../context/context.js';
+import './registerForm.scss';
 function RegisterForm(props) {
   const [userInfo, setUserInfo] = useState({});
   const { register } = useContext(loginContext);
@@ -14,8 +15,8 @@ function RegisterForm(props) {
   }
   useEffect(() => {}, [userInfo]);
   return (
-    <div className='register-form'>
-      <Form onSubmit={handleSubmit}>
+    <div>
+      <Form className='register-form' onSubmit={handleSubmit}>
         <Form.Group className='mb-3'>
           <Form.Label>Store Name</Form.Label>
           <Form.Control

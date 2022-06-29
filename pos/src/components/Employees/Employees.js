@@ -12,13 +12,11 @@ function Employees(props) {
   const { signedInUsers, removeUser } = props;
   if (props.employees.length > 0) {
     return (
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+        <UserInfo />
         <div class='hpd hpd-basic'>
           <h4 class='hpd-title'>Employees Table</h4>
-          <p class='hpd-desc'>
-            freely add, edit, or remove an employees
-          </p>
-          <UserInfo/>
+          <p class='hpd-desc'>freely add, edit, or remove an employees</p>
           <span class='hpd-btn'>
             <EmployeeForm />
           </span>
@@ -46,7 +44,7 @@ function Employees(props) {
                   <td id='empRow5'>
                     <div className='icon-div'>
                       {employee.role !== 'admin' && (
-                        <EditForm id={employee.id} />
+                        <EditForm id={employee.id} employee={employee} />
                       )}
 
                       {employee.role !== 'admin' && (

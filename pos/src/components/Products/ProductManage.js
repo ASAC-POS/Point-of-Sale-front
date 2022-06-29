@@ -1,7 +1,5 @@
 import Card from 'react-bootstrap/Card';
 import { BsFillArchiveFill } from 'react-icons/bs';
-import ListGroup from 'react-bootstrap/ListGroup';
-import { CardGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import './banner.scss';
 import ProductsForm from './ProductsForm';
@@ -11,7 +9,6 @@ import { deleteProduct } from '../../store/products';
 import { connect } from 'react-redux';
 import Auth from '../../context/auth';
 import UserInfo from '../profile/UserInfo/userInfo';
-
 function Product(props) {
   const { products } = props;
 
@@ -66,7 +63,7 @@ function Product(props) {
                       </Button>
                     </Auth>
 
-                    <EditProducts id={product.id} />
+                    <EditProducts id={product.id} product={product} />
                   </Card.Footer>
                 </Card.Body>
               </Card>

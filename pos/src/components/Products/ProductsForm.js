@@ -2,7 +2,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { addNewProduct } from '../../store/products';
-
+import './addForm.scss';
 
 function ProductsForm(props) {
   console.log(props);
@@ -25,13 +25,15 @@ function ProductsForm(props) {
 
   return (
     <div>
-      <span onClick={handleShow} style={{cursor : 'pointer'}}>Add Product</span>
+      <span onClick={handleShow} style={{ cursor: 'pointer' }}>
+        Add Product
+      </span>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Product</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit}>
+          <Form className='add-form' onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label>ProductName</Form.Label>
               <Form.Control

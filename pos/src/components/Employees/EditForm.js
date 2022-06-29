@@ -1,13 +1,13 @@
 import { Modal, Button, Form } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import { editUser } from '../../store/users';
-import {BsFillPersonLinesFill} from "react-icons/bs";
-
+import { BsFillPersonLinesFill } from 'react-icons/bs';
+import './editForm.scss';
 function EditForm(props) {
   const [show, setShow] = useState(false);
   const [newUserData, setNewUserData] = useState({});
-  const { editUser, id } = props;
+  const { editUser, id, employee } = props;
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleChange = (e) => {
@@ -21,17 +21,18 @@ function EditForm(props) {
   return (
     <div>
       <i variant='primary' onClick={handleShow}>
-        <BsFillPersonLinesFill/>
+        <BsFillPersonLinesFill />
       </i>
       <Modal show={show} onHide={handleClose} keyboard={true}>
         <Modal.Header closeButton>
           <Modal.Title>Edit</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} className='edit-form'>
             <Form.Group controlId='formBasicEmail'>
               <Form.Label>UserName</Form.Label>
               <Form.Control
+                defaultValue={employee.username}
                 onChange={handleChange}
                 name='username'
                 type='text'
@@ -54,6 +55,7 @@ function EditForm(props) {
             <Form.Group controlId='formBasicRole'>
               <Form.Label>Employee role</Form.Label>
               <Form.Select
+                defaultValue={employee.role}
                 name='role'
                 aria-label='Default select example'
                 onChange={handleChange}
@@ -66,7 +68,11 @@ function EditForm(props) {
                 <option value='admin'>admin</option>
               </Form.Select>
             </Form.Group>
-            <Button variant='primary' type='submit'>
+            <Button
+              variant='primary'
+              type='submit'
+              style={{ alignSelf: 'flex-end' }}
+            >
               Edit
             </Button>
           </Form>

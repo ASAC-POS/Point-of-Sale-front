@@ -1,7 +1,7 @@
 .wrapper {
   display: block;
   width: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   margin-bottom: 1rem;
   z-index: -1;
 }
@@ -18,7 +18,7 @@
   .slider-img {
     filter: brightness(0.3);
     min-height: 550px;
-    height: 100vh;
+    height: 80vh;
     object-fit: cover;
     z-index: -1;
   }
@@ -28,5 +28,4 @@
   color: #fff;
   position: absolute;
   top: 40%;
-  z-index: -1;
 }

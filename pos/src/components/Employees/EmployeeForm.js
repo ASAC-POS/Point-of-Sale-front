@@ -1,8 +1,8 @@
 import { Modal, Button, Form } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { addUser } from '../../store/users';
 import { connect } from 'react-redux';
-
+import './addForm.scss';
 function EmployeeForm(props) {
   const [show, setShow] = useState(false);
   const [newUserData, setNewUserData] = useState({});
@@ -27,7 +27,7 @@ function EmployeeForm(props) {
           <Modal.Title>Add Employee</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit}>
+          <Form className='add-form' onSubmit={handleSubmit}>
             <Form.Group controlId='formBasicEmail'>
               <Form.Label>UserName</Form.Label>
               <Form.Control
