@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import recImg from '../../assets/receipts.jpg';
+import recImg from '../../assets/hh.png';
 import './bayya3.scss';
 
 export default function index() {
   return (
     <Container className='holder'>
-      <h1>WHO WE ARE</h1>
+      <h1>About Bayya3</h1>
       <Row xs={1} md={6} className='align-items-start gap-5 flex-row'>
         <Col md={6} className='about-image flex-row'>
           <Image src={recImg} alt='' />

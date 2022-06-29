@@ -1,7 +1,7 @@
 import { Carousel } from 'react-bootstrap';
-import img1 from '../../assets/slider-images/slider1.jpg';
-import img2 from '../../assets/slider-images/slider2.jpg';
-import img3 from '../../assets/slider-images/slider3.jpg';
+import img1 from '../../assets/slider-images/1.jpg';
+import img2 from '../../assets/slider-images/2.jpg';
+import img3 from '../../assets/slider-images/3.jpg';
 import './hero.scss';
 
 function Hero() {
@@ -9,7 +9,7 @@ function Hero() {
     <div className='wrapper'>
       <div className='hero' style={{ marginBottom: '1rem' }}>
         <div className='slider'>
-          <Carousel fade interval={2000}>
+          <Carousel controls={false} fade interval={4000}>
             <Carousel.Item>
               <img
                 className='d-block w-100 slider-img'

@@ -13,7 +13,7 @@ function Register() {
   return (
     <div className='register-modal'>
       <Button className='register-btn' variant='primary' onClick={handleShow}>
-        Register a store
+        Register store
       </Button>
 
       <Modal show={show} onHide={handleClose} keyboard={true}>

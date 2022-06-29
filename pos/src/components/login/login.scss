@@ -15,7 +15,7 @@ body {
   // margin: auto;
   // margin-top: 40px;
   background-color: #ffffff;
-  border-radius: 25px;
+  border-radius: 7px;
   box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.7);
   position: absolute;
   left: 50%;
@@ -29,8 +29,8 @@ body {
 }
 
 #headerTitle {
-  text-align: left;
-  font-family: 'Lobster';
+  // text-align: left;
+  font-family: 'Rubik', sans-serif;
   margin: 0;
   font-size: 2rem;
 }
@@ -50,13 +50,12 @@ body {
     display: block;
     margin: auto;
     padding: 1.2rem 1.8rem;
-    background-color: #47b5ff;
+    background-color: #D61C4E;
     border: none;
     cursor: pointer;
     font-weight: 600;
 
     &:hover {
-      background-color: #1363df;
       color: #000;
       font-weight: 600;
     }
@@ -83,20 +82,26 @@ body {
 
   input {
     width: 90% !important;
-    border: 3px solid #dff6ff;
+    border: 3px solid #e84470;
+
     border-radius: 100px;
     margin: 0 auto;
     padding: 1rem;
     font-size: 1.3rem;
     &:focus {
-      outline: none;
+      // outline: none;
+      border-color: #FAC213;
     }
   }
 
-  button {
+  .button {
     width: 90% !important;
     border-radius: 100px;
     padding: 1rem;
+
+    &:hover {
+      background-color: #FAC213;
+    }
   }
 
   .new-account-link {
@@ -105,7 +110,7 @@ body {
     text-align: center;
 
     &:hover {
-      color: #1363df;
+      color: #FAC213;
     }
   }
 }
@@ -114,25 +119,10 @@ body {
   display: block;
   width: 40%;
   min-height: 100%;
-  background-color: #dff6ff;
+  background-color: #FAC213;
 }
 
-.social-section p {
-  color: rgba(187, 187, 187, 0.9);
-  text-align: center;
-}
 
-.social-icons {
-  display: flex;
-  justify-content: center;
-}
-
-.social-icons-wrapper {
-  border: 1px solid rgba(187, 187, 187, 0.9);
-  padding: 0.5rem 2rem;
-  border-radius: 100px;
-  margin: 0 1rem;
-}
 
 .illustration {
   position: absolute;

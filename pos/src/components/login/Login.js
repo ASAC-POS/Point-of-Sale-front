@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from 'react';
 import { loginContext } from '../../context/context.js';
 import { getProductsFromAPI } from '../../store/products';
 import { connect } from 'react-redux';
-import Header from '../header/Header';
+
 
 import { useNavigate } from 'react-router-dom';
 import cookie from 'react-cookies';
@@ -35,7 +35,7 @@ function Login(props) {
     <div id='loginform'>
       <div className='left-section'>
         <div className='wrapper'>
-          <FormHeader title='Sign in' />
+          <FormHeader title='Welcome to Bayya3' style={{textAlign: 'center'}} />
           <Form
             className='sign-in-form'
             onSubmit={(e) => {
@@ -60,7 +60,7 @@ function Login(props) {
               {/* <Form.Label>Username</Form.Label> */}
               <Form.Control
                 type='text'
-                placeholder='username'
+                placeholder='Username'
                 onChange={(e) => {
                   setUsername(e.target.value);
                 }}
@@ -80,11 +80,7 @@ function Login(props) {
                 required
               />
             </Form.Group>
-            <div className='row'>
-              <a className='new-account-link' href='/'>
-                create a new account
-              </a>
-            </div>
+            
             <div id='button' className='row'>
               <Button className='button' type='submit'>
                 Sign in
@@ -95,7 +91,6 @@ function Login(props) {
       </div>
       <div className='right-section'></div>
       <img src={illustration} alt='image' className='illustration' />
-      <Header />
     </div>
   );
 }

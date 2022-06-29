@@ -21,11 +21,11 @@ function Popup(props) {
           showNotifications ? 'slide-open' : 'slide-close'
         } `}
       >
-        <FaTimes
+        {/* <FaTimes
           className='close-notification-box'
           size={20}
           onClick={() => setShowNotifications(!showNotifications)}
-        />
+        /> */}
         {props.message}
       </div>
     </>
