@@ -1,6 +1,6 @@
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 1rem;
   justify-content: space-between;
   align-items: center;
@@ -31,4 +31,65 @@
       margin: auto;
     }
   }
+}
+
+.product {
+  // width: 32%;
+  margin-left: 10px;
+  height: auto;
+  min-height: 250px;
+  max-height: 300px;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  &:hover {
+    cursor: pointer;
+    transform: scaleX(1.05) scaleY(1.1);
+  }
+
+  img {
+    max-width: 40%;
+    max-height: 100%;
+    object-fit: fill;
+  }
+
+  .details {
+    padding: 5px;
+
+    .top-part {
+      width: 100%;
+      padding-top: 15px;
+      padding-right: 5px;
+      display: flex;
+      justify-content: space-between;
+
+      p {
+        color: #0b5ed7;
+      }
+
+      .card-title {
+        font-weight: bold;
+        font-size: 1.4rem;
+        text-align: left;
+      }
+    }
+
+    .card-description {
+      padding-top: 30px;
+      p {
+        font-size: 15px;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.hpd-btn {
+  display: block;
+  width: 100px;
+  margin: auto;
 }
