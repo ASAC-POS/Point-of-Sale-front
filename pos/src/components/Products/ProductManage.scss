@@ -1,15 +1,38 @@
 .product-manage {
+ 
+  
   align-self: stretch;
   width: 100%;
   min-height: 100vh;
+  max-height: 100vh;
 }
 
 .products-card {
   width: 100%;
   overflow-y: scroll;
+
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
+  padding-top: 20px;
+  height: 80%;
+ 
   .product {
     width: 20%;
+    margin-left: 10px;
+    height: 60%;
+
+    .card-image{
+      max-height: 50%;
+      object-fit: contain;
+    }
   }
+
+
+  .product-button{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+  }
+  
 }

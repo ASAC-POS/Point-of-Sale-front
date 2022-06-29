@@ -20,17 +20,20 @@ function Pos(props) {
     console.log(checkout);
   }, [products, checkout]);
   return (
-    <div>
+    <div style={{ height: '100vh', width: '100%' }}>
       <div class='hpd hpd-basic'>
         <h4 class='hpd-title'>Point Of Sale</h4>
         <p class='hpd-desc'>Don't forget to smile 😁</p>
+        <span class='hpd-btn'>
+          <ReceiptsForm />
+        </span>
       </div>
       <div
         style={{
           display: 'flex',
           justifyContent: 'space-evenly',
-          width: '100vw',
-          height: '100%',
+          width: '100%',
+          height: '85%',
           paddingTop: '2rem',
         }}
       >
@@ -78,10 +81,7 @@ function Pos(props) {
         </div>
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'column-reverse',
-            justifyContent: 'center',
-            width: '100vw',
+            width: '50%',
             height: '100%',
           }}
         >
@@ -134,7 +134,7 @@ function Pos(props) {
           </div> */}
           <InfoScreen />
 
-          <ReceiptsForm style={{ marginBottom: '10px' }} />
+          {/* <ReceiptsForm style={{ marginBottom: '10px' }} /> */}
         </div>
       </div>
     </div>

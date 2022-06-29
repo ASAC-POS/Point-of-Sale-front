@@ -14,7 +14,7 @@ import Popup from '../popup/Popup';
 import { When } from 'react-if';
 function Profile(props) {
   const { socket } = useContext(SocketContext);
-  const { logout,loggedIn} = useContext(loginContext);
+  const { logout, loggedIn } = useContext(loginContext);
   const navigate = useNavigate();
   const { store } = props;
 
@@ -25,13 +25,13 @@ function Profile(props) {
   return (
     <div className='sidebar'>
       <div
-        onClick={() => {
-          navigate(
-            `/${encodeURIComponent(store?.storename)}/${
-              cookie.load('userData')?.id
-            }`
-          );
-        }}
+        // onClick={() => {
+        //   navigate(
+        //     `/${encodeURIComponent(store?.storename)}/${
+        //       cookie.load('userData')?.id
+        //     }`
+        //   );
+        // }}
         className='logo'
       >
         <img id='logo-img' src={WhiteLogo} alt='logo'></img>

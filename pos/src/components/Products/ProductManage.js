@@ -25,49 +25,55 @@ function Product(props) {
         <UserInfo/>
 
       </div>
-      <CardGroup className='products-card'>
+      <div className="add-product">
+       
+      </div>
+      <></>
+      <div className="products-card">
+        {console.log(products)}
         {products.map((product) => {
+          
           return (
-            <Card className='product'>
+            <>
+
+              <Card style={{ width: "18rem" }} className="product">
+
+
               <Card.Img
-                variant='top'
-                // style={{ height: '220px' }}
-                src={product.image}
-              />
+              className="card-image"
+              variant="top"
+              // style={{ height: '220px' }}
+              src={product.imgURL} />
 
-              <Card.Body>
-                <Card.Title>{product.productName}</Card.Title>
+                <Card.Body>
+                  <Card.Title>{product.productName}</Card.Title>
+                  <Card.Text>Product Name: {product.productName}</Card.Text>
+                  <Card.Text>Price: {product.price}$</Card.Text>
+                  <Card.Text>Description: {product.description}</Card.Text>
+                  <Card.Text>Quantity: {product.quantity}</Card.Text>
+                  <Card.Text>minQuantity: {product.minQuantity}</Card.Text>
+                  <Card.Footer className="product-button">
+                    <Auth capability="delete">
 
-                <ListGroup.Item>
-                  Product Name: {product.productName}{' '}
-                </ListGroup.Item>
-                <ListGroup.Item>Price: {product.price}</ListGroup.Item>
-                <ListGroup.Item>
-                  Description: {product.description}
-                </ListGroup.Item>
-                <ListGroup.Item>Quantity: {product.quantity}</ListGroup.Item>
-                <ListGroup.Item>
-                  minQuantity: {product.minQuantity}
-                </ListGroup.Item>
-              </Card.Body>
-              <Card.Footer>
-                <Auth capability='delete'>
-                  <Button
-                    variant='primary'
-                    onClick={() => props.deleteProduct(product.id)}
-                  >
-                    Remove
-                  </Button>
-                </Auth>
-                <EditProducts id={product.id} />
-              </Card.Footer>
-            </Card>
+                      <Button
+                        variant="danger"
+                        style={{ margin: "5%" }}
+                        onClick={() => props.deleteProduct(product.id)}
+                      >
+                        <div className="remove">
+                          <BsFillArchiveFill />
+                        </div>
+
+                      </Button>
+                    </Auth>
+
+                    <EditProducts id={product.id} />
+                  </Card.Footer>
+                </Card.Body>
+              </Card></>
           );
         })}
-        <Auth capability='edit'>
-          <ProductsForm />
-        </Auth>
-      </CardGroup>
+      </div>
     </div>
   );
 }

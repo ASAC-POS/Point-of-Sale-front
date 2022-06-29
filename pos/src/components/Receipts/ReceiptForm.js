@@ -36,9 +36,9 @@ function ReceiptsForm(props) {
 
   return (
     <div>
-      <Button variant='primary' onClick={handleShow}>
+      <span style={{ cursor: 'pointer' }} onClick={handleShow}>
         checkout
-      </Button>
+      </span>
       <Modal show={show} onHide={handleClose} className='page'>
         <Modal.Header closeButton>
           <Modal.Title>Checkout</Modal.Title>
