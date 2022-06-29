@@ -12,9 +12,9 @@ function Employees(props) {
     return (
       <div>
         <div class='hpd hpd-basic'>
-          <h4 class='hpd-title'>Products Management</h4>
+          <h4 class='hpd-title'>Employees Table</h4>
           <p class='hpd-desc'>
-            freely add, edit, or remove a product as you see fit
+            freely add, edit, or remove an employees
           </p>
 
           <span class='hpd-btn'>

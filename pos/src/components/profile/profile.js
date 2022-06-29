@@ -10,9 +10,11 @@ import { FcNext } from 'react-icons/fc';
 import { BiExit } from 'react-icons/bi';
 import { loginContext } from '../../context/context';
 import cookie from 'react-cookies';
+import Popup from '../popup/Popup';
+import { When } from 'react-if';
 function Profile(props) {
   const { socket } = useContext(SocketContext);
-  const { logout } = useContext(loginContext);
+  const { logout,loggedIn} = useContext(loginContext);
   const navigate = useNavigate();
   const { store } = props;
 
@@ -83,6 +85,9 @@ function Profile(props) {
           </div>
         </Auth>
       </div>
+      <When condition={loggedIn}>
+        <Popup />
+      </When>
       <div id='signout'>
         <div id='box6'>
           <div
