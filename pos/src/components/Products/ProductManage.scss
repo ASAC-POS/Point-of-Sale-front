@@ -1,6 +1,4 @@
 .product-manage {
- 
-  
   align-self: stretch;
   width: 100%;
   min-height: 100vh;
@@ -15,24 +13,59 @@
   flex-flow: row wrap;
   padding-top: 20px;
   height: 80%;
- 
-  .product {
-    width: 20%;
-    margin-left: 10px;
-    height: 60%;
 
-    .card-image{
-      max-height: 50%;
-      object-fit: contain;
+  .product {
+    width: 32%;
+    margin-left: 10px;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    img {
+      max-width: 40%;
+      max-height: 100%;
+      object-fit: fill;
+    }
+
+    .details {
+      padding: 5px;
+
+      .top-part {
+        width: 100%;
+        padding-top: 15px;
+        padding-right: 5px;
+        display: flex;
+        justify-content: space-between;
+
+        p {
+          color: #0b5ed7;
+        }
+
+        .card-title {
+          font-weight: bold;
+          font-size: 1.4rem;
+          text-align: left;
+        }
+      }
+
+      .card-description {
+        padding-top: 30px;
+        p {
+          font-size: 15px;
+          margin: 0;
+          padding: 0;
+          text-align: left;
+        }
+      }
+
+      .product-button {
+        justify-content: flex-end;
+        display: flex;
+        align-items: center;
+        background-color: #fff !important;
+      }
     }
   }
-
-
-  .product-button{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
-  }
-  
 }

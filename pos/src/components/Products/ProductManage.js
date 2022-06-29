@@ -1,4 +1,5 @@
 import Card from 'react-bootstrap/Card';
+import { BsFillArchiveFill } from 'react-icons/bs';
 import Button from 'react-bootstrap/Button';
 import './banner.scss';
 import ProductsForm from './ProductsForm';
@@ -8,7 +9,6 @@ import { deleteProduct } from '../../store/products';
 import { connect } from 'react-redux';
 import Auth from '../../context/auth';
 import UserInfo from '../profile/UserInfo/userInfo';
-import { BsFillArchiveFill } from 'react-icons/bs';
 function Product(props) {
   const { products } = props;
 
@@ -20,10 +20,13 @@ function Product(props) {
           freely add, edit, or remove a product as you see fit
         </p>
         <span class='hpd-btn'>
-          <ProductsForm />
+          <Auth capability='edit'>
+            <ProductsForm />
+          </Auth>
         </span>
         <UserInfo />
       </div>
+      <div className='add-product'></div>
       <div className='add-product'></div>
       <></>
       <div className='products-card'>
@@ -31,21 +34,22 @@ function Product(props) {
         {products.map((product) => {
           return (
             <>
-              <Card style={{ width: '18rem' }} className='product'>
-                <Card.Img
-                  className='card-image'
-                  variant='top'
-                  // style={{ height: '220px' }}
-                  src={product.imgURL}
-                />
+              <Card className='product'>
+                <Card.Img src={product.imgURL} />
 
-                <Card.Body>
-                  <Card.Title>{product.productName}</Card.Title>
-                  <Card.Text>Product Name: {product.productName}</Card.Text>
-                  <Card.Text>Price: {product.price}$</Card.Text>
-                  <Card.Text>Description: {product.description}</Card.Text>
-                  <Card.Text>Quantity: {product.quantity}</Card.Text>
-                  <Card.Text>minQuantity: {product.minQuantity}</Card.Text>
+                <Card.Body className='details'>
+                  <div className='top-part'>
+                    <Card.Title className='card-title'>
+                      {product.productName}
+                    </Card.Title>
+                    <Card.Text>{product.price}$</Card.Text>
+                  </div>
+
+                  <div className='card-description'>
+                    <Card.Text>{product.description}</Card.Text>
+                    <Card.Text>Quantity: {product.quantity}</Card.Text>
+                    <Card.Text>minQuantity: {product.minQuantity}</Card.Text>
+                  </div>
                   <Card.Footer className='product-button'>
                     <Auth capability='delete'>
                       <Button
