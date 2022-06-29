@@ -4,7 +4,7 @@ import { getProductsFromAPI } from '../../store/products.js';
 import { When } from 'react-if';
 import { loginContext } from '../../context/context';
 import { useContext } from 'react';
-import Popup from '../popup/Popup';
+
 import './navbar.scss';
 
 function Navbars(props) {
@@ -21,9 +21,7 @@ function Navbars(props) {
           signin
         </Link>
       </When>
-      <When condition={loggedIn}>
-        <Popup />
-      </When>
+
     </nav>
   );
 }

@@ -9,10 +9,12 @@ import WhiteLogo from '../../assets/Bayya3-removebg-preview.png';
 import { FcNext } from 'react-icons/fc';
 import { BiExit } from 'react-icons/bi';
 import { loginContext } from '../../context/context';
-
+import cookie from 'react-cookies';
+import Popup from '../popup/Popup';
+import { When } from 'react-if';
 function Profile(props) {
   const { socket } = useContext(SocketContext);
-  const { logout } = useContext(loginContext);
+  const { logout,loggedIn} = useContext(loginContext);
   const navigate = useNavigate();
   const { store } = props;
 
@@ -22,7 +24,16 @@ function Profile(props) {
 
   return (
     <div className='sidebar'>
-      <div className='logo'>
+      <div
+        onClick={() => {
+          navigate(
+            `/${encodeURIComponent(store?.storename)}/${
+              cookie.load('userData')?.id
+            }`
+          );
+        }}
+        className='logo'
+      >
         <img id='logo-img' src={WhiteLogo} alt='logo'></img>
         <h4 id='h44'> Bayya3</h4>
       </div>
@@ -74,6 +85,9 @@ function Profile(props) {
           </div>
         </Auth>
       </div>
+      <When condition={loggedIn}>
+        <Popup />
+      </When>
       <div id='signout'>
         <div id='box6'>
           <div

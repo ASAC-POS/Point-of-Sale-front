@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './popup.scss';
-import { FaConciergeBell, FaTimes } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
 import { useState } from 'react';
+import { BsFillBellFill } from "react-icons/bs";
 
 function Popup(props) {
   const [showNotifications, setShowNotifications] = useState(false);
   return (
     <>
-      <FaConciergeBell
+      <BsFillBellFill
         // className={`${showNotifications ? 'hidden' : ''}`}
         style={{ fill: '#fff' }}
         size={35}

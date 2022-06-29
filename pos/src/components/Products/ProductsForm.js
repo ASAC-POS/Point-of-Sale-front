@@ -2,7 +2,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { addNewProduct } from '../../store/products';
-import Card from 'react-bootstrap/Card';
+
 
 function ProductsForm(props) {
   console.log(props);
@@ -25,7 +25,7 @@ function ProductsForm(props) {
 
   return (
     <div>
-      <Card onClick={handleShow}>Add Product</Card>
+      <span onClick={handleShow} style={{cursor : 'pointer'}}>Add Product</span>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Product</Modal.Title>

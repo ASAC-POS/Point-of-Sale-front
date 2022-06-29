@@ -28,7 +28,7 @@ function Login(props) {
   const FormHeader = (props) => <h2 id='headerTitle'>{props.title}</h2>;
   useEffect(() => {
     if (loggedIn && store?.storename) {
-      navigate(`/${store?.storename}/${cookie.load('userData')?.id}`);
+      navigate(`/`);
     }
   }, [loggedIn, navigate, store]);
   return (
@@ -91,21 +91,6 @@ function Login(props) {
               </Button>
             </div>
           </Form>
-
-          <div className='social-section'>
-            <p>or continue with</p>
-            <div className='social-icons'>
-              <div className='social-icons-wrapper'>
-                <TiSocialFacebook size={35} color='#4267B2' />
-              </div>
-              <div className='social-icons-wrapper'>
-                <TiSocialInstagram size={35} color='#8a3ab9' />
-              </div>
-              <div className='social-icons-wrapper'>
-                <TiSocialTwitter size={35} color='00acee' />
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <div className='right-section'></div>
