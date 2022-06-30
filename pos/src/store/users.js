@@ -23,9 +23,10 @@ export const { getUsers, clearUsers } = usersSlice.actions;
 
 export const getUsersFromAPI = (token) => async (dispatch, state) => {
   const response = await superagent
-    .get(`${api}/users`)
+    .get(`${api}/getReceipt`)
     .query({ cookie: parseInt(cookie.load('storeID')) })
     .set('Authorization', `Bearer ${token}`);
+  console.log(response.body);
   dispatch(getUsers(response.body));
 };
 export const addUser = (user) => async (dispatch, state) => {
