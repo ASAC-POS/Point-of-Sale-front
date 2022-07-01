@@ -1,0 +1,18 @@
+.info-screen {
+  width: 100%;
+  height: auto;
+  min-height: 520px;
+  background-color: transparent;
+
+  table {
+    text-align: center;
+    thead{
+      background-color: #FEF9A7;
+    }
+  }
+}
+
+.controls{
+ display: flex;
+ gap: 2px;
+}

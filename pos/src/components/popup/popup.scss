@@ -1,0 +1,85 @@
+.popup-box {
+  width: 25%;
+  height: auto;
+  background: rgb(225, 221, 221);
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+font-size: 1rem;
+  
+  border-radius: 0 0 7px 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: right;
+  position: absolute;
+  top: -25rem;
+  // left: 50%;
+  right: 35%;
+  box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.75);
+
+}
+
+.close-notification-box {
+  color: red;
+  position: absolute;
+  top: 5px;
+  left: 7px;
+  cursor: pointer;
+}
+
+@keyframes slide-box-close {
+  0% {
+    transform: translateY(-25rem);
+  }
+  25% {
+    transform: translateY(-20rem);
+  }
+  50% {
+    transform: translateY(-15rem);
+  }
+  75% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-box-open {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(10rem);
+  }
+  50% {
+    transform: translateY(15rem);
+  }
+  75% {
+    transform: translateY(20rem);
+  }
+  100% {
+    transform: translateY(25rem);
+  }
+}
+
+.hidden {
+  display: none;
+  // transform: translateX(20rem);
+  fill: #fff;
+}
+
+.slide-open {
+  animation-name: slide-box-open;
+  animation-duration: 500ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.slide-close {
+  animation-name: slide-box-close;
+  animation-duration: 500ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}

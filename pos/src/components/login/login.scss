@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+
+#loginform {
+  min-width: 300px;
+  max-height: 650px;
+  width: 80%;
+  height: auto;
+  // margin: auto;
+  // margin-top: 40px;
+  background-color: #ffffff;
+  border-radius: 7px;
+  box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.7);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  display: flex;
+  .signin-nav {
+    display: none;
+  }
+}
+
+#headerTitle {
+  // text-align: left;
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  font-size: 2rem;
+}
+.row {
+  align-items: center;
+  padding-bottom: 1.5rem;
+
+  label {
+    align-self: start;
+    padding-left: 1.5rem;
+    padding-bottom: 0.7rem;
+    font-size: 20px;
+    color: rgba(187, 187, 187, 0.9);
+  }
+  button {
+    width: 200px;
+    display: block;
+    margin: auto;
+    padding: 1.2rem 1.8rem;
+    background-color: #D61C4E;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+
+    &:hover {
+      color: #000;
+      font-weight: 600;
+    }
+  }
+}
+#button {
+  padding-bottom: 1.5rem;
+  border-radius: 40%;
+}
+
+.left-section {
+  display: inline-block;
+  width: 60%;
+  padding: 1rem;
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    height: 100%;
+    padding: 0 1rem;
+    justify-content: center;
+  }
+
+  input {
+    width: 90% !important;
+    border: 3px solid #e84470;
+
+    border-radius: 100px;
+    margin: 0 auto;
+    padding: 1rem;
+    font-size: 1.3rem;
+    &:focus {
+      // outline: none;
+      border-color: #FAC213;
+    }
+  }
+
+  .button {
+    width: 90% !important;
+    border-radius: 100px;
+    padding: 1rem;
+
+    &:hover {
+      background-color: #FAC213;
+    }
+  }
+
+  .new-account-link {
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+
+    &:hover {
+      color: #FAC213;
+    }
+  }
+}
+
+.right-section {
+  display: block;
+  width: 40%;
+  min-height: 100%;
+  background-color: #FAC213;
+}
+
+
+
+.illustration {
+  position: absolute;
+  width: 40%;
+  left: 49%;
+  top: 20%;
+}

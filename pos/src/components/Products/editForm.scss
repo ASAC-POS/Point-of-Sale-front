@@ -1,0 +1,13 @@
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  button {
+    align-self: flex-end;
+    margin-top: 5px;
+    background-color: #D61C4E;
+    &:hover {
+      background-color: #F77E21;
+      
+    }
+  }
+}

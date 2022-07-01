@@ -1,0 +1,41 @@
+.wrapper {
+  display: block;
+  width: 100%;
+  min-height: 80vh;
+  margin-bottom: 1rem;
+  z-index: -1;
+}
+
+.hero {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+
+
+.slider {
+  color: #fff;
+  .slider-img {
+    filter: brightness(0.3);
+    min-height: 550px;
+    height: 80vh;
+    object-fit: cover;
+    z-index: -1;
+  }
+  z-index: -1;
+}
+.carousel-caption {
+  color: #fff;
+  position: absolute;
+  top: 40%;
+
+  h5 {
+
+    font-size: 2rem !important;
+  }
+  p {
+    font-size: 1.2rem;
+  }
+}

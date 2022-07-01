@@ -1,0 +1,38 @@
+
+
+.reciepts-manage{
+  align-self: stretch;
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow-y:scroll;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.sTable{
+  background-color: #1f1f1f1f;
+}
+
+.sRow{
+  background-color: #FEF9A7; 
+  font-size:1.4rem;
+}
+
+.receipts-table{
+  align-self: center;
+  width: 60%;
+  margin-top: 2rem;
+ 
+}
+
+.center{
+  text-align: center;
+}
+
+.icon-div{
+  display: flex;
+  justify-content: center;
+  gap: 1rem ;
+}

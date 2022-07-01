@@ -1,0 +1,16 @@
+/*.page{position: relative;
+
+background: linear-gradient(180deg, rgba(54, 53, 55, 0.64) 0%, rgba(84, 109, 239, 0.86) 100%);}*/
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  button {
+    align-self: flex-end;
+    margin-top: 5px;
+    background-color: #D61C4E;
+    &:hover {
+      background-color: #F77E21;
+      
+    }
+  }
+}

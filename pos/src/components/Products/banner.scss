@@ -1,0 +1,92 @@
+// Vars
+$bg-image: '../../assets/banner-shopping.png';
+$bg-color: #1f1f1f1f;
+$alt-color: #255571;
+
+$fonts:'Rubik', sans-serif;
+$font-color: white;
+
+@mixin hpd-basic {
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-position: right;
+  position: relative;
+  right: 0;
+}
+
+@mixin hpd-basic-big {
+  text-align: left;
+  padding-right: 150px;
+}
+
+.hpd {
+  display: block;
+  padding: 14px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  // background-image: url($bg-image);
+  // background-size: 40% auto;
+  font-family: $fonts;
+  font-size: 20px;
+  color: black;
+}
+
+.hpd .hpd-title {
+  margin: 0;
+  font-size: 21px;
+  font-style: italic;
+  text-transform: uppercase;
+  position: relative;
+  padding-left: 20px;
+  font-weight: 700;
+  width:100%;
+    &::before{
+      content:' ';
+      height:100%;
+      width:3px;
+      position:absolute;
+      left:0;
+      top:0;
+      background-color: black;
+    }
+  
+}
+
+
+.hpd .hpd-desc {
+  margin: 10px 0;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.45;
+}
+
+.hpd-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $font-color;
+  transition: background 0.5s ease;
+
+}
+
+/*
+ * Basic Ad
+ */
+
+.hpd-basic {
+  @include hpd-basic;
+  padding-top: 2rem;
+}
+
+@media (min-width: 600px) {
+  .hpd-basic {
+    @include hpd-basic-big;
+  }
+
+  .hpd-basic hpd-btn {
+    background: transparent;
+  }
+}

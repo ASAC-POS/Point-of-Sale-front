@@ -1,0 +1,27 @@
+.register-modal {
+  display: flex;
+  justify-content: center;
+}
+.register-btn {
+  display: block;
+  margin: auto;
+  padding: 1.2rem 1.8rem;
+  background-color: #D61C4E;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  position: absolute;
+  top: 60%;
+  font-size: 1.4rem;
+  // left: 44%;
+  z-index: 100;
+
+  &:hover {
+    padding: 1.4rem 2rem;
+    transition-delay: 100ms;
+    background-color: #FAC213;
+    color: #000;
+    font-weight: 600;
+  }
+
+}

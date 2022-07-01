@@ -1,0 +1,21 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
+  padding-left: 2rem;
+  padding-top: 0.2rem;
+  position: absolute;
+  top: 0;
+  // background-color: #54bab9;
+  // border-bottom: 1.5px solid #fff;
+  background: none;
+
+  * {
+    text-decoration: none;
+  }
+  .lef-header {
+    display: flex;
+  }
+}
