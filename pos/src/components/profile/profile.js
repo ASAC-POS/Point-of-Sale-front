@@ -6,19 +6,15 @@ import { getPopupNotificationsFromAPI } from '../../store/popups';
 import { useContext, useEffect } from 'react';
 import { SocketContext } from '../../context/socket';
 import WhiteLogo from '../../assets/Bayya3-removebg-preview.png';
-import { FcNext } from 'react-icons/fc';
 import { BiExit } from 'react-icons/bi';
 import { loginContext } from '../../context/context';
-import cookie from 'react-cookies';
-import Popup from '../popup/Popup';
 import { When } from 'react-if';
-import {FaCashRegister} from 'react-icons/fa';
-import {IoReceiptOutline} from 'react-icons/io5';
+import { FaCashRegister } from 'react-icons/fa';
+import { IoReceiptOutline } from 'react-icons/io5';
 
-import {MdOutlineProductionQuantityLimits} from 'react-icons/md';
+import { MdOutlineProductionQuantityLimits } from 'react-icons/md';
 
-import {IoPeople} from 'react-icons/io5';
-
+import { IoPeople } from 'react-icons/io5';
 
 function Profile(props) {
   const { socket } = useContext(SocketContext);
@@ -53,7 +49,7 @@ function Profile(props) {
               navigate(`/${encodeURIComponent(store?.storename)}/products`);
             }}
           >
-            <MdOutlineProductionQuantityLimits id='icon' color='#FAC213'/>
+            <MdOutlineProductionQuantityLimits id='icon' color='#FAC213' />
             <div id='p1'> Products</div>
           </div>
         </Auth>
@@ -65,7 +61,7 @@ function Profile(props) {
               navigate(`/${encodeURIComponent(store?.storename)}/employees`);
             }}
           >
-            <IoPeople id='icon' color='#FAC213'/>
+            <IoPeople id='icon' color='#FAC213' />
             <div id='p2'> Employees</div>
           </div>
           {/* this for Receipts*/}
@@ -93,9 +89,7 @@ function Profile(props) {
           </div>
         </Auth>
       </div>
-      <When condition={loggedIn}>
-      
-      </When>
+      <When condition={loggedIn}></When>
       <div id='signout'>
         <div id='box6'>
           <div
@@ -105,7 +99,15 @@ function Profile(props) {
               // window.location.reload(false);
             }}
           >
-            <BiExit id='icon'  style={{color:'red', position:'absolute', right:'1rem',bottom:'2rem' }}/>
+            <BiExit
+              id='icon'
+              style={{
+                color: 'red',
+                position: 'absolute',
+                right: '1rem',
+                bottom: '2rem',
+              }}
+            />
           </div>
         </div>
       </div>

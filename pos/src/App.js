@@ -1,5 +1,4 @@
 import './App.scss';
-import Footer from './components/footer/Footer';
 import { Routes, Route } from 'react-router-dom';
 import Main from './components/main/Main';
 import Login from './components/login/Login';
@@ -9,18 +8,17 @@ import Receipts from './components/Receipts/Receipts';
 import Profile from './components/profile/profile';
 import Products from './components/Products/ProductManage';
 import { connect } from 'react-redux';
-import cookie from 'react-cookies';
 import Auth from './context/auth';
 import { When } from 'react-if';
 import Pos from './components/Products/Pos';
 import { useContext, useEffect } from 'react';
 import { loginContext } from './context/context';
-import UserInfo from './components/profile/UserInfo/userInfo';
 function App(props) {
   const { getData, loggedIn } = useContext(loginContext);
   const { store } = props;
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className='app'>
