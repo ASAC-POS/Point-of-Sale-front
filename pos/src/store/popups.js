@@ -33,6 +33,5 @@ export const getPopupNotificationsFromAPI = () => async (dispatch, state) => {
     .get(`${api}/popup`)
     .set('Authorization', `Bearer ${cookie.load('userData')?.token}`)
     .query('cookie', cookie.load('storeID'));
-  console.log(response.body);
   dispatch(getNotifications(response.body));
 };

@@ -37,15 +37,21 @@ function LoginProvider(props) {
     clearReceipts,
   } = props;
   const register = async (userInfo) => {
-    const response = await superagent.post(`${API}/register`).send(userInfo);
+    try {
+      await superagent.post(`${API}/register`).send(userInfo);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const navigate = useNavigate();
 
   const signup = async (username, password, role) => {
-    const response = await superagent
-      .post(`${API}/user`)
-      .send({ username, password, role });
+    try {
+      await superagent.post(`${API}/user`).send({ username, password, role });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const login = async (username, password) => {

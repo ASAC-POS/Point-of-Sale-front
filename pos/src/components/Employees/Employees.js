@@ -43,7 +43,6 @@ function Employees(props) {
               {props.employees.map((employee, i) => (
                 <tr key={employee.id} className='sRow'>
                   <td id='empRow1'>{i + 1}</td>
-                  {console.log(signedInUsers.includes(employee.username))}
                   <td id='empRow2'>{employee.username}</td>
                   <td id='empRow3' className='center'>
                     {employee.role}

@@ -1,27 +1,21 @@
 import Card from 'react-bootstrap/Card';
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import InfoScreen from './InfoScreen';
 
 import { connect } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { addItemToCheckout } from '../../store/checkout-reducer';
-import { incrementProduct, deductProduct } from '../../store/products';
-import { AiOutlinePlus } from 'react-icons/ai';
+import { deductProduct } from '../../store/products';
 import './pos.scss';
 import UserInfo from '../profile/UserInfo/userInfo';
 
 function Pos(props) {
   const { products, addItemToCheckout, checkout, deductProduct } = props;
   const [quantity, setQuantity] = useState(1);
-  const [er, setEr] = useState(null);
-  useEffect(() => {
-    console.log(products);
-    console.log(checkout);
-  }, [products, checkout]);
+  useEffect(() => {}, [products, checkout]);
   return (
     <div className='pos-page'>
-      <UserInfo/>
+      <UserInfo />
       <div class='hpd hpd-basic'>
         <h4 class='hpd-title'>Point Of Sale</h4>
         <p class='hpd-desc'>Don't forget to smile 😁</p>
@@ -32,7 +26,7 @@ function Pos(props) {
           justifyContent: 'space-evenly',
           width: '100%',
           height: 'auto',
-         
+
           paddingTop: '2rem',
         }}
       >
@@ -43,7 +37,6 @@ function Pos(props) {
                 className='product pos-product'
                 onClick={() => {
                   if (quantity > product.quantity) {
-                    setEr('out of stock');
                   } else {
                     addItemToCheckout({
                       name: product.productName,
@@ -66,7 +59,6 @@ function Pos(props) {
                   </div>
 
                   <div className='card-description'>
-   
                     <Card.Text>Quantity: {product.quantity}</Card.Text>
                   </div>
                 </Card.Body>
@@ -80,8 +72,7 @@ function Pos(props) {
             height: '100%',
           }}
         >
-          <InfoScreen  />
-          
+          <InfoScreen setQuantity={setQuantity} />
         </div>
       </div>
     </div>

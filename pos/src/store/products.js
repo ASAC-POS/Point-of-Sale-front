@@ -80,8 +80,6 @@ export const addNewProduct = (item) => async (dispatch, state) => {
 
 // Update product
 export const editProduct = (updatedItem, itemId) => async (dispatch, state) => {
-  console.log(updatedItem);
-  console.log(itemId);
   await superagent
     .put(`${api}/product/${itemId}`)
     .send(updatedItem)

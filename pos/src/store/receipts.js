@@ -36,7 +36,6 @@ export const getReceiptsFromAPI = (token) => async (dispatch, state) => {
       .get(`${api}/storeReceipts`)
       .query({ cookie: cookie.load('storeID') })
       .set('Authorization', `Bearer ${token}`);
-    console.log(response.body);
     dispatch(getReceipts(response.body));
   } catch (err) {
     console.log(err);
@@ -44,7 +43,6 @@ export const getReceiptsFromAPI = (token) => async (dispatch, state) => {
 };
 
 export const addNewReceipts = (item) => async (dispatch, state) => {
-  console.log(item);
   await superagent
     .post(`${api}/receipt`)
     .send(item)
@@ -55,8 +53,6 @@ export const addNewReceipts = (item) => async (dispatch, state) => {
 
 export const updateReceipts =
   (updatedItem, itemId) => async (dispatch, state) => {
-    console.log(updatedItem);
-
     await superagent
       .put(`${api}/receipt/${itemId}`)
       .send(updatedItem)

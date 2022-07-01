@@ -20,15 +20,18 @@ function EmployeeForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(props.id);
     props.editProduct(newItem, props.id);
     handleClose();
   };
- 
-  return ( 
+
+  return (
     <div>
-      <Button variant='#primary' onClick={handleShow} style={{backgroundColor:"#F77E21"}}>
-        <BsPencil color='#fff' size={20}/>
+      <Button
+        variant='#primary'
+        onClick={handleShow}
+        style={{ backgroundColor: '#F77E21' }}
+      >
+        <BsPencil color='#fff' size={20} />
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -102,7 +105,11 @@ function EmployeeForm(props) {
                 />
               </Form.Group>
             </Auth>
-            <Button variant='primary' type='submit' style={{ padding: '10px',backgroundColor:'#D61C4E' }}>
+            <Button
+              variant='primary'
+              type='submit'
+              style={{ padding: '10px', backgroundColor: '#D61C4E' }}
+            >
               Edit
             </Button>
           </Form>

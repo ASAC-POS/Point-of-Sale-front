@@ -3,10 +3,9 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import { addNewProduct } from '../../store/products';
 import './addForm.scss';
-import { BsFillPlusSquareFill } from "react-icons/bs";
+import { BsFillPlusSquareFill } from 'react-icons/bs';
 
 function ProductsForm(props) {
-  console.log(props);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -19,7 +18,6 @@ function ProductsForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(item);
     props.addNewProduct(item);
     handleClose();
   };
@@ -27,7 +25,7 @@ function ProductsForm(props) {
   return (
     <div>
       <i onClick={handleShow} style={{ cursor: 'pointer' }}>
-    <BsFillPlusSquareFill size='25px' color='#5AA469'/>
+        <BsFillPlusSquareFill size='25px' color='#5AA469' />
       </i>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

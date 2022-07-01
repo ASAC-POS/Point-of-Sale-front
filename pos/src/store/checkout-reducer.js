@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import superagent from 'superagent';
-import cookie from 'react-cookies';
 
 const checkoutSlice = createSlice({
   name: 'checkout',
@@ -12,11 +10,9 @@ const checkoutSlice = createSlice({
   },
   reducers: {
     addItemToCheckout: (state, action) => {
-      console.log(action.payload);
       let newItem = state.items.find(
         (item) => item.productID === action.payload.productID
       );
-      console.log(newItem?.quantity);
       if (newItem) {
         newItem.quantity += action.payload.quantity;
       } else {
