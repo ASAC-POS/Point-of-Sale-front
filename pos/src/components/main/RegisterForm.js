@@ -1,19 +1,19 @@
 import { Form, Button } from 'react-bootstrap';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { loginContext } from '../../context/context.js';
 import './registerForm.scss';
 function RegisterForm(props) {
   const [userInfo, setUserInfo] = useState({});
-  const { register, setError } = useContext(loginContext);
+  const { register } = useContext(loginContext);
   function onChange(e) {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
-    setError('');
   }
   function handleSubmit(e) {
     e.preventDefault();
     register(userInfo);
     props.setShow(false);
   }
+  useEffect(() => {}, [userInfo]);
   return (
     <div>
       <Form className='register-form' onSubmit={handleSubmit}>
@@ -69,13 +69,10 @@ function RegisterForm(props) {
           <Form.Control
             type='text'
             name='username'
-            placeholder='Admin_username'
+            placeholder='Admin name'
             onChange={onChange}
             required
           />
-          <Form.Text className='text-muted'>
-            use '_' instead of spaces
-          </Form.Text>
         </Form.Group>
 
         <Form.Group className='mb-3' controlId='formBasicPassword'>
@@ -87,10 +84,10 @@ function RegisterForm(props) {
             onChange={onChange}
             required
           />
-          <Form.Text className='text-muted'>
-            minimun length 6 characters, atleast one(uppercase/lowrcase letter,
-            number, symbols(!@#$%^*-=+?))
-          </Form.Text>
+        </Form.Group>
+        <Form.Group className='mb-3'>
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control type='password' placeholder='Confirm Password' />
         </Form.Group>
         <Button type='submit'>Register</Button>
       </Form>

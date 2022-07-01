@@ -8,6 +8,7 @@ import './receiptForm.scss';
 
 function ReceiptsForm(props) {
   const [show, setShow] = useState(false);
+  const [method, setMethod] = useState('Cash');
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const { checkout, addNewReceipts, clearCheckOut } = props;
@@ -124,6 +125,6 @@ const mapStateToProps = (state) => ({
   checkout: state.checkout,
 });
 
-const mapDispatchToProps = { addNewReceipts, clearCheckOut };
+const mapDispatchToProps = { addNewReceipts, addNewReceipts, clearCheckOut };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReceiptsForm);

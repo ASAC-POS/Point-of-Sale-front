@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import { addNewProduct } from '../../store/products';
 import './addForm.scss';
-import { BsFillPlusSquareFill } from 'react-icons/bs';
+import { BsFillPlusSquareFill } from "react-icons/bs";
 
 function ProductsForm(props) {
   console.log(props);
@@ -27,7 +27,7 @@ function ProductsForm(props) {
   return (
     <div>
       <i onClick={handleShow} style={{ cursor: 'pointer' }}>
-        <BsFillPlusSquareFill size='25px' color='#5AA469' />
+    <BsFillPlusSquareFill size='25px' color='#5AA469'/>
       </i>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -47,10 +47,9 @@ function ProductsForm(props) {
             <Form.Group>
               <Form.Label>Price</Form.Label>
               <Form.Control
-                type='number'
+                type='text'
                 placeholder='Price'
                 name='price'
-                min={0}
                 onChange={onChange}
               />
             </Form.Group>
