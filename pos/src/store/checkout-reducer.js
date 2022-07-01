@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import superagent from 'superagent';
-import cookie from 'react-cookies';
 
 const checkoutSlice = createSlice({
   name: 'checkout',

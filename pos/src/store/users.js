@@ -31,7 +31,7 @@ export const getUsersFromAPI = (token) => async (dispatch, state) => {
 };
 export const addUser = (user) => async (dispatch, state) => {
   try {
-    const response = await superagent
+    await superagent
       .post(`${api}/user`)
       .send(user)
       .query({ cookie: parseInt(cookie.load('storeID')) })
@@ -46,7 +46,7 @@ export const addUser = (user) => async (dispatch, state) => {
 
 export const editUser = (newUser, id) => async (dispatch, state) => {
   try {
-    const response = await superagent
+    await superagent
       .put(`${api}/user/${id}`)
       .send(newUser)
       .query({ cookie: parseInt(cookie.load('storeID')) })
@@ -61,7 +61,7 @@ export const editUser = (newUser, id) => async (dispatch, state) => {
 
 export const removeUser = (id) => async (dispatch, state) => {
   try {
-    const response = await superagent
+    await superagent
       .delete(`${api}/user/${id}`)
       .query({ cookie: parseInt(cookie.load('storeID')) })
       .set('Authorization', `Bearer ${cookie.load('userData')?.token}`);

@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './popup.scss';
-import { FaTimes } from 'react-icons/fa';
 import { useState } from 'react';
-import { BsFillBellFill } from "react-icons/bs";
+import { BsFillBellFill } from 'react-icons/bs';
 
 function Popup(props) {
   const [showNotifications, setShowNotifications] = useState(false);
@@ -11,7 +10,7 @@ function Popup(props) {
     <>
       <BsFillBellFill
         // className={`${showNotifications ? 'hidden' : ''}`}
-        style={{ fill: '#fff',paddingTop:"7px" }}
+        style={{ fill: '#fff', paddingTop: '7px' }}
         size={29}
         onClick={() => setShowNotifications(!showNotifications)}
       />

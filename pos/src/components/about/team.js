@@ -95,7 +95,7 @@ export default function index() {
                   <BsGithub />
                 </i>
               </a>
-              <a href=''>
+              <a href='https://www.linkedin.com'>
                 <i className='fa-brands fa-linkedin-in'>
                   <BsLinkedin />
                 </i>
